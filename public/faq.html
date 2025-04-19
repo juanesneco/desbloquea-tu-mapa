@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions</title>
+    <style>
+        :root {
+            --primary-color: #355e3b;
+            --text-color: #333;
+            --background-color: #ffffff;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            background-color: var(--background-color);
+        }
+
+        .nav-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            margin: 2rem 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="logo">Your Site</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/faq">FAQ</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <main class="content">
+            <h1>Frequently Asked Questions</h1>
+<h2>General Questions</h2>
+<h3>What is this website about?</h3>
+<p>This is a simple static website built with markdown and Node.js. It serves as a personal website with a blog and information pages.</p>
+<h3>How is the website built?</h3>
+<p>The website is built using:</p>
+<ul>
+<li>Markdown for content</li>
+<li>Node.js for the build process</li>
+<li>Simple HTML and CSS for the design</li>
+<li>No complex frameworks</li>
+</ul>
+<h2>Technical Questions</h2>
+<h3>How do I add new content?</h3>
+<p>To add new content:</p>
+<ol>
+<li>Create a new markdown file in the appropriate directory (<code>content/pages/</code> or <code>content/blog/</code>)</li>
+<li>Run <code>npm run build</code> to generate the HTML</li>
+<li>Run <code>npm run dev</code> to preview your changes</li>
+</ol>
+<h3>Can I customize the design?</h3>
+<p>Yes! The design can be customized by modifying the <code>template.html</code> file. The site uses simple CSS for styling.</p>
+<h2>Contact</h2>
+<h3>How can I get in touch?</h3>
+<p>You can reach out through the contact form or connect on social media. </p>
+
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,17 @@
+{
+  "name": "static-site",
+  "version": "1.0.0",
+  "description": "A simple static website with markdown support",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && live-server public"
+  },
+  "dependencies": {
+    "marked": "^12.0.0",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+} 

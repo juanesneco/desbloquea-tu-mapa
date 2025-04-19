@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Blog Post</title>
+    <style>
+        :root {
+            --primary-color: #355e3b;
+            --text-color: #333;
+            --background-color: #ffffff;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            background-color: var(--background-color);
+        }
+
+        .nav-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            margin: 2rem 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="logo">Your Site</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/faq">FAQ</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <main class="content">
+            <h1>My First Blog Post</h1>
+<p>Welcome to my first blog post! This is a simple example of how blog posts work on this website.</p>
+<h2>Getting Started</h2>
+<p>This website is built with simplicity in mind. Here&#39;s how it works:</p>
+<ol>
+<li>Write content in markdown</li>
+<li>Build the site with Node.js</li>
+<li>Deploy the static files</li>
+</ol>
+<h2>Why Markdown?</h2>
+<p>Markdown is:</p>
+<ul>
+<li>Easy to write</li>
+<li>Simple to read</li>
+<li>Perfect for content</li>
+<li>Widely supported</li>
+</ul>
+<h2>Next Steps</h2>
+<p>Stay tuned for more posts about:</p>
+<ul>
+<li>Web development</li>
+<li>Content creation</li>
+<li>Technical writing</li>
+</ul>
+
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html> 
