@@ -1,9 +1,36 @@
 ---
 title: Practice & Community
+subtitle: Tools and Prompts for Your Journey
 layout: page
 ---
 
 # Practice & Community
+
+## AI-Powered Reflection Prompts
+
+### Prompt 1: Removing the Mask
+```
+I want to remove the mask and see beyond the roles I'm playing and the illusions I've been believing. Please guide me through this process by asking me 10 reflective questions, one at a time, to help me recognize the stories I'm telling myself.
+
+After I answer the 10th question, step into the role of my higher self and analyze my responses. Identify the most significant negative patterns holding me back and the most powerful positive patterns I can embrace and expand.
+
+I welcome direct, truthful, and tough love. Provide me with:
+
+- Daily affirmations to support my growth
+- Actionable steps to change my behaviors and align with my authentic self
+- A message of encouragement from my higher self to acknowledge and celebrate my journey
+```
+
+### Prompt 2: Finding Your Ikigai
+```
+I need help finding what my Ikigai is. I want to define what my outer purpose is - knowing that my inner purpose is: awakening (just as Eckhart Tolle says). 
+
+In order to do this, you will ask 10 questions, that I will be answering one by one. At the end, take the role of my higher self to help me define my why Ikigai is and I need to do in order to align it with my current habits. 
+
+I accept hard truths, and sincere feedback.
+
+Before you start, ask 3 questions to build context on who I am (or at least the roles that I am playing)
+```
 
 ## Practices to Unlock Your Map
 
