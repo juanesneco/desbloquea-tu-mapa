@@ -1,3 +1,10 @@
+---
+title: Frequently Asked Questions
+subtitle: Find Answers to Common Questions
+---
+
+Here you'll find answers to the most common questions about Unlock Your Map and our approach to personal growth and self-discovery.
+
 # Frequently Asked Questions
 
 ## General Questions

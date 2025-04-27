@@ -1,7 +1,9 @@
 ---
-title: "About Unlock Your Map"
-layout: "about"
+title: About Unlock Your Map
+subtitle: Our Story and Mission
 ---
+
+At Unlock Your Map, we believe that everyone has a unique path to personal growth and self-discovery. Our platform is designed to help you understand your past experiences, navigate your present challenges, and create the future you desire.
 
 # What is Unlock Your Map?
 

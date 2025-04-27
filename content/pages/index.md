@@ -1,7 +1,10 @@
 ---
-title: "Welcome to Unlock Your Map"
-layout: "home"
+title: Welcome to Unlock Your Map
+subtitle: Discover Your Path to Personal Growth
+isHomePage: true
 ---
+
+Welcome to Unlock Your Map, where we help you navigate your personal journey of growth and self-discovery. Our mission is to provide you with the tools and guidance needed to understand your past, shape your present, and create your desired future.
 
 # You were born into a world you didn't choose.
 
