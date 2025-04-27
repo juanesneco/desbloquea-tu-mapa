@@ -11,8 +11,8 @@ npm run dev
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages using GitHub Actions. The site should be available at:
-https://juanesneco.github.io/UnlockYourMap/
+The site is automatically deployed to GitHub Pages using GitHub Actions.
+Visit: https://juanesneco.github.io/unlock-your-map/
 
 If you don't see the changes:
 1. Check the Actions tab in your repository
