@@ -22,6 +22,14 @@ Your only travel companions: Curiosity. Honesty. Courage.
 
 [Start Your Journey](/signup.html)
 
+## Our Approach
+
+We believe in a unique approach to personal growth that combines:
+- Deep self-reflection
+- Practical exercises
+- Community support
+- Continuous learning
+
 ## Featured Frameworks
 
 <div class="card">
