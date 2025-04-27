@@ -1,9 +1,14 @@
-# Static Site with HTML, JavaScript, and simple Node libraries
+# Unlock Your Map
 
-## Plan 
+A personal journey through self-discovery, awakening, and liberation.
 
-1. Make a simple landing page
-2. Make a template for a blog post
-3. Make a Markdown -> HTML converter
-4. Simple integration for ConvertKit
-5. Add a contact form
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Deployment
+
+The site is automatically deployed to GitHub Pages using GitHub Actions.
