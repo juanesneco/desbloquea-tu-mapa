@@ -1,21 +1,41 @@
-# About Me
+---
+title: "About Unlock Your Map"
+layout: "about"
+---
 
-Hi there! I'm the creator of this website. This is a simple static site built with markdown and Node.js.
+# What is Unlock Your Map?
 
-## My Background
+Unlock Your Map is a personal journey to awaken your true potential.
 
-I'm passionate about web development and creating simple, effective solutions. This website is built using:
+You will move through reflections, ideas, and realizations inside a fictional city that represents your mind.
 
-- Markdown for content
-- Node.js for the build process
-- Simple HTML and CSS for the design
+Your mission is not to master the game, but to become free from it.
 
-## What I Do
+## The Journey
 
-- Web Development
-- Content Creation
-- Technical Writing
+1. **Anonymous Exploration**
+   - No names, no profiles
+   - Just you and your thoughts
+   - A unique identity code for your journey
 
-## Get in Touch
+2. **Mission-Based Discovery**
+   - Seven missions to complete
+   - Each reveals a new layer of reality
+   - Progress through deep reflection
 
-Feel free to reach out through the contact form or connect with me on social media. 
+3. **The Final Realization**
+   - The game is not about winning
+   - It's about becoming free
+   - Remembering who you truly are
+
+## The Essence
+
+This is not a social network.
+This is not a traditional course.
+This is a space for awakening.
+
+A place where minds meet minds,
+not personalities meeting personalities.
+A space for truth seekers.
+
+Welcome to your map.

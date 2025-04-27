@@ -1,26 +1,27 @@
 ---
-title: Unlock Your Map
-subtitle: Rewire your beliefs. Reclaim your potential.
-layout: home
+title: "Unlock Your Map"
+layout: "home"
 ---
 
-# You were handed a map. You didn't draw it. Let's change that.
+# You were born into a world you didn't choose.
 
-## Your First Map
+You are here to find your way out. Welcome to your map.
 
-Childhood wasn't just a time. It was a set of coordinates. The hot dogs. The bikes. The gray houses. The idea of luxury.
-You lived inside a world defined by what you could see. But what if there's more?
+## What is Unlock Your Map?
 
-## The Matrix Is Real — But So Is the Exit
+Unlock Your Map is not a course, nor a social network.
+It's a journey — through ideas, questions, and awakenings.
+You will explore a map that reveals your hidden roles, beliefs, and attachments.
+The final mission is simple: Win the game by becoming free of it.
+Your only travel companions: Curiosity. Honesty. Courage.
 
-The Matrix isn't a sci-fi movie. It's the belief that life just happens to you. But life is a game—and once you learn the controls, you can start playing on your own terms.
+## Reflections from the Journey
 
-## Why Unlock Your Map?
+- "I realized I was living someone else's dream." — D5@
+- "Freedom is not something you win. It's something you remember." — F3#
+- "The map was always inside me." — R8*
 
-Because you're not here to just repeat the patterns you were given.
-Because you're allowed to grow past your zip code, your past, and your programming.
-
-[Start with your story](/your-first-map)
+[Start Your Journey](/signup)
 
 ## Featured Frameworks
 
