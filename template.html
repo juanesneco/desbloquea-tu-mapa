@@ -101,20 +101,21 @@
 
         .nav-links {
             display: flex;
-            gap: calc(var(--spacing-unit) * 2);
-            align-items: center;
+            gap: var(--spacing-unit);
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 1rem;
-            opacity: 0.9;
-            transition: opacity 0.2s ease;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            opacity: 1;
+            color: var(--accent-color);
         }
 
         .container {
@@ -453,14 +454,12 @@
     <div class="navbar">
         <div class="nav-content">
             <a href="/" class="logo">Unlock Your Map</a>
-            <nav class="nav-links">
-                <a href="/your-first-map.html">Your First Map</a>
-                <a href="/the-game.html">The Game</a>
-                <a href="/the-matrix.html">The Matrix</a>
-                <a href="/practice.html">Practice</a>
-                <a href="/storyteller.html">The Storyteller</a>
-                <a href="/about.html">About</a>
-                <a href="/faq.html">FAQ</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </div>
