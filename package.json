@@ -2,10 +2,14 @@
   "name": "desbloquea-tu-mapa",
   "version": "1.0.0",
   "description": "A journey to find your way",
+  "homepage": "https://juanesneco.github.io/desbloquea-tu-mapa/pages",
   "scripts": {
     "dev": "npx http-server pages -c-1 -o",
-    "build": "cp -r pages/* ."
+    "build": "node build.js"
   },
   "author": "Juanes Necoechea",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "marked": "^15.0.11"
+  }
 }
