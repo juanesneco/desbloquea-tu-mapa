@@ -14,16 +14,20 @@ body {
     padding: 0;
     color: var(--text-color);
     background-color: var(--background-color);
+    padding-top: 4rem;
 }
 
 /* Navbar styles */
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     background-color: white;
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .nav-content {
@@ -36,9 +40,15 @@ body {
 }
 
 .logo {
-    font-size: 1.125rem;
-    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary-color);
     text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logo:hover {
+    color: var(--accent-color);
 }
 
 .nav-links {
@@ -46,6 +56,7 @@ body {
     gap: 2rem;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .nav-links a {
@@ -54,6 +65,7 @@ body {
     font-size: 1rem;
     transition: color 0.2s ease;
     white-space: nowrap;
+    padding: 0.5rem 0;
 }
 
 .nav-links a:hover,
