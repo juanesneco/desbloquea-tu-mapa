@@ -21,10 +21,11 @@ If you don't see the changes:
 1. Check the Actions tab in your repository
 2. Verify GitHub Pages is configured to use GitHub Actions
 3. Ensure the main branch is selected as the source
+4. Wait a few minutes for the deployment to complete
 
 ## License
 
-ISC © Juanes Necoechea
+ISC © Juanes Necoechea 2024
 
 ```bash
 npm install
