@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A journey to find your way",
   "scripts": {
-    "dev": "npx http-server pages -c-1 -o"
+    "dev": "npx http-server pages -c-1 -o",
+    "build": "cp -r pages/* ."
   },
   "author": "Juanes Necoechea",
   "license": "ISC"
