@@ -1,23 +1,10 @@
 {
   "name": "desbloquea-tu-mapa",
   "version": "1.0.0",
-  "description": "Static site for Desbloquea Tu Mapa",
-  "main": "server.js",
+  "description": "A journey to find your way",
   "scripts": {
-    "start": "node server.js",
-    "build": "node build.js"
+    "dev": "npx http-server pages -c-1 -o"
   },
-  "keywords": [],
   "author": "Juanes Necoechea",
-  "license": "ISC",
-  "devDependencies": {
-    "http-server": "^14.1.1",
-    "marked": "^12.0.0",
-    "fs-extra": "^11.2.0",
-    "nodemon": "^3.1.0",
-    "concurrently": "^8.2.2"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
-  }
+  "license": "ISC"
 }
