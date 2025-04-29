@@ -17,6 +17,13 @@ const COMPONENTS_DIR = path.join(__dirname, 'components');
 fs.ensureDirSync(BLOG_DIR);
 fs.ensureDirSync(PAGES_DIR);
 
+// Copy static files
+const staticFiles = ['index.html', 'styles.css', 'load-header.js'];
+staticFiles.forEach(file => {
+  fs.copyFileSync(path.join(__dirname, file), path.join(PAGES_DIR, file));
+  console.log(`Copied: ${file} to pages directory`);
+});
+
 // Read the header component
 const header = fs.readFileSync(path.join(COMPONENTS_DIR, 'header.html'), 'utf8');
 
