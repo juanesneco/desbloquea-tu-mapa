@@ -17,16 +17,6 @@ const COMPONENTS_DIR = path.join(__dirname, 'components');
 fs.ensureDirSync(BLOG_DIR);
 fs.ensureDirSync(PAGES_DIR);
 
-// Copy static files
-const staticFiles = ['index.html', 'styles.css', 'load-header.js'];
-staticFiles.forEach(file => {
-  fs.copyFileSync(path.join(__dirname, file), path.join(PAGES_DIR, file));
-  console.log(`Copied: ${file} to pages directory`);
-});
-
-// Read the header component
-const header = fs.readFileSync(path.join(COMPONENTS_DIR, 'header.html'), 'utf8');
-
 // Base HTML template for blog posts
 const blogTemplate = `<!DOCTYPE html>
 <html lang="es">
@@ -34,9 +24,9 @@ const blogTemplate = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}} | Desbloquea Tu Mapa</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="../load-header.js"></script>
+    <script src="load-header.js"></script>
     <style>
         .container {
             max-width: 1000px;
@@ -90,6 +80,7 @@ const blogTemplate = `<!DOCTYPE html>
     </style>
 </head>
 <body>
+    <div id="header-placeholder"></div>
     <div class="container">
         <main class="content">
             <div class="blog-content">
