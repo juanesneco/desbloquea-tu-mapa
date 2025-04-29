@@ -1,8 +1,25 @@
-# Unlock Your Map
+# Desbloquea Tu Mapa
 
-A personal journey through self-discovery, awakening, and liberation.
+This is the static site for Desbloquea Tu Mapa, a platform dedicated to helping people unlock their potential through self-discovery and personal development.
 
 ## Development
+
+To run the development server:
+
+```bash
+npm install
+npm start
+```
+
+## Production
+
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
+
+Visit: https://juanesneco.github.io/desbloquea-tu-mapa/
+
+## License
+
+ISC © Juanes Necoechea
 
 ```bash
 npm install
