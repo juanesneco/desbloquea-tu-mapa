@@ -56,10 +56,83 @@
             <h2>Comienza Tu Viaje</h2>
             <a href="tu-primer-mapa.html" class="start-button">Iniciar Tu Viaje</a>
         </section>
+
+        <!-- Newsletter Signup -->
+        <script>
+            fetch('subscription-form.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('newsletter-container').innerHTML = html;
+                });
+        </script>
+        <div id="newsletter-container"></div>
     </div>
 
     <footer>
         <p>&copy; 2024 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
     </footer>
+
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .content {
+            margin: calc(var(--spacing-unit) * 2) 0;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 4) 0;
+            background: var(--background-color);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </body>
 </html> 

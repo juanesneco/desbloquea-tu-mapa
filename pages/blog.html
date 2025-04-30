@@ -114,16 +114,6 @@
             color: var(--accent-color);
             margin-bottom: var(--spacing-unit);
         }
-
-        @media (max-width: 768px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -141,6 +131,16 @@
                 <button class="category-button">Relaciones</button>
                 <button class="category-button">Familia</button>
             </div>
+
+            <!-- Newsletter Signup -->
+            <script>
+                fetch('subscription-form.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('newsletter-container').innerHTML = html;
+                    });
+            </script>
+            <div id="newsletter-container"></div>
 
             <div class="blog-grid">
                 <!-- First Post -->
