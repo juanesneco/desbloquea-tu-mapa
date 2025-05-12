@@ -1,0 +1,3 @@
+// Supabase credentials for browser use
+window.SUPABASE_URL = 'https://wjhmycxkvmtxtyrcqgfm.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqaG15Y3hrdm10eHR5cmNxZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwMTM2MTIsImV4cCI6MjA2MjU4OTYxMn0.UJVykFPjLnwfwQu7zmZIyMRkf_rSrKgiTPiWJ-VxUUU'; 

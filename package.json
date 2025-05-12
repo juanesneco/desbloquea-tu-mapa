@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A journey to find your way",
   "homepage": "https://juanesneco.github.io/desbloquea-tu-mapa/pages",
+  "type": "module",
   "scripts": {
     "dev": "npx http-server pages -c-1 -o",
     "build": "node build.js"
@@ -11,5 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "marked": "^15.0.11"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "dotenv": "^16.5.0"
   }
 }

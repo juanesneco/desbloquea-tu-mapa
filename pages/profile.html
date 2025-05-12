@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Perfil</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="supabase-keys.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="load-header.js"></script>
+  <style>
+    .profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc; position: relative; }
+    .profile-avatar-wrapper { display: inline-block; position: relative; }
+    .edit-profile-btn {
+      margin-top: 1rem;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .edit-profile-btn:hover { background: var(--accent-color); }
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    .profile-form input[type="text"] {
+      width: 220px;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    .profile-form input[type="file"] {
+      margin: 0.5rem 0;
+    }
+    .profile-form button {
+      width: 220px;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border-radius: 4px;
+      border: none;
+      background: var(--primary-color);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .profile-form button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .center { text-align: center; }
+    .profile-email { color: #555; font-size: 1rem; margin-bottom: 1rem; }
+    .profile-name-view { font-size: 1.2rem; margin: 1rem 0 0.5rem 0; font-weight: 500; }
+    .hide { display: none; }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto; background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #fff; margin: 10% auto; padding: 2rem; border: 1px solid #888; width: 90%; max-width: 400px; border-radius: 8px; position: relative;
+    }
+    .modal.show { display: block; }
+    .modal.hide { display: none; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <main class="content">
+      <h2 class="center">Mi Perfil</h2>
+      <div id="profileSection" class="center">
+        <div class="profile-avatar-wrapper">
+          <img id="avatarImg" class="profile-pic" src="https://placehold.co/120x120" alt="Avatar">
+        </div>
+        <div id="profileNameView" class="profile-name-view"></div>
+        <div id="profileEmail" class="profile-email"></div>
+        <button id="editProfileBtn" class="edit-profile-btn">Editar Perfil</button>
+        <!-- Edit Modal -->
+        <div id="editModal" class="modal hide">
+          <div class="modal-content" style="max-width:350px; margin:10% auto; text-align:center;">
+            <h3>Editar Perfil</h3>
+            <form id="profileForm" class="profile-form">
+              <input type="text" id="profileName" placeholder="Tu nombre">
+              <input type="file" id="profileAvatar" accept="image/*">
+              <button type="submit">Enviar</button>
+              <button type="button" id="cancelEditBtn" style="margin-top:0.5rem;background:#ccc;color:#222;">Cancelar</button>
+              <div id="profileMsg" style="color:green;margin-top:1rem;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    const supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    const profileForm = document.getElementById('profileForm');
+    const profileNameInput = document.getElementById('profileName');
+    const profileNameView = document.getElementById('profileNameView');
+    const avatarImg = document.getElementById('avatarImg');
+    const editProfileBtn = document.getElementById('editProfileBtn');
+    const profileMsg = document.getElementById('profileMsg');
+    const profileEmail = document.getElementById('profileEmail');
+    const profileAvatarInput = document.getElementById('profileAvatar');
+    let currentProfile = {};
+    let editMode = false;
+    const editModal = document.getElementById('editModal');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+    async function loadProfile() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        window.location.href = 'index.html';
+        return;
+      }
+      profileEmail.textContent = user.email;
+      // Fetch profile
+      const { data, error } = await supabase.from('profiles').select('*').eq('id', user.id).single();
+      if (data) {
+        currentProfile = data;
+        profileNameInput.value = data.name || '';
+        profileNameView.textContent = data.name || '';
+        if (data.avatar_url) {
+          avatarImg.src = data.avatar_url;
+        }
+        // If name is empty, show form by default
+        if (!data.name) {
+          showEditMode();
+        } else {
+          showViewMode();
+        }
+      } else {
+        // No profile data, show form
+        showEditMode();
+      }
+    }
+
+    function showEditMode() {
+      // Fill form with current values
+      profileNameInput.value = currentProfile.name || '';
+      profileAvatarInput.value = '';
+      profileMsg.textContent = '';
+      editModal.classList.remove('hide');
+      editModal.classList.add('show');
+    }
+    function showViewMode() {
+      editModal.classList.remove('show');
+      editModal.classList.add('hide');
+    }
+
+    editProfileBtn.addEventListener('click', function() {
+      showEditMode();
+    });
+
+    cancelEditBtn.addEventListener('click', function() {
+      // Revert form to current profile values and close modal
+      profileNameInput.value = currentProfile.name || '';
+      profileAvatarInput.value = '';
+      profileMsg.textContent = '';
+      showViewMode();
+    });
+
+    profileForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      profileMsg.textContent = '';
+      const name = profileNameInput.value;
+      const fileInput = profileAvatarInput;
+      let avatar_url = null;
+      // Upload avatar if selected
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const { data: { user } } = await supabase.auth.getUser();
+        const filePath = `avatars/${user.id}/${file.name}`;
+        let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file, { upsert: true });
+        if (uploadError) {
+          profileMsg.style.color = 'red';
+          profileMsg.textContent = 'Error subiendo la imagen';
+          return;
+        }
+        // Get public URL
+        const { data } = supabase.storage.from('avatars').getPublicUrl(filePath);
+        avatar_url = data.publicUrl;
+        avatarImg.src = avatar_url;
+      }
+      // Update profile
+      const { data: { user } } = await supabase.auth.getUser();
+      const update = { name };
+      if (avatar_url) update.avatar_url = avatar_url;
+      const { error } = await supabase.from('profiles').update(update).eq('id', user.id);
+      if (error) {
+        profileMsg.style.color = 'red';
+        profileMsg.textContent = 'Error actualizando el perfil';
+      } else {
+        profileMsg.style.color = 'green';
+        profileMsg.textContent = 'Perfil actualizado!';
+        profileNameView.textContent = name;
+        currentProfile.name = name;
+        if (avatar_url) currentProfile.avatar_url = avatar_url;
+        setTimeout(showViewMode, 800);
+      }
+    });
+
+    loadProfile();
+  </script>
+</body>
+</html> 

@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="load-header.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="supabase-keys.js"></script>
+    <script src="prompts.js"></script>
+    <script>
+        const supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        supabase.auth.getUser().then(({ data: { user } }) => {
+            if (!user) window.location.href = 'login.html';
+        });
+    </script>
     <style>
         .container {
             max-width: 1000px;
@@ -99,6 +108,35 @@
                 font-size: 2rem;
             }
         }
+
+        .prompt-form {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: calc(var(--spacing-unit) * 1.5);
+            border-radius: 4px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        .prompt-form input, .prompt-form textarea {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .prompt-form button {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .prompt-form button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -109,51 +147,17 @@
             <p class="subtitle">Ejercicios para Explorar Tu Mapa Interior</p>
 
             <div class="prompt-section">
+                <form class="prompt-form" id="promptForm">
+                    <h2>Agregar Nuevo Prompt</h2>
+                    <input type="text" id="promptTitle" placeholder="Título" required />
+                    <textarea id="promptContent" placeholder="Contenido del prompt" rows="4" required></textarea>
+                    <button type="submit">Agregar Prompt</button>
+                </form>
                 <h2>Ejercicios de Reflexión con IA</h2>
-                
-                <div class="prompt-card">
-                    <h3>Ejercicio 1: Quitando la Máscara</h3>
-                    <div class="prompt-content">
-                        <button class="copy-button" onclick="copyPrompt(this, 'prompt1')">Copiar Ejercicio</button>
-                        <div id="prompt1">
-Quiero quitarme la máscara y ver más allá de los roles que estoy interpretando y las ilusiones que he estado creyendo. Por favor, guíame a través de este proceso haciéndome 10 preguntas reflexivas, una a la vez, para ayudarme a reconocer las historias que me estoy contando.
-
-Después de que responda la décima pregunta, asume el papel de mi yo superior y analiza mis respuestas. Identifica los patrones negativos más significativos que me están limitando y los patrones positivos más poderosos que puedo abrazar y expandir.
-
-Acepto amor directo, verdadero y duro. Proporcióname:
-
-- Daily affirmations to support my growth
-- Actionable steps to change my behaviors and align with my authentic self
-- A message of encouragement from my higher self to acknowledge and celebrate my journey
-                        </div>
-                    </div>
-                </div>
-
-                <div class="prompt-card">
-                    <h3>Ejercicio 2: Explorando Tu Mapa Interior</h3>
-                    <div class="prompt-content">
-                        <button class="copy-button" onclick="copyPrompt(this, 'prompt2')">Copiar Ejercicio</button>
-                        <div id="prompt2">
-Ayúdame a explorar mi mapa interior actual. Guíame a través de un proceso de visualización donde:
-
-1. Imagino mi vida como un paisaje
-2. Identifico los territorios que habito regularmente
-3. Descubro las fronteras que he establecido
-4. Reconozco los caminos que tomo habitualmente
-5. Observo las áreas que evito
-
-Después de cada paso, hazme preguntas profundas que me ayuden a entender:
-- Por qué he creado estas estructuras
-- Qué me están enseñando sobre mí mismo
-- Cómo puedo expandir mi territorio de manera saludable
-
-Al final, ayúdame a crear un plan para:
-1. Fortalecer las áreas positivas
-2. Transformar las limitaciones en oportunidades
-3. Establecer nuevos caminos de crecimiento</div>
-                    </div>
-                </div>
+                <div id="promptsList"></div>
             </div>
+
+            <a href="login.html" class="start-button">Inicia tu sesión</a>
         </main>
         
         <footer>
@@ -172,6 +176,63 @@ Al final, ayúdame a crear un plan para:
                     button.classList.remove('copied');
                 }, 2000);
             });
+        }
+
+        // --- PROMPTS DYNAMIC LOADING ---
+        async function renderPrompts() {
+            const promptsList = document.getElementById('promptsList');
+            promptsList.innerHTML = '<p>Cargando prompts...</p>';
+            try {
+                const user = await supabase.auth.getUser();
+                if (!user) {
+                    // Show login form
+                    promptsList.innerHTML = '<p>Por favor, inicia sesión para ver los prompts.</p>';
+                    return;
+                }
+                const prompts = await window.getPrompts();
+                if (!prompts || prompts.length === 0) {
+                    promptsList.innerHTML = '<p>No hay prompts aún.</p>';
+                    return;
+                }
+                promptsList.innerHTML = prompts.map((prompt, idx) => `
+                    <div class="prompt-card">
+                        <h3>${prompt.metadata?.titulo || prompt.title || 'Sin título'}</h3>
+                        <div class="prompt-content">
+                            <button class="copy-button" onclick="copyPrompt(this, 'prompt${idx}')">Copiar Ejercicio</button>
+                            <div id="prompt${idx}">${prompt.content.replace(/\n/g, '<br>')}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                promptsList.innerHTML = `<p style='color:red;'>Error cargando prompts: ${e.message}</p>`;
+                console.error('Error fetching prompts from Supabase:', e);
+            }
+        }
+
+        document.getElementById('promptForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const title = document.getElementById('promptTitle').value.trim();
+            const content = document.getElementById('promptContent').value.trim();
+            if (!title || !content) return;
+            const button = this.querySelector('button');
+            button.disabled = true;
+            try {
+                await window.savePrompt({
+                    title,
+                    content,
+                    metadata: { titulo: title },
+                    created_at: new Date().toISOString()
+                });
+                this.reset();
+                await renderPrompts();
+            } catch (e) {
+                alert('Error al guardar el prompt.');
+            }
+            button.disabled = false;
+        });
+
+        function logout() {
+            supabase.auth.signOut().then(() => window.location.href = 'login.html');
         }
     </script>
 </body>
