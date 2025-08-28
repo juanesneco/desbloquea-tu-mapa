@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompts | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="load-header.js"></script>
+    <style>
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .prompt-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .prompt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .prompt-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .prompt-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .prompt-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(44, 51, 56, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .prompt-cta {
+            color: var(--accent-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: 2rem;
+            color: var(--accent-color);
+        }
+
+        .no-prompts {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div class="container">
+        <main class="content">
+            <div class="hero">
+                <h1>Prompts de Reflexión</h1>
+                <p class="hero-subtitle">Ejercicios diseñados para explorar tu mapa interior y descubrir nuevas perspectivas</p>
+            </div>
+
+            <div id="promptsList" class="prompts-grid">
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando prompts...</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Static list of available prompts (update this when adding new prompts)
+        const availablePrompts = [
+          {
+                    "filename": "analisis-causa-raiz.html",
+                    "title": "Análisis de Causa Raíz",
+                    "description": "Eres ahora un Experto en Análisis de Causa Raíz con experiencia en psicología, negocios y pensamiento sistémico. Tu tarea es ayudarme a identificar la...",
+                    "icon": "fas fa-search"
+          },
+          {
+                    "filename": "aprende-las-reglas-reales.html",
+                    "title": "Aprende las Reglas Reales",
+                    "description": "Eres un Game Master Existencial que ha estudiado las reglas verdaderas de cómo funciona la vida. Tu misión es enseñarme las mecánicas ocultas del jueg...",
+                    "icon": "fas fa-lightbulb"
+          },
+          {
+                    "filename": "descubre-tu-ikigai.html",
+                    "title": "Descubre Tu Ikigai",
+                    "description": "El Ikigai es un concepto japonés que significa \"razón de ser\" - la intersección entre lo que amas, lo que se te da bien, lo que el mundo necesita y po...",
+                    "icon": "fas fa-compass"
+          },
+          {
+                    "filename": "destruye-las-mascaras.html",
+                    "title": "Destruye las Máscaras",
+                    "description": "Eres un Arquitecto de Transformación especializado en la destrucción quirúrgica de identidades falsas y la revelación de la esencia auténtica. Tu misi...",
+                    "icon": "fas fa-lightbulb"
+          },
+          {
+                    "filename": "mapea-tu-ubicacion-actual.html",
+                    "title": "Mapea Tu Ubicación Actual",
+                    "description": "Eres un Cartógrafo de Consciencia especializado en revelar la ubicación exacta donde se encuentra una persona en su viaje de vida. Tu misión es ayudar...",
+                    "icon": "fas fa-lightbulb"
+          },
+          {
+                    "filename": "ve-el-codigo-mental.html",
+                    "title": "Ve el Código Mental",
+                    "description": "Eres un Arquitecto de Sistemas de Pensamiento que puede ver la Matrix de patrones mentales que gobiernan la vida de una persona. Tu misión es ayudarme...",
+                    "icon": "fas fa-lightbulb"
+          }
+];
+
+        function renderPrompts() {
+            const promptsList = document.getElementById('promptsList');
+            
+            if (availablePrompts.length === 0) {
+                promptsList.innerHTML = `
+                    <div class="no-prompts">
+                        <i class="fas fa-lightbulb" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-color);"></i>
+                        <h3>Próximamente</h3>
+                        <p>Estamos trabajando en nuevos prompts de reflexión para ti.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            promptsList.innerHTML = availablePrompts.map(prompt => `
+                <a href="prompts/${prompt.filename}" class="prompt-card">
+                    <div class="prompt-icon">
+                        <i class="${prompt.icon}"></i>
+                    </div>
+                    <h3 class="prompt-title">${prompt.title}</h3>
+                    <p class="prompt-description">${prompt.description}</p>
+                    <div class="prompt-cta">
+                        <span>Explorar ejercicio</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Render prompts when page loads
+        document.addEventListener('DOMContentLoaded', renderPrompts);
+    </script>
+</body>
+</html>

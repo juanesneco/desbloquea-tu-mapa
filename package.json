@@ -5,7 +5,7 @@
   "homepage": "https://juanesneco.github.io/desbloquea-tu-mapa/pages",
   "type": "module",
   "scripts": {
-    "dev": "npx http-server pages -c-1 -o",
+    "dev": "npx http-server . -c-1 -o",
     "build": "node build.js"
   },
   "author": "Juanes Necoechea",

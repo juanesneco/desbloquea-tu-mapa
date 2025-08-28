@@ -1,7 +1,12 @@
-const express = require('express');
-const fs = require('fs-extra');
-const path = require('path');
-const { exec } = require('child_process');
+import express from 'express';
+import fs from 'fs-extra';
+import path from 'path';
+import { exec } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express();
 
 // Middleware
