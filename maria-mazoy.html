@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>María Mazoy - Fundadora | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .founder-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .founder-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .founder-header h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            font-weight: 700;
+        }
+
+        .founder-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .founder-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .founder-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+        }
+
+        .founder-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .founder-intro p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .story-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .story-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .story-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .story-card p {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+
+
+        .philosophy-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+        }
+
+        .philosophy-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .philosophy-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .philosophy-item h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-cta {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+        }
+
+        .founder-cta .btn {
+            margin: 0 1rem 1rem 1rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .founder-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-year {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .founder-cta .btn {
+                display: block;
+                margin: 1rem auto;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="founder-section">
+            <div class="founder-header">
+                <h1>🌸 María Mazoy</h1>
+                <p class="founder-subtitle">Fundadora & Guía de Transformación</p>
+            </div>
+
+            <div class="founder-content">
+                <div class="founder-intro">
+                    <h2>Mi Historia</h2>
+                    <p>Soy María Mazoy, una psicóloga y facilitadora de transformación personal que cree profundamente en el poder del movimiento consciente y la conexión auténtica. Mi camino comenzó con una búsqueda personal de sentido y ha evolucionado hacia la creación de espacios seguros donde otros pueden encontrar su propia verdad.</p>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-card">
+                        <div class="story-icon">🌊</div>
+                        <h3>Mi Conexión con el Mar</h3>
+                        <p>Crecí cerca del océano, y desde pequeña sentí una profunda conexión con el agua. El mar me enseñó sobre el flujo, la adaptabilidad y la fuerza tranquila. Esta conexión natural se convirtió en la base de mi práctica terapéutica.</p>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-icon">🧘‍♀️</div>
+                        <h3>El Descubrimiento del Movimiento</h3>
+                        <p>Mi encuentro con el Pilates y el movimiento consciente cambió mi vida. Descubrí que el cuerpo tiene una sabiduría innata que, cuando se libera, puede sanar heridas emocionales profundas. Esta revelación se convirtió en el corazón de mi trabajo.</p>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-icon">💝</div>
+                        <h3>La Escucha Profunda</h3>
+                        <p>Mi capacidad natural para la escucha activa y la empatía me llevó a la psicología. Pero no fue hasta que integré el movimiento corporal que encontré mi verdadera vocación: crear espacios donde las personas puedan ser escuchadas en todos los niveles de su ser.</p>
+                    </div>
+                </div>
+
+
+
+                <div class="philosophy-section">
+                    <h2>Mi Filosofía</h2>
+                    <div class="philosophy-grid">
+                        <div class="philosophy-item">
+                            <h4>🌱 Crecimiento Orgánico</h4>
+                            <p>Creo en el desarrollo natural y respetuoso del ser humano, sin forzar procesos ni imponer soluciones.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>🤝 Conexión Auténtica</h4>
+                            <p>La verdadera transformación ocurre en espacios de conexión genuina, donde cada persona se siente vista y escuchada.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>🔄 Integración Holística</h4>
+                            <p>El cuerpo, la mente y el espíritu están interconectados. La sanación debe abordar todos estos niveles.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <h4>🌟 Potencial Innato</h4>
+                            <p>Cada persona tiene dentro de sí la sabiduría y la capacidad para su propia transformación. Mi rol es facilitar ese descubrimiento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="founder-cta">
+                    <h2>¿Te gustaría conocer más sobre mi trabajo?</h2>
+                    <p>Explora mis programas de transformación y descubre cómo puedo acompañarte en tu camino.</p>
+                    <a href="programas.html" class="btn btn-primary">Ver Programas</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    
+    <script src="load-header.js"></script>
+    <script src="load-footer.js"></script>
+</body>
+</html>

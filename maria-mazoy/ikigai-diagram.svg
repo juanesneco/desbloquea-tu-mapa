@@ -1,0 +1,110 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .circle-outline { fill: none; stroke: #2c3e50; stroke-width: 2; }
+      .main-label { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #2c3e50; }
+      .intersection-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #2c3e50; }
+      .ikigai-label { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #e74c3c; }
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .area-content { font-family: Arial, sans-serif; font-size: 11px; fill: #34495e; }
+      .ikigai-definition { font-family: Arial, sans-serif; font-size: 10px; fill: #2c3e50; font-style: italic; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" class="title">🌸 Ikigai de María Mazoy</text>
+
+  <!-- Circle Definitions -->
+  <circle cx="400" cy="220" r="160" class="circle-outline"/> <!-- What you love -->
+  <circle cx="280" cy="380" r="160" class="circle-outline"/> <!-- What you're good at -->
+  <circle cx="520" cy="380" r="160" class="circle-outline"/> <!-- What the world needs -->
+  <circle cx="400" cy="540" r="160" class="circle-outline"/> <!-- What you can be paid for -->
+
+  <!-- Main Circle Labels (outside circles) -->
+  <text x="400" y="80" text-anchor="middle" class="main-label">WHAT YOU LOVE</text>
+  <text x="140" y="380" text-anchor="middle" class="main-label" transform="rotate(-90 140 380)">WHAT YOU'RE GOOD AT</text>
+  <text x="660" y="380" text-anchor="middle" class="main-label" transform="rotate(90 660 380)">WHAT THE WORLD NEEDS</text>
+  <text x="400" y="580" text-anchor="middle" class="main-label">WHAT YOU CAN BE PAID FOR</text>
+
+  <!-- Content for each of the 8 areas -->
+
+  <!-- 1. WHAT YOU LOVE (only) -->
+  <text x="400" y="140" text-anchor="middle" class="area-content">
+    <tspan x="400" dy="0">• Viajar y explorar</tspan>
+    <tspan x="400" dy="13">• Naturaleza y mar</tspan>
+    <tspan x="400" dy="13">• Pilates y cuerpo</tspan>
+  </text>
+
+  <!-- 2. WHAT YOU'RE GOOD AT (only) -->
+  <text x="200" y="300" text-anchor="start" class="area-content">
+    <tspan x="200" dy="0">• Escucha activa</tspan>
+    <tspan x="200" dy="13">• Empatía profunda</tspan>
+    <tspan x="200" dy="13">• Liderazgo humano</tspan>
+    <tspan x="200" dy="13">• Acción ágil</tspan>
+  </text>
+
+  <!-- 3. WHAT THE WORLD NEEDS (only) -->
+  <text x="500" y="300" text-anchor="start" class="area-content">
+    <tspan x="500" dy="0">• Herramientas emocionales</tspan>
+    <tspan x="500" dy="13">• Psicoacompañamiento</tspan>
+    <tspan x="500" dy="13">• Más consciencia</tspan>
+  </text>
+
+  <!-- 4. WHAT YOU CAN BE PAID FOR (only) -->
+  <text x="400" y="460" text-anchor="middle" class="area-content">
+    <tspan x="400" dy="0">• Psicoterapia</tspan>
+    <tspan x="400" dy="13">• Talleres escolares</tspan>
+    <tspan x="400" dy="13">• Programas de bienestar</tspan>
+  </text>
+
+  <!-- 5. PASSION (Love + Good at) -->
+  <text x="300" y="280" text-anchor="start" class="intersection-label">PASSION</text>
+  <text x="300" y="300" text-anchor="start" class="area-content">
+    <tspan x="300" dy="0">• Momentos simples</tspan>
+    <tspan x="300" dy="13">• Vivir presente</tspan>
+  </text>
+
+  <!-- 6. MISSION (Love + World needs) -->
+  <text x="480" y="280" text-anchor="start" class="intersection-label">MISSION</text>
+  <!-- No specific content in MISSION area -->
+
+  <!-- 7. PROFESSION (Good at + Paid for) -->
+  <text x="300" y="420" text-anchor="start" class="intersection-label">PROFESSION</text>
+  <text x="300" y="440" text-anchor="start" class="area-content">
+    <tspan x="300" dy="0">• Claridad emocional</tspan>
+    <tspan x="300" dy="13">• Liderazgo consciente</tspan>
+  </text>
+
+  <!-- 8. VOCATION (World needs + Paid for) -->
+  <text x="480" y="420" text-anchor="start" class="intersection-label">VOCATION</text>
+  <text x="480" y="440" text-anchor="start" class="area-content">
+    <tspan x="480" dy="0">• Escuchados, acompañados</tspan>
+    <tspan x="480" dy="13">• En paz</tspan>
+  </text>
+
+  <!-- IKIGAI (Center) - Well distributed text -->
+  <text x="400" y="360" text-anchor="middle" class="ikigai-label">IKIGAI</text>
+  
+  <!-- Central definition text - properly spaced and distributed -->
+  <text x="400" y="375" text-anchor="middle" class="ikigai-definition">
+    <tspan x="400" dy="0">Crear espacios que unan</tspan>
+  </text>
+  <text x="400" y="390" text-anchor="middle" class="ikigai-definition">
+    <tspan x="400" dy="0">psicología y movimiento</tspan>
+  </text>
+  <text x="400" y="405" text-anchor="middle" class="ikigai-definition">
+    <tspan x="400" dy="0">consciente donde niños y</tspan>
+  </text>
+  <text x="400" y="420" text-anchor="middle" class="ikigai-definition">
+    <tspan x="400" dy="0">adultos puedan sentirse</tspan>
+  </text>
+  <text x="400" y="435" text-anchor="middle" class="ikigai-definition">
+    <tspan x="400" dy="0">escuchados, acompañados</tspan>
+  </text>
+  <text x="400" y="450" text-anchor="middle" class="ikigai-definition">
+    <tspan x="400" dy="0">y en paz.</tspan>
+  </text>
+</svg>

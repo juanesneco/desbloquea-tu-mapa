@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Camino de Transformación | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .program-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .program-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .session-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .session-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .session-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .session-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .session-topic {
+            position: absolute;
+            top: 1rem;
+            right: 4rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .session-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .session-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .session-content {
+            padding: 1.5rem;
+        }
+
+
+
+        .session-content p {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .session-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d81b60;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Navbar styles to match programas.html */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e5e5;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #333;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e91e63;
+        }
+
+        /* Program header styles to match programas.html */
+        .program-header {
+            background: linear-gradient(135deg, #333, #e91e63);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .program-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+
+
+        .activity-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .activity-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .activity-list li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .activity-list li:last-child {
+            border-bottom: none;
+        }
+
+
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .path-steps {
+                flex-direction: column;
+            }
+            
+            .path-step {
+                min-width: auto;
+            }
+            
+            .session-header {
+                padding: 1.5rem;
+            }
+            
+            .session-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <!-- Program Header -->
+    <div class="program-header">
+        <h1>🌸 El Camino de Transformación</h1>
+        <p>Programa de 6 sesiones progresivas para el despertar interior y la sanación emocional</p>
+    </div>
+
+
+
+    <!-- Sessions Container -->
+    <div class="session-container">
+        
+        <!-- Session 1 -->
+        <div class="session-card">
+            <div class="session-header">
+                <div class="session-number">1</div>
+                <div class="session-topic">Seguridad</div>
+                <h2 class="session-title">Sembrando Confianza y Presencia</h2>
+            </div>
+            <div class="session-content">
+                <p><strong>Objetivo:</strong> Conocerse, sentir seguridad y pertenencia en el grupo.</p>
+                <p><strong>Dinámica:</strong> Grounding, respiración, movimientos suaves.</p>
+                <p><strong>Actividad:</strong> Círculo de presentación simbólica ("si hoy fuera un color...").</p>
+                <p><strong>Cierre:</strong> Reflexión: "¿qué necesito para sentir paz hoy?".</p>
+            </div>
+        </div>
+
+        <!-- Session 2 -->
+        <div class="session-card">
+            <div class="session-header">
+                <div class="session-number">2</div>
+                <div class="session-topic">Vulnerabilidad</div>
+                <h2 class="session-title">Reconectando con el Niño Interior</h2>
+            </div>
+            <div class="session-content">
+                <p><strong>Objetivo:</strong> Acceder a la vulnerabilidad, inocencia y espontaneidad.</p>
+                <p><strong>Dinámica:</strong> Juegos simples, movimientos libres de juego y risa.</p>
+                <p><strong>Actividad:</strong> Recordar un momento feliz de la infancia y expresarlo con un gesto corporal o un dibujo.</p>
+                <p><strong>Cierre:</strong> Compartir descubrimientos en círculo.</p>
+            </div>
+        </div>
+
+        <!-- Session 3 -->
+        <div class="session-card">
+            <div class="session-header">
+                <div class="session-number">3</div>
+                <div class="session-topic">Miedo</div>
+                <h2 class="session-title">El Miedo como Guardián</h2>
+            </div>
+            <div class="session-content">
+                <p><strong>Objetivo:</strong> Explorar el miedo como señal y no como enemigo.</p>
+                <p><strong>Dinámica:</strong> Respiración profunda, liberar mandíbula y pecho, pequeños sonidos de descarga.</p>
+                <p><strong>Actividad:</strong> Visualización de un miedo actual → darle forma, movimiento o sonido; reflexionar sobre qué protege.</p>
+                <p><strong>Cierre:</strong> Pregunta guía: "¿qué parte de mí quiere proteger este miedo?".</p>
+            </div>
+        </div>
+
+        <!-- Session 4 -->
+        <div class="session-card">
+            <div class="session-header">
+                <div class="session-number">4</div>
+                <div class="session-topic">Polaridades</div>
+                <h2 class="session-title">Mis Polaridades Internas</h2>
+            </div>
+            <div class="session-content">
+                <p><strong>Objetivo:</strong> Reconocer y aceptar los opuestos que habitan en cada uno (fuerza-vulnerabilidad, calma-caos, etc.).</p>
+                <p><strong>Dinámica:</strong> Expansión (abrir brazos, ocupar espacio) vs. contracción (cerrar el cuerpo, hacerse pequeño).</p>
+                <p><strong>Actividad:</strong> Cada persona representa dos polaridades con movimientos distintos, luego reflexiona sobre cómo ambas coexisten.</p>
+                <p><strong>Cierre:</strong> Escritura/reflexión: "¿qué aprendo al integrar mis opuestos?".</p>
+            </div>
+        </div>
+
+        <!-- Session 5 -->
+        <div class="session-card">
+            <div class="session-header">
+                <div class="session-number">5</div>
+                <div class="session-topic">Máscaras</div>
+                <h2 class="session-title">Las Máscaras que me Protegen</h2>
+            </div>
+            <div class="session-content">
+                <p><strong>Objetivo:</strong> Identificar las máscaras que usamos para encajar o protegernos y diferenciarlas del yo auténtico.</p>
+                <p><strong>Dinámica:</strong> Caminar con distintas posturas que representen "roles sociales" (el fuerte, el complaciente, el exitoso…).</p>
+                <p><strong>Actividad:</strong> Cada participante recibe una máscara física, la decora con su "máscara" habitual, se la pone y habla desde ese personaje, luego se la quita conscientemente.</p>
+                <p><strong>Cierre:</strong> Reflexión: "¿qué siento cuando me pongo la máscara?, ¿qué siento al quitarla?".</p>
+            </div>
+        </div>
+
+        <!-- Session 6 -->
+        <div class="session-card">
+            <div class="session-header">
+                <div class="session-number">6</div>
+                <div class="session-topic">Integración</div>
+                <h2 class="session-title">Ritual de Paz e Integración</h2>
+            </div>
+            <div class="session-content">
+                <p><strong>Objetivo:</strong> Integrar todo lo aprendido y crear un ritual personal de conexión y paz.</p>
+                <p><strong>Dinámica:</strong> Ejercicios de respiración expansiva, movimientos circulares suaves, estiramientos conscientes.</p>
+                <p><strong>Actividad:</strong> Cada persona diseña un pequeño ritual personal (respiración, palabra, gesto, práctica corporal).</p>
+                <p><strong>Cierre:</strong> Círculo final de palabra: "me llevo…".</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>¿Listo para Empezar tu Viaje de Transformación?</h2>
+            <p>Este programa de 6 sesiones te guiará paso a paso hacia una mayor consciencia, paz interior y conexión auténtica contigo mismo.</p>
+                            <a href="../maria-mazoy.html" class="btn btn-primary">Conoce a María Mazoy</a>
+            <a href="index.html" class="btn btn-secondary">Descubre Más</a>
+            </div>
+        </div>
+    
+    <div id="footer-placeholder"></div>
+
+    <script src="load-header.js"></script>
+    <script src="load-footer.js"></script>
+</body>
+</html>

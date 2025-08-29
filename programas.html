@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .programs-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .programs-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .programs-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .programs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .program-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+
+        .program-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            width: 40px;
+            text-align: center;
+        }
+
+        .feature-text {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .program-cta {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .coming-soon {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .coming-soon h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .programs-header h1 {
+                font-size: 2rem;
+            }
+            
+            .program-title {
+                font-size: 1.5rem;
+            }
+            
+            .program-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <!-- Programs Header -->
+    <div class="programs-header">
+        <h1>🌸 Programas de Transformación</h1>
+        <p>Viajes guiados hacia el autoconocimiento y la sanación emocional a través del movimiento consciente y la psicología integrativa</p>
+    </div>
+
+    <!-- Programs Container -->
+    <div class="programs-container">
+        
+        <!-- El Camino de Transformación -->
+        <div class="program-card">
+            <div class="program-header">
+                <div class="program-badge">Disponible</div>
+                <h2 class="program-title">El Camino de Transformación</h2>
+                <p class="program-subtitle">Programa de 6 sesiones progresivas para el despertar interior</p>
+            </div>
+            <div class="program-content">
+                <p class="program-description">
+                    Un viaje transformador de seis sesiones diseñado para guiarte desde la seguridad hasta la integración completa. 
+                    Cada sesión construye sobre la anterior, creando un camino coherente y progresivo hacia el autoconocimiento profundo.
+                </p>
+                
+                <div class="program-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-text">Grupos pequeños</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="feature-text">6 sesiones progresivas</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="feature-text">Movimiento consciente</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="feature-text">Psicología integrativa</div>
+                    </div>
+                </div>
+
+                <div class="program-cta">
+                    <a href="programas/el-camino-de-transformacion.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i>
+                        Ver Programa Completo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coming Soon Section -->
+        <div class="coming-soon">
+            <h2>🌱 Más Programas en Desarrollo</h2>
+            <p>Estamos creando nuevos programas especializados para diferentes necesidades y momentos de vida.</p>
+            <p>¡Mantente atento a las próximas novedades!</p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>¿Tienes dudas sobre nuestros programas?</h2>
+            <p>Conoce a María Mazoy, la fundadora y guía de estos programas de transformación.</p>
+                            <a href="maria-mazoy.html" class="btn btn-primary">Conoce a María Mazoy</a>
+            <a href="index.html" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+
+    </div>
+    
+    <div id="footer-placeholder"></div>
+
+    <script src="load-header.js"></script>
+    <script src="load-footer.js"></script>
+</body>
+</html>

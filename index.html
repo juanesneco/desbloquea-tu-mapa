@@ -272,17 +272,7 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="nav-content">
-            <a href="/" class="logo">Desbloquea Tu Mapa</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="prompts.html">Prompts</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
     <div class="header-container">
@@ -508,9 +498,7 @@
         </div>
     </div>
     
-    <footer>
-        <p>&copy; 2024 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script>
         function revealNextStep(stepNumber) {
@@ -596,5 +584,7 @@
 
         window.addEventListener('scroll', checkScrollReveal);
     </script>
+    <script src="load-header.js"></script>
+    <script src="load-footer.js"></script>
 </body>
 </html> 
