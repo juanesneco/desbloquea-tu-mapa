@@ -2,7 +2,7 @@
   "name": "desbloquea-tu-mapa",
   "version": "1.0.0",
   "description": "A journey to find your way",
-  "homepage": "https://juanesneco.github.io/desbloquea-tu-mapa/pages",
+  "homepage": "https://juanesneco.github.io/desbloquea-tu-mapa",
   "type": "module",
   "scripts": {
     "dev": "npx http-server . -c-1 -o",
