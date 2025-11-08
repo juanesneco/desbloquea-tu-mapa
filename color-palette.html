@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette - Desbloquea Tu Mapa</title>
+    <style>
+        :root {
+            /* Primary - Rubin's Gray */
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            
+            /* Bold - Navy Blue (replaces red) */
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            
+            /* Presence - Tolle's Blue */
+            --blue: #4A90A4;
+            --blue-light: #5FA8BB;
+            
+            /* Backgrounds */
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+            
+            /* Border */
+            --border: #D1CFCC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background-alt);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            background: var(--primary);
+            color: var(--background);
+            margin: -2rem -2rem 3rem -2rem;
+            border-bottom: 4px solid var(--navy);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Color Swatches Section */
+        .section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-left: 4px solid var(--navy);
+            padding-left: 1rem;
+        }
+
+        .swatches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .swatch {
+            border-radius: 8px;
+            padding: 3rem 1rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .swatch-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .swatch-hex {
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            opacity: 0.8;
+        }
+
+        .swatch-1 { background: var(--primary); color: var(--background); }
+        .swatch-2 { background: var(--primary-light); color: var(--background); }
+        .swatch-3 { background: var(--navy); color: var(--white); }
+        .swatch-4 { background: var(--navy-light); color: var(--white); }
+        .swatch-5 { background: var(--blue); color: var(--white); }
+        .swatch-6 { background: var(--blue-light); color: var(--white); }
+        .swatch-7 { background: var(--background); color: var(--primary); border: 2px solid var(--border); }
+        .swatch-8 { background: var(--background-alt); color: var(--primary); border: 2px solid var(--border); }
+
+        /* Typography Examples */
+        .typography-example {
+            margin-bottom: 2rem;
+        }
+
+        .title-primary {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .title-gray {
+            font-size: 2rem;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .title-navy {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .title-blue {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .body-text {
+            font-size: 1rem;
+            color: var(--primary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* Button Examples */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-navy {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-navy:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(27, 40, 56, 0.3);
+        }
+
+        .btn-blue {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .btn-blue:hover {
+            background: var(--blue-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 144, 164, 0.3);
+        }
+
+        .btn-gray {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        .btn-gray:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(63, 68, 71, 0.3);
+        }
+
+        .btn-outline-navy {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-outline-navy:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-outline-blue {
+            background: transparent;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+        }
+
+        .btn-outline-blue:hover {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .btn-outline-gray {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline-gray:hover {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        /* Card Examples */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .card-white {
+            background: var(--white);
+            border: 2px solid var(--border);
+        }
+
+        .card-white .card-title {
+            color: var(--primary);
+        }
+
+        .card-white .card-text {
+            color: var(--primary-light);
+        }
+
+        .card-gray {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        .card-gray .card-title {
+            color: var(--background);
+        }
+
+        .card-gray .card-text {
+            color: var(--background);
+            opacity: 0.9;
+        }
+
+        .card-navy {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .card-navy .card-title {
+            color: var(--white);
+        }
+
+        .card-navy .card-text {
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .card-blue {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .card-blue .card-title {
+            color: var(--white);
+        }
+
+        .card-blue .card-text {
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .card-light {
+            background: var(--background-alt);
+            border: 2px solid var(--border);
+        }
+
+        .card-light .card-title {
+            color: var(--primary);
+        }
+
+        .card-light .card-text {
+            color: var(--primary-light);
+        }
+
+        /* Hero Example */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--background);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 100%);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Example */
+        .nav-example {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-links a.active {
+            color: var(--navy);
+        }
+
+        /* Alert Examples */
+        .alerts {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .alert {
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+            font-size: 0.95rem;
+        }
+
+        .alert-navy {
+            background: rgba(27, 40, 56, 0.1);
+            border-color: var(--navy);
+            color: var(--primary);
+        }
+
+        .alert-blue {
+            background: rgba(74, 144, 164, 0.1);
+            border-color: var(--blue);
+            color: var(--primary);
+        }
+
+        .alert-gray {
+            background: rgba(63, 68, 71, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Badge Examples */
+        .badges {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-navy {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .badge-blue {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .badge-gray {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        .badge-light {
+            background: var(--background);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-example {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .title-primary {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 The Wisdom Palette</h1>
+        <p>Rubin's Minimalism × Tolle's Presence × Deep Navy Authority</p>
+    </div>
+
+    <div class="container">
+        <!-- Color Swatches -->
+        <div class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="swatches-grid">
+                <div class="swatch swatch-1">
+                    <div class="swatch-name">Primary</div>
+                    <div class="swatch-hex">#3F4447</div>
+                </div>
+                <div class="swatch swatch-2">
+                    <div class="swatch-name">Gray Light</div>
+                    <div class="swatch-hex">#6B7174</div>
+                </div>
+                <div class="swatch swatch-3">
+                    <div class="swatch-name">Bold Navy</div>
+                    <div class="swatch-hex">#1B2838</div>
+                </div>
+                <div class="swatch swatch-4">
+                    <div class="swatch-name">Navy Light</div>
+                    <div class="swatch-hex">#2C3E50</div>
+                </div>
+                <div class="swatch swatch-5">
+                    <div class="swatch-name">Present Blue</div>
+                    <div class="swatch-hex">#4A90A4</div>
+                </div>
+                <div class="swatch swatch-6">
+                    <div class="swatch-name">Blue Light</div>
+                    <div class="swatch-hex">#5FA8BB</div>
+                </div>
+                <div class="swatch swatch-7">
+                    <div class="swatch-name">Background</div>
+                    <div class="swatch-hex">#E8E6E3</div>
+                </div>
+                <div class="swatch swatch-8">
+                    <div class="swatch-name">Background Alt</div>
+                    <div class="swatch-hex">#F5F3F0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Example -->
+        <div class="section">
+            <h2 class="section-title">Navigation Example</h2>
+            <div class="nav-example">
+                <div class="nav-logo">Desbloquea Tu Mapa</div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">El Juego</a></li>
+                    <li><a href="#">La Matrix</a></li>
+                    <li><a href="#">Tu Ikigai</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Hero Example -->
+        <div class="hero">
+            <h2>Desbloquea Tu Mapa</h2>
+            <p>El protocolo de despertar hacia tu poder auténtico</p>
+            <button class="btn btn-navy">Comenzar el Viaje</button>
+        </div>
+
+        <!-- Typography Examples -->
+        <div class="section">
+            <h2 class="section-title">Typography Examples</h2>
+            <div class="typography-example">
+                <h1 class="title-primary">Título Principal - Charcoal Gray</h1>
+                <h2 class="title-gray">Título Secundario - Soft Gray</h2>
+                <h2 class="title-navy">Título Bold - Deep Navy</h2>
+                <h2 class="title-blue">Título Calm - Present Blue</h2>
+                <h3 class="subtitle">Subtítulo en Gray Light</h3>
+                <p class="body-text">
+                    Este es un ejemplo de texto de cuerpo. La filosofía de Desbloquea tu Mapa 
+                    te invita a ver más allá de las máscaras y patrones heredados. El viaje 
+                    comienza cuando decides despertar a tu poder auténtico.
+                </p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="section">
+            <h2 class="section-title">Button Styles</h2>
+            <p style="color: var(--primary-light); margin-bottom: 1rem;">Solid Buttons</p>
+            <div class="buttons-grid">
+                <button class="btn btn-navy">Bold Statements</button>
+                <button class="btn btn-blue">Presence & Calm</button>
+                <button class="btn btn-gray">Wisdom & Clarity</button>
+            </div>
+            <p style="color: var(--primary-light); margin: 2rem 0 1rem 0;">Outline Buttons</p>
+            <div class="buttons-grid">
+                <button class="btn btn-outline-navy">Transformación</button>
+                <button class="btn btn-outline-blue">Consciencia</button>
+                <button class="btn btn-outline-gray">Explorar</button>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="section">
+            <h2 class="section-title">Card Examples</h2>
+            <div class="cards-grid">
+                <div class="card card-white">
+                    <h3 class="card-title">Tu Primer Mapa</h3>
+                    <p class="card-text">
+                        Antes de saber a dónde vas, necesitas saber dónde estás. 
+                        Tu primer mapa revela las coordenadas actuales de tu vida.
+                    </p>
+                    <button class="btn btn-navy" style="width: 100%;">Explorar</button>
+                </div>
+                <div class="card card-gray">
+                    <h3 class="card-title">El Juego</h3>
+                    <p class="card-text">
+                        La vida es un juego, pero nadie te enseñó las reglas reales. 
+                        Aquí aprendes los controles verdaderos.
+                    </p>
+                    <button class="btn btn-outline-navy" style="width: 100%;">Aprender</button>
+                </div>
+                <div class="card card-navy">
+                    <h3 class="card-title">Transformación</h3>
+                    <p class="card-text">
+                        El poder real viene de ver la verdad sin filtros y actuar 
+                        desde tu esencia más profunda.
+                    </p>
+                    <button class="btn" style="background: white; color: var(--navy); width: 100%;">Comenzar</button>
+                </div>
+                <div class="card card-blue">
+                    <h3 class="card-title">Presencia</h3>
+                    <p class="card-text">
+                        El único momento que existe es ahora. Aquí aprendes a habitar 
+                        el presente con plena consciencia.
+                    </p>
+                    <button class="btn" style="background: white; color: var(--blue); width: 100%;">Practicar</button>
+                </div>
+                <div class="card card-light">
+                    <h3 class="card-title">La Matrix</h3>
+                    <p class="card-text">
+                        Todo lo que creías que era realidad son patrones. Sistemas ejecutándose 
+                        en tu mente que puedes elegir cambiar.
+                    </p>
+                    <button class="btn btn-blue" style="width: 100%;">Ver el Código</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="section">
+            <h2 class="section-title">Alert & Message Styles</h2>
+            <div class="alerts">
+                <div class="alert alert-navy">
+                    <strong>⚡ Bold Statement:</strong> Este ejercicio requiere honestidad brutal contigo mismo.
+                </div>
+                <div class="alert alert-blue">
+                    <strong>🧘 Pausa para Reflexionar:</strong> Tómate un momento para respirar y estar presente antes de continuar.
+                </div>
+                <div class="alert alert-gray">
+                    <strong>💡 Insight Clave:</strong> La sabiduría surge del espacio entre pensamientos, no del ruido mental.
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="section">
+            <h2 class="section-title">Badges & Tags</h2>
+            <div class="badges">
+                <span class="badge badge-navy">Transformación</span>
+                <span class="badge badge-navy">Poder</span>
+                <span class="badge badge-blue">Presencia</span>
+                <span class="badge badge-blue">Consciencia</span>
+                <span class="badge badge-gray">Identidad</span>
+                <span class="badge badge-gray">Propósito</span>
+                <span class="badge badge-light">Infancia</span>
+                <span class="badge badge-light">Cuerpo</span>
+                <span class="badge badge-light">Relaciones</span>
+            </div>
+        </div>
+
+        <!-- Usage Guide -->
+        <div class="section">
+            <h2 class="section-title">Color Usage Guide</h2>
+            <div class="cards-grid">
+                <div class="card card-white">
+                    <h3 class="card-title" style="color: var(--primary);">🎨 Grays (Rubin)</h3>
+                    <p class="card-text">
+                        <strong>Use for:</strong> Main text, navigation, headers, footers<br>
+                        <strong>Represents:</strong> Wisdom, simplicity, creative space
+                    </p>
+                </div>
+                <div class="card card-white">
+                    <h3 class="card-title" style="color: var(--navy);">⚡ Navy (Authority)</h3>
+                    <p class="card-text">
+                        <strong>Use for:</strong> Bold statements, important CTAs, decisive moments<br>
+                        <strong>Represents:</strong> Authority, depth, transformation
+                    </p>
+                </div>
+                <div class="card card-white">
+                    <h3 class="card-title" style="color: var(--blue);">🧘 Blues (Tolle)</h3>
+                    <p class="card-text">
+                        <strong>Use for:</strong> Meditation sections, reflections, calm content<br>
+                        <strong>Represents:</strong> Presence, consciousness, peace
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -4,587 +4,404 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desbloquea Tu Mapa</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .path-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --blue-light: #5FA8BB;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+            --border: #D1CFCC;
         }
 
-        .path-step {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .path-step.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step-quote {
-            font-size: 1.8rem;
-            font-style: italic;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            line-height: 1.4;
-        }
-
-        .step-content {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .step-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--accent-color);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-
-        .step-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .step-description {
-            color: rgba(44, 51, 56, 0.8);
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
             line-height: 1.6;
-            margin-bottom: 1.5rem;
         }
 
-        .step-action {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .step-action:hover {
-            background: var(--primary-color);
-            transform: translateX(5px);
-        }
-
-        .step-navigation {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-color);
         }
 
-        .nav-button {
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .nav-button:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .nav-button:disabled:hover {
-            background: transparent;
-            color: var(--accent-color);
-        }
-
-        .step-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .prompt-action {
-            background: rgba(155, 133, 120, 0.1);
-            color: var(--accent-color);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border-radius: 6px;
-            border: 1px solid var(--accent-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .prompt-action:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateX(3px);
-        }
-
-        .featured-prompt {
-            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(155, 133, 120, 0.1));
-            border: 1px solid #dc3545;
-        }
-
-        .featured-prompt .tool-icon i {
-            color: #dc3545;
-        }
-
-        @media (max-width: 768px) {
-            .step-actions {
-                gap: 0.75rem;
-            }
-            
-            .prompt-action {
-                padding: 0.75rem 1rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        .path-connector {
-            text-align: center;
-            margin: 2rem 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .path-connector.active {
-            opacity: 1;
-        }
-
-        .connector-line {
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--accent-color), transparent);
-            margin: 0 auto 1rem;
-        }
-
-        .connector-text {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            font-style: italic;
-        }
-
-        .final-revelation {
-            text-align: center;
-            padding: 3rem 0;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .final-revelation.revealed {
-            opacity: 1;
-        }
-
-        .tools-section {
-            background: linear-gradient(135deg, rgba(155, 133, 120, 0.1), rgba(44, 51, 56, 0.05));
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .tools-title {
-            text-align: center;
+        .logo {
             font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .tool-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border-color);
         }
 
-        .tool-card:hover {
-            transform: translateY(-3px);
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .tool-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(27, 40, 56, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27, 40, 56, 0.4);
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .intro-content p {
+            font-size: 1.15rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .intro-content .highlight {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Philosophy Cards */
+        .philosophy-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid var(--navy);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--primary-light);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--background);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--navy);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
-            .step-quote {
-                font-size: 1.4rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            
-            .path-container {
-                padding: 1rem;
+
+            .hero p {
+                font-size: 1.2rem;
             }
-            
-            .step-content {
-                padding: 1.5rem;
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Desbloquea Tu Mapa</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="trajectory.html">La Trayectoria</a></li>
+                <li><a href="prompts.html">Prompts</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <div class="header-container">
-        <div class="header-content">
-            <h1 class="header-title">Desbloquea Tu Mapa</h1>
-            <p class="header-subtitle">El protocolo de despertar hacia tu poder auténtico</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Desbloquea Tu Mapa</h1>
+            <p>El protocolo de despertar hacia tu poder auténtico</p>
+            <a href="trajectory.html" class="cta-button">Comenzar el Viaje</a>
         </div>
-    </div>
+    </section>
 
-    <div class="path-container">
-        <!-- Step 0: The Realization -->
-        <div class="path-step revealed" id="step-0">
-            <div class="step-quote">"Naciste en un mundo que no elegiste..."</div>
-            <div class="step-content">
-                <div class="step-description">
-                    Estás aquí porque algo dentro de ti sabe que hay más. Que las reglas del juego nunca fueron tuyas. 
-                    Que bajo todas las capas de "deberías" y "tienes que", existe alguien auténtico esperando emerger.
-                </div>
-                <div class="step-navigation">
-                    <div></div> <!-- Empty space for alignment -->
-                    <button class="step-action" onclick="revealNextStep(1)">
-                        Estoy listo para ver más
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
+    <!-- Introduction -->
+    <section class="intro-section">
+        <div class="intro-content">
+            <h2>¿Estás Listo para Ver la Verdad?</h2>
+            <p>
+                Naciste en un mundo que no elegiste. Con reglas que nunca cuestionaste. 
+                Viviendo mapas diseñados por otros.
+            </p>
+            <p>
+                Pero bajo todas esas capas de <span class="highlight">"deberías"</span> y 
+                <span class="highlight">"tienes que"</span>, existe alguien auténtico esperando emerger.
+            </p>
+            <p>
+                Este no es otro curso de autoayuda. Es un protocolo para <span class="highlight">
+                desbloquear los mapas ocultos</span> de tu vida — físico, mental, familiar y financiero — 
+                y reescribir las reglas desde tu poder real.
+            </p>
         </div>
+    </section>
 
-        <!-- Connector 1 -->
-        <div class="path-connector" id="connector-1">
-            <div class="connector-line"></div>
-            <div class="connector-text">El primer paso en cualquier viaje...</div>
-        </div>
-
-        <!-- Step 1: Tu Primer Mapa -->
-        <div class="path-step" id="step-1">
-            <div class="step-content">
-                <div class="step-number">1</div>
-                <h3 class="step-title">Tu Primer Mapa</h3>
-                <div class="step-description">
-                    Antes de saber a dónde vas, necesitas saber dónde estás. Tu primer mapa revela las coordenadas actuales de tu vida: 
-                    los patrones inconscientes, las creencias heredadas, los roles que adoptaste para sobrevivir.
-                </div>
-                <div class="step-actions">
-                    <a href="tu-primer-mapa.html" class="step-action">
-                        Explorar mi ubicación actual
-                    <i class="fas fa-map-marked-alt"></i>
-                    </a>
-                    <a href="prompts/mapea-tu-ubicacion-actual.html" class="prompt-action">
-                        <i class="fas fa-compass"></i>
-                        Prompt: Cartografía de Consciencia
-                    </a>
-                </div>
-                <div class="step-navigation">
-                    <button class="nav-button" onclick="goToPreviousStep(0)">
-                        <i class="fas fa-arrow-left"></i>
-                        Volver al inicio
-                    </button>
-                    <button class="nav-button" onclick="revealNextStep(2)">
-                        Continuar el despertar
-                        <i class="fas fa-arrow-down"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Connector 2 -->
-        <div class="path-connector" id="connector-2">
-            <div class="connector-line"></div>
-            <div class="connector-text">Una vez que sabes dónde estás...</div>
-            </div>
-            
-        <!-- Step 2: El Juego -->
-        <div class="path-step" id="step-2">
-            <div class="step-content">
-                <div class="step-number">2</div>
-                <h3 class="step-title">El Juego</h3>
-                <div class="step-description">
-                    La vida es un juego, pero nadie te enseñó las reglas reales. Has estado jugando con las instrucciones de otros. 
-                    Aquí aprendes los controles verdaderos, las mecánicas ocultas, y más importante: que puedes cambiar las reglas.
-                </div>
-                <div class="step-actions">
-                    <a href="el-juego.html" class="step-action">
-                        Aprender las reglas reales
-                    <i class="fas fa-gamepad"></i>
-                    </a>
-                    <a href="prompts/aprende-las-reglas-reales.html" class="prompt-action">
-                        <i class="fas fa-chess"></i>
-                        Prompt: Game Master Existencial
-                    </a>
-                </div>
-                <div class="step-navigation">
-                    <button class="nav-button" onclick="goToPreviousStep(1)">
-                        <i class="fas fa-arrow-left"></i>
-                        Volver al mapa
-                    </button>
-                    <button class="nav-button" onclick="revealNextStep(3)">
-                        Ver la verdad más profunda
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Connector 3 -->
-        <div class="path-connector" id="connector-3">
-            <div class="connector-line"></div>
-            <div class="connector-text">Pero hay algo aún más profundo...</div>
-        </div>
-
-        <!-- Step 3: La Matrix -->
-        <div class="path-step" id="step-3">
-            <div class="step-content">
-                <div class="step-number">3</div>
-                <h3 class="step-title">La Matrix</h3>
-                <div class="step-description">
-                    Todo lo que creías que era "la realidad" son patrones. Sistemas de pensamiento. Programas ejecutándose en tu mente. 
-                    Algunos te sirven, otros te limitan. Aquí aprendes a ver el código y elegir qué mantener.
-                </div>
-                <div class="step-actions">
-                    <a href="la-matrix.html" class="step-action">
-                        Ver los patrones ocultos
-                        <i class="fas fa-code-branch"></i>
-                    </a>
-                    <a href="prompts/ve-el-codigo-mental.html" class="prompt-action">
-                        <i class="fas fa-brain"></i>
-                        Prompt: Arquitecto de Sistemas Mentales
-                    </a>
-                </div>
-                <div class="step-navigation">
-                    <button class="nav-button" onclick="goToPreviousStep(2)">
-                        <i class="fas fa-arrow-left"></i>
-                        Volver al juego
-                    </button>
-                    <button class="nav-button" onclick="revealNextStep(4)">
-                        Encontrar mi propósito
-                        <i class="fas fa-star"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Connector 4 -->
-        <div class="path-connector" id="connector-4">
-            <div class="connector-line"></div>
-            <div class="connector-text">Con claridad mental, ahora puedes encontrar...</div>
-        </div>
-
-        <!-- Step 4: Ikigai -->
-        <div class="path-step" id="step-4">
-            <div class="step-content">
-                <div class="step-number">4</div>
-                <h3 class="step-title">Tu Ikigai</h3>
-                <div class="step-description">
-                    Ya conoces tu ubicación, las reglas reales, y puedes ver tus patrones mentales. Ahora es momento de descubrir tu Ikigai: 
-                    la intersección sagrada entre lo que amas, lo que dominas, lo que el mundo necesita, y por lo que te pueden pagar.
-                </div>
-                <div class="step-actions">
-                    <a href="tu-ikigai.html" class="step-action">
-                        Explorar conceptos de propósito
-                        <i class="fas fa-compass"></i>
-                    </a>
-                    <a href="prompts/descubre-tu-ikigai.html" class="prompt-action">
-                        <i class="fas fa-heart"></i>
-                        Prompt: Conversación Guiada Ikigai
-                    </a>
-                </div>
-                <div class="step-navigation">
-                    <button class="nav-button" onclick="goToPreviousStep(3)">
-                        <i class="fas fa-arrow-left"></i>
-                        Volver a Matrix
-                    </button>
-                    <button class="nav-button" onclick="revealFinalSection()">
-                        ¿Y ahora qué?
-                        <i class="fas fa-rocket"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Final Section -->
-        <div class="final-revelation" id="final-section">
-            <div class="step-quote">"El viaje no termina con el conocimiento..."</div>
-            
-            <div class="tools-section">
-                <h3 class="tools-title">Herramientas para el Caminito</h3>
-                <div class="tools-grid">
-                    <a href="prompts/destruye-las-mascaras.html" class="tool-card featured-prompt">
-                        <div class="tool-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <strong>Destruye las Máscaras</strong>
-                        <p style="font-size: 0.9rem; margin: 0.5rem 0 0 0;">Protocolo de transformación profunda</p>
-                    </a>
-                    
-                    <a href="prompts.html" class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-toolbox"></i>
-                        </div>
-                        <strong>Más Herramientas</strong>
-                        <p style="font-size: 0.9rem; margin: 0.5rem 0 0 0;">Explora todos los prompts disponibles</p>
-                    </a>
-                </div>
-            </div>
-            
-            <div style="margin-top: 3rem; text-align: center;">
-                <p style="color: rgba(44, 51, 56, 0.7); line-height: 1.6;">
-                    Esta transformación no tiene límites. Cada vez que te adentras más profundo, revelas capas de poder que no sabías que existían. 
-                    La única manera de "completarlo" es viviéndolo.
+    <!-- Philosophy Cards -->
+    <section class="philosophy-section">
+        <h2 class="section-title">Los Fundamentos</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-map"></i></div>
+                <h3>Tu Mapa Real</h3>
+                <p>
+                    No el que te dieron. No el que crees que deberías tener. 
+                    El mapa de dónde realmente estás ahora.
                 </p>
-                
-                <div style="margin-top: 2rem;">
-                    <button class="nav-button" onclick="goToPreviousStep(4)" style="margin-right: 1rem;">
-                        <i class="fas fa-arrow-left"></i>
-                        Volver a Ikigai
-                    </button>
-                    <button class="nav-button" onclick="goToPreviousStep(0)">
-                        <i class="fas fa-home"></i>
-                        Comenzar de nuevo
-                    </button>
-                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-brain"></i></div>
+                <h3>El Código Mental</h3>
+                <p>
+                    Los patrones invisibles que ejecutas automáticamente. 
+                    Aprende a ver el código y elegir qué mantener.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-compass"></i></div>
+                <h3>Tu Dirección Auténtica</h3>
+                <p>
+                    No el camino de otros. Tu propio norte verdadero, 
+                    basado en quién realmente eres.
+                </p>
             </div>
         </div>
-    </div>
-    
-    <div id="footer-placeholder"></div>
+    </section>
 
-    <script>
-        function revealNextStep(stepNumber) {
-            // Show connector
-            const connector = document.getElementById(`connector-${stepNumber}`);
-            if (connector) {
-                connector.classList.add('active');
-            }
-            
-            // Reveal step after a delay
-            setTimeout(() => {
-                const step = document.getElementById(`step-${stepNumber}`);
-                if (step) {
-                    step.classList.add('revealed');
-                    // Smooth scroll to the new step
-                    setTimeout(() => {
-                        step.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
-                        });
-                    }, 400);
-                }
-            }, 600);
-        }
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Listo para Comenzar</h2>
+        <div class="cta-buttons">
+            <a href="trajectory.html" class="btn-primary">Explorar la Trayectoria</a>
+            <a href="prompts.html" class="btn-secondary">Ver los Prompts</a>
+        </div>
+    </section>
 
-        function revealFinalSection() {
-            setTimeout(() => {
-                const finalSection = document.getElementById('final-section');
-                if (finalSection) {
-                    finalSection.classList.add('revealed');
-                    setTimeout(() => {
-                        finalSection.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
-                        });
-                    }, 400);
-                }
-            }, 600);
-        }
-
-        function goToPreviousStep(stepNumber) {
-            // Hide all steps after the target step
-            for (let i = stepNumber + 1; i <= 4; i++) {
-                const step = document.getElementById(`step-${i}`);
-                const connector = document.getElementById(`connector-${i}`);
-                
-                if (step) {
-                    step.classList.remove('revealed');
-                }
-                if (connector) {
-                    connector.classList.remove('active');
-                }
-            }
-            
-            // Hide final section if going back from it
-            const finalSection = document.getElementById('final-section');
-            if (finalSection) {
-                finalSection.classList.remove('revealed');
-            }
-            
-            // Scroll to the target step
-            setTimeout(() => {
-                const targetStep = document.getElementById(`step-${stepNumber}`);
-                if (targetStep) {
-                    targetStep.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                }
-            }, 200);
-        }
-
-        // Optional: Auto-reveal on scroll (for users who scroll instead of clicking)
-        function checkScrollReveal() {
-            const steps = document.querySelectorAll('.path-step:not(.revealed)');
-            steps.forEach(step => {
-                const rect = step.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    step.classList.add('revealed');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkScrollReveal);
-    </script>
-    <script src="load-header.js"></script>
-    <script src="load-footer.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+    </footer>
 </body>
-</html> 
+</html>

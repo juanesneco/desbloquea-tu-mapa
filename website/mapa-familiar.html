@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Familiar | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --blue-light: #5FA8BB;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+            --border: #D1CFCC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--navy); }
+
+        .header {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--primary-light) 100%);
+            color: var(--background);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            color: var(--navy-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--navy-light);
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            color: var(--navy-light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section p, .section li {
+            color: var(--primary-light);
+            line-height: 1.8;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight {
+            color: var(--navy-light);
+            font-weight: 600;
+        }
+
+        .alert {
+            background: rgba(44, 62, 80, 0.1);
+            border-left: 4px solid var(--navy-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .alert strong {
+            color: var(--navy-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .nav-section { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Desbloquea Tu Mapa</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="trajectory.html">La Trayectoria</a></li>
+                <li><a href="prompts.html">Prompts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="header-icon"><i class="fas fa-users"></i></div>
+        <h1>Mapa Familiar</h1>
+        <p>Los patrones que heredaste</p>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h2>No Vienes de la Nada</h2>
+            <p>
+                Naciste dentro de un sistema — una familia con sus propios patrones, roles, secretos y reglas invisibles. 
+                Mucho de lo que crees que eres es simplemente código familiar que descargaste sin saberlo.
+            </p>
+            <p>
+                Este mapa te enseña a ver los patrones transgeneracionales, las dinámicas familiares que te formaron, 
+                y cómo estos sistemas invisibles aún controlan partes de tu vida.
+            </p>
+            <p>
+                Entender tu mapa familiar no es culpar a tu familia. Es ver con claridad de dónde vienes 
+                para poder elegir conscientemente a dónde vas.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Los Territorios del Mapa Familiar</h2>
+            
+            <h3>1. Roles y Dinámicas</h3>
+            <p>
+                Cada familia tiene roles invisibles — el héroe, el rebelde, el cuidador, la oveja negra. 
+                Estos roles se asignan temprano y moldean tu identidad más de lo que crees.
+            </p>
+            <ul>
+                <li>El rol que te asignaron (o que tomaste)</li>
+                <li>Dinámicas de poder en tu sistema familiar</li>
+                <li>Lealtades invisibles y alianzas</li>
+                <li>Cómo estos roles te limitan ahora</li>
+            </ul>
+
+            <h3>2. Patrones Transgeneracionales</h3>
+            <p>
+                Los patrones no empiezan contigo. Se heredan — traumas, estrategias de supervivencia, 
+                creencias sobre el mundo. Ves el mundo a través de los ojos de tus ancestros.
+            </p>
+            <ul>
+                <li>Patrones que se repiten a través de generaciones</li>
+                <li>Traumas no resueltos que se transmiten</li>
+                <li>Estrategias de supervivencia heredadas</li>
+                <li>El peso de las expectativas familiares</li>
+            </ul>
+
+            <h3>3. Reglas No Dichas</h3>
+            <p>
+                Toda familia tiene reglas invisibles — cosas de las que no se habla, emociones que no se expresan, 
+                verdades que se evitan. Estas reglas te controlan en silencio.
+            </p>
+            <ul>
+                <li>Temas tabú ("De esto no se habla")</li>
+                <li>Secretos familiares y su impacto</li>
+                <li>Expectativas no expresadas pero sentidas</li>
+                <li>El costo de romper las reglas</li>
+            </ul>
+
+            <h3>4. Vínculos y Separación</h3>
+            <p>
+                La tarea de madurar es separarte psicológicamente de tu familia sin desconectarte emocionalmente. 
+                Es honrar el origen sin estar atrapado en él.
+            </p>
+            <ul>
+                <li>Individuación vs. lealtad ciega</li>
+                <li>Culpa al elegir tu propio camino</li>
+                <li>Conexión madura vs. dependencia</li>
+                <li>Crear tu propia familia elegida</li>
+            </ul>
+        </div>
+
+        <div class="alert">
+            <strong>⚡ Insight Clave:</strong>
+            No eres responsable del sistema en el que naciste, pero SÍ eres responsable de qué haces 
+            con esos patrones ahora. Puedes honrar tu origen y elegir tu dirección.
+        </div>
+
+        <div class="section">
+            <h2>Las Preguntas del Mapa Familiar</h2>
+            <p>Estas preguntas te ayudan a ver tu sistema familiar con claridad:</p>
+            <ul>
+                <li>¿Qué rol tengo (o tuve) en mi familia? ¿Me lo asignaron o lo elegí?</li>
+                <li>¿Qué patrones veo repetirse de generación en generación?</li>
+                <li>¿Qué temas eran tabú en mi familia? ¿De qué nunca se hablaba?</li>
+                <li>¿Qué expectativas siento que debo cumplir para "pertenecer"?</li>
+                <li>¿Qué me cuesta expresar o elegir por temor a romper lealtades?</li>
+                <li>¿Puedo amar a mi familia Y seguir mi propio camino?</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>El Protocolo de Individuación</h2>
+            <p><span class="highlight">Paso 1:</span> Mapea tu sistema familiar (roles, dinámicas, patrones)</p>
+            <p><span class="highlight">Paso 2:</span> Identifica qué heredaste y qué es realmente tuyo</p>
+            <p><span class="highlight">Paso 3:</span> Cuestiona las lealtades invisibles que te limitan</p>
+            <p><span class="highlight">Paso 4:</span> Elige conscientemente qué mantener y qué soltar</p>
+            <p><span class="highlight">Paso 5:</span> Redefine el vínculo desde tu poder adulto</p>
+        </div>
+
+        <div class="nav-section">
+            <a href="mapa-mental.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Anterior: Mapa Mental
+            </a>
+            <a href="mapa-financiero.html" class="btn btn-primary">
+                Siguiente: Mapa Financiero <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+    </footer>
+</body>
+</html>
+

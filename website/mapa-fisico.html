@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Físico | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --blue-light: #5FA8BB;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+            --border: #D1CFCC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--navy); }
+
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--background);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section p, .section li {
+            color: var(--primary-light);
+            line-height: 1.8;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .alert {
+            background: rgba(27, 40, 56, 0.1);
+            border-left: 4px solid var(--navy);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .alert strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .nav-section { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Desbloquea Tu Mapa</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="trajectory.html">La Trayectoria</a></li>
+                <li><a href="prompts.html">Prompts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="header-icon"><i class="fas fa-heartbeat"></i></div>
+        <h1>Mapa Físico</h1>
+        <p>El territorio primario del despertar</p>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Tu Cuerpo es el Primer Mapa</h2>
+            <p>
+                Antes de cualquier transformación mental, emocional o espiritual, está el cuerpo. 
+                Es el territorio primario — la base sobre la cual todo lo demás se construye.
+            </p>
+            <p>
+                Sin energía física, no hay claridad mental. Sin presencia somática, no hay poder real. 
+                Sin salud, todo colapsa.
+            </p>
+            <p>
+                Este mapa te enseña a leer tu cuerpo, entender sus señales, y optimizar tu base física 
+                para sostener el resto del viaje.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Los Pilares del Mapa Físico</h2>
+            
+            <h3>1. Energía y Vitalidad</h3>
+            <p>
+                Tu nivel de energía determina todo: qué puedes lograr, qué puedes pensar, qué puedes sentir. 
+                Aprender a gestionar y optimizar tu energía es la habilidad más fundamental.
+            </p>
+            <ul>
+                <li>Patrones de sueño y recuperación</li>
+                <li>Alimentación como combustible, no como consuelo</li>
+                <li>Ritmos circadianos y ciclos naturales</li>
+                <li>Gestión del estrés físico</li>
+            </ul>
+
+            <h3>2. Presencia Somática</h3>
+            <p>
+                La mayoría vive desconectada de su cuerpo — una cabeza flotante con un cuerpo olvidado. 
+                La presencia somática es habitar tu cuerpo completamente.
+            </p>
+            <ul>
+                <li>Conexión mente-cuerpo</li>
+                <li>Respiración consciente</li>
+                <li>Sensaciones físicas como información</li>
+                <li>El cuerpo como ancla al presente</li>
+            </ul>
+
+            <h3>3. Movimiento y Fuerza</h3>
+            <p>
+                Un cuerpo estancado es una mente estancada. El movimiento no es opcional — 
+                es esencial para la claridad mental y el poder personal.
+            </p>
+            <ul>
+                <li>Fuerza como metáfora de capacidad</li>
+                <li>Movilidad y flexibilidad</li>
+                <li>Entrenamiento como práctica de disciplina</li>
+                <li>El cuerpo como herramienta, no como ornamento</li>
+            </ul>
+
+            <h3>4. Señales y Síntomas</h3>
+            <p>
+                Tu cuerpo habla constantemente. La mayoría no escucha hasta que grita. 
+                Aprender a leer las señales sutiles es sabiduría somática.
+            </p>
+            <ul>
+                <li>Fatiga como mensaje, no como debilidad</li>
+                <li>Dolor como información</li>
+                <li>Enfermedad como desequilibrio sistémico</li>
+                <li>Intuición física</li>
+            </ul>
+        </div>
+
+        <div class="alert">
+            <strong>⚡ Insight Clave:</strong>
+            Tu cuerpo no es un vehículo que conduces. ES el territorio donde vives. 
+            Optimizarlo no es vanidad — es el fundamento de todo poder auténtico.
+        </div>
+
+        <div class="section">
+            <h2>Las Preguntas del Mapa Físico</h2>
+            <p>Estas preguntas te ayudan a cartografiar tu territorio físico actual:</p>
+            <ul>
+                <li>¿Cuál es mi nivel real de energía día a día? (No lo que "debería ser")</li>
+                <li>¿Estoy habitando mi cuerpo o solo lo uso como transporte?</li>
+                <li>¿Qué señales me está dando mi cuerpo que estoy ignorando?</li>
+                <li>¿Mi cuerpo me sostiene o me limita en mis objetivos?</li>
+                <li>¿Cuándo fue la última vez que me sentí verdaderamente vital?</li>
+                <li>¿Qué hábitos físicos ejecuto en automático sin cuestionar?</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>El Protocolo de Optimización Física</h2>
+            <p><span class="highlight">Paso 1:</span> Mide tu estado actual (energía, fuerza, movilidad, salud)</p>
+            <p><span class="highlight">Paso 2:</span> Identifica los patrones que drenan vs. los que recargan</p>
+            <p><span class="highlight">Paso 3:</span> Diseña un sistema, no una motivación temporal</p>
+            <p><span class="highlight">Paso 4:</span> Implementa cambios graduales, sostenibles</p>
+            <p><span class="highlight">Paso 5:</span> Re-evalúa cada 30 días y ajusta</p>
+        </div>
+
+        <div class="nav-section">
+            <a href="trajectory.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver a Trayectoria
+            </a>
+            <a href="mapa-mental.html" class="btn btn-primary">
+                Siguiente: Mapa Mental <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+    </footer>
+</body>
+</html>
+

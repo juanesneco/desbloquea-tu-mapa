@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Financiero | Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --blue-light: #5FA8BB;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+            --border: #D1CFCC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--navy); }
+
+        .header {
+            background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
+            color: var(--background);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            color: var(--blue-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--blue-light);
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            color: var(--blue-light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section p, .section li {
+            color: var(--primary-light);
+            line-height: 1.8;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight {
+            color: var(--blue-light);
+            font-weight: 600;
+        }
+
+        .alert {
+            background: rgba(95, 168, 187, 0.1);
+            border-left: 4px solid var(--blue-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .alert strong {
+            color: var(--blue-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .nav-section { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Desbloquea Tu Mapa</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="trajectory.html">La Trayectoria</a></li>
+                <li><a href="prompts.html">Prompts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="header-icon"><i class="fas fa-chart-line"></i></div>
+        <h1>Mapa Financiero</h1>
+        <p>El flujo de poder material</p>
+    </div>
+
+    <div class="container">
+        <div class="intro">
+            <h2>El Dinero es Energía en Movimiento</h2>
+            <p>
+                El dinero no es lo que crees. No es solo papel, números en una pantalla, o algo "superficial" 
+                que evitar. Es energía, poder, libertad — y tu relación con él revela todo sobre ti.
+            </p>
+            <p>
+                Este mapa no es sobre "hacerte rico". Es sobre entender tu relación real con el dinero — 
+                las creencias ocultas, los patrones de escasez o abundancia, el flujo (o bloqueo) de recursos en tu vida.
+            </p>
+            <p>
+                Dominar este territorio no es opcional si quieres verdadera libertad. El dinero amplifica quien eres — 
+                si no entiendes este mapa, siempre estarás limitado.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Los Territorios del Mapa Financiero</h2>
+            
+            <h3>1. Tu Relación con el Dinero</h3>
+            <p>
+                Todos tienen una relación emocional con el dinero, aunque no lo admitan. Esta relación — 
+                formada en la infancia, moldeada por la familia — controla cuánto permites tener.
+            </p>
+            <ul>
+                <li>Creencias heredadas sobre el dinero ("El dinero es...")</li>
+                <li>Emociones asociadas (miedo, vergüenza, culpa, poder)</li>
+                <li>Tu "techo" invisible de cuánto mereces</li>
+                <li>Patrones de autosabotaje financiero</li>
+            </ul>
+
+            <h3>2. Flujo vs. Estancamiento</h3>
+            <p>
+                El dinero fluye o se estanca. La mayoría lo bloquea sin saberlo — ganando poco, gastando todo, 
+                repitiendo ciclos de escasez. Aprender a crear flujo es una habilidad mental.
+            </p>
+            <ul>
+                <li>Fuentes de ingreso (activas vs. pasivas)</li>
+                <li>Patrones de gasto (consciente vs. reactivo)</li>
+                <li>Capacidad de generar, retener, multiplicar</li>
+                <li>Bloqueos energéticos que limitan el flujo</li>
+            </ul>
+
+            <h3>3. Valor y Contribución</h3>
+            <p>
+                El dinero es un reflejo de valor percibido. Cuanto más valor creas para otros, más recursos fluyen. 
+                Pero primero debes creer que TIENES valor que ofrecer.
+            </p>
+            <ul>
+                <li>Qué valor único puedes crear</li>
+                <li>El miedo a cobrar lo que vales</li>
+                <li>Contribución vs. extracción</li>
+                <li>Abundancia desde el servicio, no la carencia</li>
+            </ul>
+
+            <h3>4. Libertad y Soberanía</h3>
+            <p>
+                El objetivo final no es el dinero — es la libertad que permite. Soberanía financiera significa 
+                que tus decisiones no están dictadas por la supervivencia económica.
+            </p>
+            <ul>
+                <li>Independencia financiera como meta</li>
+                <li>Inversión en activos que generen flujo</li>
+                <li>Sistemas que trabajen sin ti</li>
+                <li>Dinero como herramienta, no como meta</li>
+            </ul>
+        </div>
+
+        <div class="alert">
+            <strong>⚡ Insight Clave:</strong>
+            No puedes manifestar abundancia desde un sistema de creencias de escasez. 
+            Tu mapa mental sobre el dinero ES tu realidad financiera.
+        </div>
+
+        <div class="section">
+            <h2>Las Preguntas del Mapa Financiero</h2>
+            <p>Estas preguntas revelan tu territorio financiero real:</p>
+            <ul>
+                <li>¿Qué creo REALMENTE sobre el dinero? (No lo que "debería" creer)</li>
+                <li>¿Qué mensajes recibí sobre el dinero en mi familia?</li>
+                <li>¿Mi dinero fluye o está estancado? ¿Dónde se bloquea?</li>
+                <li>¿Qué valor único puedo crear que otros paguen?</li>
+                <li>¿Tengo libertad financiera o vivo en supervivencia?</li>
+                <li>¿El dinero me controla o es una herramienta que controlo?</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>El Protocolo de Soberanía Financiera</h2>
+            <p><span class="highlight">Paso 1:</span> Mapea tu relación actual con el dinero (creencias, patrones, miedos)</p>
+            <p><span class="highlight">Paso 2:</span> Identifica bloqueos mentales y emocionales</p>
+            <p><span class="highlight">Paso 3:</span> Define qué valor único puedes crear</p>
+            <p><span class="highlight">Paso 4:</span> Diseña sistemas de flujo constante</p>
+            <p><span class="highlight">Paso 5:</span> Construye libertad, no solo ingresos</p>
+        </div>
+
+        <div class="nav-section">
+            <a href="mapa-familiar.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Anterior: Mapa Familiar
+            </a>
+            <a href="trajectory.html" class="btn btn-primary">
+                <i class="fas fa-check"></i> Volver a Trayectoria
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+    </footer>
+</body>
+</html>
+
