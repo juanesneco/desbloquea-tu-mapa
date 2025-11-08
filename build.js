@@ -195,9 +195,9 @@ function processMarkdownFile(filePath, type = 'blog') {
   let htmlFilePath;
   
   if (type === 'prompt') {
-    htmlFilePath = path.join(__dirname, 'prompts', fileName);
+    htmlFilePath = path.join(__dirname, 'website', 'prompts', fileName);
   } else {
-    htmlFilePath = path.join(__dirname, fileName);
+    htmlFilePath = path.join(__dirname, 'website', fileName);
   }
   
   // Get appropriate template
@@ -225,11 +225,11 @@ function processDirectory(dirPath, type) {
 // Find and process all markdown files
 function processAllMarkdownFiles() {
   // Process blog content
-  const contentDir = path.join(__dirname, 'content');
+  const contentDir = path.join(__dirname, 'website', 'content');
   processDirectory(contentDir, 'blog');
   
   // Process prompts from prompts_md folder
-  const promptsMdDir = path.join(__dirname, 'prompts_md');
+  const promptsMdDir = path.join(__dirname, 'website', 'prompts_md');
   processDirectory(promptsMdDir, 'prompt');
 }
 
@@ -277,8 +277,8 @@ function extractPromptMetadata(markdown) {
 
 // Function to update prompts.html with current prompts
 function updatePromptsPage() {
-  const promptsMdDir = path.join(__dirname, 'prompts_md');
-  const promptsHtmlPath = path.join(__dirname, 'prompts.html');
+  const promptsMdDir = path.join(__dirname, 'website', 'prompts_md');
+  const promptsHtmlPath = path.join(__dirname, 'website', 'prompts.html');
   
   if (!fs.existsSync(promptsMdDir)) {
     return;
