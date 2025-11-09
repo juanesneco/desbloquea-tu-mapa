@@ -174,19 +174,63 @@
             margin-top: 4rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            .hero-section {
+                padding: 4rem 1.5rem 3rem;
+            }
+            
             .hero-section h1 {
                 font-size: 2.5rem;
             }
+            
             .hero-section p {
                 font-size: 1.2rem;
             }
-            .phase-card {
-                padding: 2rem;
+            
+            .content-section {
+                padding: 0 1.5rem;
             }
+            
+            .phase-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .phase-card h2 {
+                font-size: 2rem;
+            }
+            
+            .phase-card h3 {
+                font-size: 1.3rem;
+            }
+            
             .nav-links {
                 gap: 1rem;
                 font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+            
+            .phase-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                line-height: 50px;
+            }
+            
+            .phase-card h2 {
+                font-size: 1.8rem;
+            }
+            
+            .key-insight {
+                padding: 1rem;
             }
         }
     </style>

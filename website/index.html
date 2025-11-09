@@ -288,31 +288,93 @@
             opacity: 0.9;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .hero h1 {
                 font-size: 2.5rem;
+                line-height: 1.2;
             }
 
             .hero p {
                 font-size: 1.2rem;
             }
 
+            .hero {
+                min-height: 70vh;
+                padding: 3rem 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
             .nav-links {
                 gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .cards-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            .intro-section,
+            .philosophy-section,
+            .cta-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .intro-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .intro-content h2 {
+                font-size: 2rem;
+            }
+
+            .intro-content p {
+                font-size: 1.05rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
 
             .btn-primary, .btn-secondary {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -420,9 +482,17 @@
                 </div>
             </div>
             <style>
-                @media (max-width: 768px) {
-                    .intro-content > div[style*="grid-template-columns"] {
+                @media (max-width: 968px) {
+                    .intro-content > div[style*="grid-template-columns: repeat(4"] {
                         grid-template-columns: repeat(2, 1fr) !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .intro-content > div[style*="grid-template-columns: repeat(4"] {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .intro-content > div[style*="grid-template-columns: repeat(4"] > div {
+                        padding: 1rem 0;
                     }
                 }
             </style>
