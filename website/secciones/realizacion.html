@@ -546,12 +546,14 @@
 
     <div id="footer-placeholder"></div>
     
-    <script>
-    </script>
+    <script src="../components/mobile-menu-init.js"></script>
     <script>
         fetch('../components/header.html')
             .then(response => response.text())
-            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
         
         fetch('../components/footer.html')
             .then(response => response.text())

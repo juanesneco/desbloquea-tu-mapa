@@ -615,21 +615,21 @@
     <!-- FOOTER GLOBAL -->
     <div id="footer-placeholder"></div>
     
+    <script src="components/mobile-menu-init.js"></script>
     <script>
         // Cargar header y ajustar rutas para index
         fetch('components/header.html')
             .then(response => response.text())
             .then(data => {
-                // Reemplazar ../ por nada (estamos en raíz)
                 data = data.replace(/\.\.\//g, '');
                 document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
             });
         
         // Cargar footer y ajustar rutas para index
         fetch('components/footer.html')
             .then(response => response.text())
             .then(data => {
-                // Reemplazar ../ por nada (estamos en raíz)
                 data = data.replace(/\.\.\//g, '');
                 document.getElementById('footer-placeholder').innerHTML = data;
             });

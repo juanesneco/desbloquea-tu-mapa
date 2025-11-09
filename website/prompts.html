@@ -349,7 +349,7 @@
                     Comenzar Fase 3 →
                 </a>
             </div>
-        </div>
+    </div>
 
         <!-- OTROS PROMPTS -->
         <div class="other-prompts">
@@ -407,16 +407,16 @@
 
     <div id="footer-placeholder"></div>
 
+    <script src="components/mobile-menu-init.js"></script>
     <script>
-        // Cargar header y ajustar rutas
         fetch('components/header.html')
             .then(response => response.text())
             .then(data => {
                 data = data.replace(/\.\.\//g, '');
                 document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
             });
         
-        // Cargar footer y ajustar rutas
         fetch('components/footer.html')
             .then(response => response.text())
             .then(data => {
