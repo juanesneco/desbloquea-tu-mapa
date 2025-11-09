@@ -3,171 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompts | Desbloquea Tu Mapa</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Prompts Guiados | Desbloquea Tu Mapa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .prompts-grid {
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro-box {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .intro-box h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            color: var(--primary-light);
+            line-height: 1.8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .main-prompts {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 6rem;
         }
 
         .prompt-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 6px solid var(--navy);
             text-decoration: none;
-            color: inherit;
-            display: block;
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
         }
 
         .prompt-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-            text-decoration: none;
-            color: inherit;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
         }
 
-        .prompt-icon {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+        .prompt-phase {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
 
-        .prompt-title {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .prompt-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(44, 51, 56, 0.8);
+        .prompt-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 50px;
+            text-align: center;
             margin-bottom: 1.5rem;
         }
 
-        .prompt-cta {
-            color: var(--accent-color);
-            font-weight: 500;
+        .prompt-card h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .prompt-card p {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .prompt-meta {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: var(--primary-light);
         }
 
-        .loading-message {
+        .prompt-meta i {
+            color: var(--blue);
+        }
+
+        .prompt-button {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
             text-align: center;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .prompt-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .other-prompts {
+            background: var(--background);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+        }
+
+        .other-prompts h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .other-prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .secondary-prompt {
+            background: var(--white);
             padding: 2rem;
-            color: var(--accent-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--primary);
+            display: block;
         }
 
-        .no-prompts {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-color);
-            opacity: 0.7;
+        .secondary-prompt:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .secondary-prompt h4 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .secondary-prompt p {
+            font-size: 1rem;
+            color: var(--primary-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 968px) {
+            .hero-section {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                padding: 0 1.5rem;
+            }
+
+            .main-prompts {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .prompt-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .other-prompts {
+                padding: 3rem 1.5rem;
+            }
+
+            .other-prompts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .prompt-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .intro-box {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
-    <div class="container">
-        <main class="content">
-            <div class="hero">
-                <h1>Prompts de Reflexión</h1>
-                <p class="hero-subtitle">Ejercicios diseñados para explorar tu mapa interior y descubrir nuevas perspectivas</p>
+
+    <section class="hero-section">
+        <h1>🗣️ Prompts Guiados</h1>
+        <p>Conversaciones profundas para desbloquear cada fase de tu viaje</p>
+    </section>
+
+    <section class="content-section">
+        
+        <div class="intro-box">
+            <h2>El Viaje de 3 Conversaciones</h2>
+            <p>
+                Cada prompt está diseñado para guiarte a través de una fase del viaje de transformación. 
+                Comienza con la Fase 1 y progresa secuencialmente para máximo impacto.
+            </p>
+        </div>
+
+        <h2 class="section-title">Los 3 Prompts Principales</h2>
+        
+        <div class="main-prompts">
+            
+            <!-- FASE 1 -->
+            <div class="prompt-card">
+                <div class="prompt-phase">Fase 1: Inconsciencia</div>
+                <div class="prompt-number">1</div>
+                <h3>Despierta del Sueño</h3>
+                <p>
+                    Reconoce que vives dentro de un mapa heredado. Identifica los pensamientos automáticos, 
+                    creencias limitantes y máscaras que usas sin darte cuenta.
+                </p>
+                <div class="prompt-meta">
+                    <span><i class="fas fa-clock"></i> 30-45 min</span>
+                    <span><i class="fas fa-brain"></i> Introspección</span>
+                </div>
+                <a href="prompts/fase-1-despierta.html" class="prompt-button">
+                    Comenzar Fase 1 →
+                </a>
             </div>
 
-            <div id="promptsList" class="prompts-grid">
-                <div class="loading-message">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <p>Cargando prompts...</p>
+            <!-- FASE 2 -->
+            <div class="prompt-card">
+                <div class="prompt-phase">Fase 2: Consciencia</div>
+                <div class="prompt-number">2</div>
+                <h3>Observa los Patrones</h3>
+                <p>
+                    Desarrolla al observador interno. Reconoce patrones recurrentes, comprende los espejos 
+                    relacionales, e integra cuerpo y mente conscientemente.
+                </p>
+                <div class="prompt-meta">
+                    <span><i class="fas fa-clock"></i> 45-60 min</span>
+                    <span><i class="fas fa-eye"></i> Observación</span>
                 </div>
+                <a href="prompts/fase-2-observa.html" class="prompt-button">
+                    Comenzar Fase 2 →
+                </a>
             </div>
-        </main>
-        
-        <div id="footer-placeholder"></div>
-    </div>
+
+            <!-- FASE 3 -->
+            <div class="prompt-card">
+                <div class="prompt-phase">Fase 3: Creación</div>
+                <div class="prompt-number">3</div>
+                <h3>Crea Tu Mapa</h3>
+                <p>
+                    Diseña tu vida conscientemente usando los 6 botones controlables. 
+                    Crea tu plan de acción y comprométete con la práctica transformadora.
+                </p>
+                <div class="prompt-meta">
+                    <span><i class="fas fa-clock"></i> 60-90 min</span>
+                    <span><i class="fas fa-magic"></i> Creación</span>
+                </div>
+                <a href="prompts/fase-3-crea.html" class="prompt-button">
+                    Comenzar Fase 3 →
+                </a>
+            </div>
+        </div>
+
+        <!-- OTROS PROMPTS -->
+        <div class="other-prompts">
+            <h2>📚 Otros Prompts</h2>
+            <p style="text-align: center; color: var(--primary-light); margin-bottom: 3rem;">
+                Prompts adicionales para profundizar en mapas específicos
+            </p>
+            
+            <div class="other-prompts-grid">
+                
+                <a href="prompts/mapea-tu-ubicacion-actual.html" class="secondary-prompt">
+                    <h4>🗺️ Mapea Tu Ubicación Actual</h4>
+                    <p>Identifica dónde estás ahora en tu viaje de vida y qué patrones mentales gobiern tu experiencia.</p>
+                </a>
+
+                <a href="prompts/ve-el-codigo-mental.html" class="secondary-prompt">
+                    <h4>👁️ Ve el Código Mental</h4>
+                    <p>Observa la Matrix de patrones mentales que ejecutas automáticamente sin darte cuenta.</p>
+                </a>
+
+                <a href="prompts/destruye-las-mascaras.html" class="secondary-prompt">
+                    <h4>🎭 Destruye las Máscaras</h4>
+                    <p>Identifica y desmonta las identidades falsas que usas para protegerte del mundo.</p>
+                </a>
+
+                <a href="prompts/descubre-tu-ikigai.html" class="secondary-prompt">
+                    <h4>🎯 Descubre Tu Ikigai</h4>
+                    <p>Encuentra la intersección entre lo que amas, lo que se te da bien, lo que el mundo necesita y lo que puede pagarte.</p>
+                </a>
+
+                <a href="prompts/aprende-las-reglas-reales.html" class="secondary-prompt">
+                    <h4>🎮 Aprende las Reglas Reales</h4>
+                    <p>Comprende las mecánicas ocultas del juego de la vida y cómo funcionan realmente las cosas.</p>
+                </a>
+
+                <a href="prompts/analisis-causa-raiz.html" class="secondary-prompt">
+                    <h4>🔍 Análisis de Causa Raíz</h4>
+                    <p>Profundiza hasta encontrar el origen real de patrones y comportamientos recurrentes.</p>
+                </a>
+
+            </div>
+        </div>
+
+        <div style="background: var(--navy); color: var(--white); padding: 4rem 2rem; border-radius: 12px; text-align: center; margin-top: 4rem;">
+            <h2 style="color: var(--white); margin-bottom: 1.5rem;">¿Listo para Comenzar?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem;">
+                Empieza con el Prompt de Fase 1 y progresa secuencialmente para mejores resultados.
+            </p>
+            <a href="prompts/fase-1-despierta.html" style="display: inline-block; background: var(--white); color: var(--navy); padding: 1.2rem 3rem; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">
+                Comenzar con Fase 1 →
+            </a>
+        </div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
 
     <script>
-        // Static list of available prompts (update this when adding new prompts)
-        const availablePrompts = [
-          {
-                    "filename": "analisis-causa-raiz.html",
-                    "title": "Análisis de Causa Raíz",
-                    "description": "Eres ahora un Experto en Análisis de Causa Raíz con experiencia en psicología, negocios y pensamiento sistémico. Tu tarea es ayudarme a identificar la...",
-                    "icon": "fas fa-search"
-          },
-          {
-                    "filename": "aprende-las-reglas-reales.html",
-                    "title": "Aprende las Reglas Reales",
-                    "description": "Eres un Game Master Existencial que ha estudiado las reglas verdaderas de cómo funciona la vida. Tu misión es enseñarme las mecánicas ocultas del jueg...",
-                    "icon": "fas fa-lightbulb"
-          },
-          {
-                    "filename": "descubre-tu-ikigai.html",
-                    "title": "Descubre Tu Ikigai",
-                    "description": "El Ikigai es un concepto japonés que significa \"razón de ser\" - la intersección entre lo que amas, lo que se te da bien, lo que el mundo necesita y po...",
-                    "icon": "fas fa-compass"
-          },
-          {
-                    "filename": "destruye-las-mascaras.html",
-                    "title": "Destruye las Máscaras",
-                    "description": "Eres un Arquitecto de Transformación especializado en la destrucción quirúrgica de identidades falsas y la revelación de la esencia auténtica. Tu misi...",
-                    "icon": "fas fa-lightbulb"
-          },
-          {
-                    "filename": "mapea-tu-ubicacion-actual.html",
-                    "title": "Mapea Tu Ubicación Actual",
-                    "description": "Eres un Cartógrafo de Consciencia especializado en revelar la ubicación exacta donde se encuentra una persona en su viaje de vida. Tu misión es ayudar...",
-                    "icon": "fas fa-lightbulb"
-          },
-          {
-                    "filename": "ve-el-codigo-mental.html",
-                    "title": "Ve el Código Mental",
-                    "description": "Eres un Arquitecto de Sistemas de Pensamiento que puede ver la Matrix de patrones mentales que gobiernan la vida de una persona. Tu misión es ayudarme...",
-                    "icon": "fas fa-lightbulb"
-          }
-];
-
-        function renderPrompts() {
-            const promptsList = document.getElementById('promptsList');
-            
-            if (availablePrompts.length === 0) {
-                promptsList.innerHTML = `
-                    <div class="no-prompts">
-                        <i class="fas fa-lightbulb" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-color);"></i>
-                        <h3>Próximamente</h3>
-                        <p>Estamos trabajando en nuevos prompts de reflexión para ti.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            promptsList.innerHTML = availablePrompts.map(prompt => `
-                <a href="prompts/${prompt.filename}" class="prompt-card">
-                    <div class="prompt-icon">
-                        <i class="${prompt.icon}"></i>
-                    </div>
-                    <h3 class="prompt-title">${prompt.title}</h3>
-                    <p class="prompt-description">${prompt.description}</p>
-                    <div class="prompt-cta">
-                        <span>Explorar ejercicio</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </a>
-            `).join('');
-        }
-
-        // Render prompts when page loads
-        document.addEventListener('DOMContentLoaded', renderPrompts);
+        // Cargar header y ajustar rutas
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                data = data.replace(/\.\.\//g, '');
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+        
+        // Cargar footer y ajustar rutas
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                data = data.replace(/\.\.\//g, '');
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
     </script>
-    <script src="load-header.js"></script>
-    <script src="load-footer.js"></script>
 </body>
 </html>
