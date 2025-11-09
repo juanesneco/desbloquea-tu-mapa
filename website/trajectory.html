@@ -352,17 +352,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">Desbloquea Tu Mapa</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="trajectory.html" class="active">La Trayectoria</a></li>
-                <li><a href="prompts.html">Prompts</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="header-placeholder"></div>
 
     <!-- Header -->
     <div class="header">
@@ -397,7 +387,7 @@
         </div>
 
         <div class="maps-grid">
-            <a href="mapa-fisico.html" class="map-card physical">
+            <a href="mapas/mapa-fisico.html" class="map-card physical">
                 <div class="map-icon"><i class="fas fa-heartbeat"></i></div>
                 <h3>Mapa Físico</h3>
                 <p>
@@ -407,7 +397,7 @@
                 <span class="explore-btn">Explorar Mapa Físico <i class="fas fa-arrow-right"></i></span>
             </a>
 
-            <a href="mapa-mental.html" class="map-card mental">
+            <a href="mapas/mapa-mental.html" class="map-card mental">
                 <div class="map-icon"><i class="fas fa-brain"></i></div>
                 <h3>Mapa Mental</h3>
                 <p>
@@ -417,7 +407,7 @@
                 <span class="explore-btn">Explorar Mapa Mental <i class="fas fa-arrow-right"></i></span>
             </a>
 
-            <a href="mapa-familiar.html" class="map-card family">
+            <a href="mapas/mapa-familiar.html" class="map-card family">
                 <div class="map-icon"><i class="fas fa-users"></i></div>
                 <h3>Mapa Familiar</h3>
                 <p>
@@ -427,7 +417,7 @@
                 <span class="explore-btn">Explorar Mapa Familiar <i class="fas fa-arrow-right"></i></span>
             </a>
 
-            <a href="mapa-financiero.html" class="map-card financial">
+            <a href="mapas/mapa-financiero.html" class="map-card financial">
                 <div class="map-icon"><i class="fas fa-chart-line"></i></div>
                 <h3>Mapa Financiero</h3>
                 <p>
@@ -480,16 +470,31 @@
         <div class="next-steps">
             <h2>¿Por Dónde Empezar?</h2>
             <div class="next-steps-buttons">
-                <a href="mapa-fisico.html" class="btn btn-primary">Comenzar con lo Físico</a>
+                <a href="mapas/mapa-fisico.html" class="btn btn-primary">Comenzar con lo Físico</a>
                 <a href="prompts.html" class="btn btn-secondary">Ver Herramientas (Prompts)</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    
+    <script>
+        // Cargar header y ajustar rutas
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                data = data.replace(/\.\.\//g, '');
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+        
+        // Cargar footer y ajustar rutas
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                data = data.replace(/\.\.\//g, '');
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
 

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Historia - Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--navy);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--navy);
+            opacity: 0.2;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            margin: 0 2rem;
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            z-index: 10;
+            position: relative;
+            border: 4px solid var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .chapter-number {
+            font-size: 0.9rem;
+            color: var(--blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .insight-box {
+            background: var(--background);
+            border-left: 4px solid var(--blue);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .insight-box strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .final-chapter {
+            background: var(--navy);
+            color: var(--white);
+            padding: 4rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 900px;
+        }
+
+        .final-chapter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-chapter p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+
+            .timeline-content {
+                margin-left: 100px;
+                margin-right: 0;
+            }
+
+            .timeline-marker {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section">
+        <h1>📖 Mi Historia</h1>
+        <p>El viaje de un mapa heredado a uno elegido conscientemente</p>
+    </section>
+
+    <section class="timeline">
+
+        <!-- CAPÍTULO 1 -->
+        <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+                <div class="chapter-number">Capítulo Uno</div>
+                <h2>Mi Primer Mapa</h2>
+                <p>
+                    Como todos, nací en un mapa que no elegí. Mi familia, mi cultura, 
+                    las expectativas de quienes me rodeaban — todo eso formó las líneas 
+                    originales de mi interpretación del mundo.
+                </p>
+                <p>
+                    Crecí creyendo que "así eran las cosas". Que el éxito se veía de cierta manera. 
+                    Que las relaciones funcionaban de cierta forma. Que yo debía ser cierto tipo 
+                    de persona.
+                </p>
+                <div class="insight-box">
+                    <strong>💡 La Revelación:</strong>
+                    No cuestionaba el mapa porque no sabía que existía un mapa. 
+                    Simplemente vivía dentro de él, creyendo que esa era "la realidad".
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPÍTULO 2 -->
+        <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+                <div class="chapter-number">Capítulo Dos</div>
+                <h2>La Expansión</h2>
+                <p>
+                    Algo cambió. Quizás fue un viaje, una crisis, o simplemente el tiempo. 
+                    Empecé a ver que otras personas vivían con mapas completamente diferentes 
+                    — y que los suyos funcionaban igual de "bien" que el mío.
+                </p>
+                <p>
+                    Comencé a cuestionar. ¿Por qué creo lo que creo? ¿Qué de esto es realmente mío 
+                    y qué simplemente absorbí? ¿Qué pasaría si redibujara algunas líneas?
+                </p>
+                <p>
+                    El mundo se expandió. No porque el mundo cambiara, sino porque 
+                    <strong>mi mapa se hizo más grande</strong>.
+                </p>
+                <div class="insight-box">
+                    <strong>💡 La Revelación:</strong>
+                    El mapa no es el territorio. Siempre ha sido una interpretación, 
+                    no la verdad absoluta.
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPÍTULO 3 -->
+        <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+                <div class="chapter-number">Capítulo Tres</div>
+                <h2>El Juego</h2>
+                <p>
+                    Aquí es donde todo se volvió claro. La vida no es solo un mapa — 
+                    es un juego con reglas específicas. Y la mayoría de las personas 
+                    nunca aprenden las reglas reales.
+                </p>
+                <p>
+                    Hay botones que podemos controlar: nuestra atención, nuestras intenciones, 
+                    nuestras interpretaciones, nuestros comportamientos. Y hay botones que no 
+                    podemos controlar: cómo responde la vida, qué hacen los demás, qué eventos 
+                    externos ocurren.
+                </p>
+                <p>
+                    <strong>El juego no es controlar todo. El juego es dominar lo que sí puedes 
+                    controlar mientras rindiéndote a lo que no.</strong>
+                </p>
+                <div class="insight-box">
+                    <strong>💡 La Revelación:</strong>
+                    La maestría no viene de tener todas las respuestas. 
+                    Viene de saber qué preguntas hacer y qué botones presionar.
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPÍTULO 4 -->
+        <div class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+                <div class="chapter-number">Capítulo Cuatro</div>
+                <h2>La Realización</h2>
+                <p>
+                    Después de años de exploración, práctica y errores, llegó la comprensión 
+                    más profunda: <strong>la vida responde con precisión perfecta</strong>.
+                </p>
+                <p>
+                    Cada resultado es exactamente lo que debía ser, dadas las entradas. 
+                    No hay errores en el sistema — solo feedback. No hay castigos — solo 
+                    consecuencias naturales.
+                </p>
+                <p>
+                    Cuando presionas los botones correctos con la intención correcta, 
+                    la vida responde. No siempre como esperas, pero siempre de manera 
+                    coherente con las leyes del juego.
+                </p>
+                <div class="insight-box">
+                    <strong>💡 La Revelación:</strong>
+                    No necesitamos controlar todo para vivir bien. 
+                    Necesitamos alinear nuestra intención, atención y acción — 
+                    y confiar en que la vida responderá.
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPÍTULO 5 -->
+        <div class="timeline-item">
+            <div class="timeline-marker">5</div>
+            <div class="timeline-content">
+                <div class="chapter-number">Capítulo Cinco</div>
+                <h2>El Nacimiento de DTM</h2>
+                <p>
+                    Todo este viaje — desde el primer mapa heredado hasta la comprensión 
+                    del juego — necesitaba un nombre, una estructura, una forma de compartirlo.
+                </p>
+                <p>
+                    <strong>Desbloquea Tu Mapa</strong> nació de la certeza de que 
+                    cada persona puede aprender a ver su propio mapa, entender las reglas 
+                    del juego, y elegir conscientemente cómo vivir.
+                </p>
+                <p>
+                    No es una filosofía teórica. Es un sistema práctico basado en lo que funciona:
+                </p>
+                <p>
+                    • Ver el mapa (consciencia)<br>
+                    • Entender el juego (reconocimiento)<br>
+                    • Elegir tu camino (creación)
+                </p>
+                <div class="insight-box">
+                    <strong>💡 La Revelación:</strong>
+                    Esto no es solo mi historia. Es la estructura universal del despertar 
+                    que cualquier persona puede recorrer.
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="final-chapter">
+        <h2>🌟 Tu Historia Comienza Ahora</h2>
+        <p>
+            Mi viaje me llevó aquí. El tuyo será diferente, porque tu mapa es único. 
+            Pero los principios son los mismos.
+        </p>
+        <p>
+            <strong>Primero ves el mapa. Luego entiendes el juego. Finalmente eliges cómo jugar.</strong>
+        </p>
+        <p>
+            ¿Estás listo para comenzar tu propio viaje de desbloqueo?
+        </p>
+        <a href="inicia.html" class="cta-button">Comienza Tu Viaje</a>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    
+    <script>
+    </script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+        
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
+

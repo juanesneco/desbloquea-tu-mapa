@@ -229,16 +229,7 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">Desbloquea Tu Mapa</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="trajectory.html">La Trayectoria</a></li>
-                <li><a href="prompts.html">Prompts</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="header-placeholder"></div>
 
     <div class="header">
         <div class="header-icon"><i class="fas fa-chart-line"></i></div>
@@ -347,15 +338,23 @@
             <a href="mapa-familiar.html" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Anterior: Mapa Familiar
             </a>
-            <a href="trajectory.html" class="btn btn-primary">
+            <a href="../trajectory.html" class="btn btn-primary">
                 <i class="fas fa-check"></i> Volver a Trayectoria
             </a>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+        
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
 </body>
 </html>
 

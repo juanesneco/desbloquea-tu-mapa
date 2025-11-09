@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Realización - Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--navy);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .main-insight {
+            background: var(--white);
+            padding: 4rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border-top: 6px solid var(--navy);
+        }
+
+        .main-insight h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .main-insight p {
+            font-size: 1.2rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .emphasis {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: center;
+            margin: 2rem 0;
+            line-height: 1.6;
+        }
+
+        .buttons-section {
+            background: var(--background);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .buttons-section h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .button-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+            transition: transform 0.3s;
+        }
+
+        .button-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .button-card h4 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .button-card .icon {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .button-card p {
+            color: var(--primary-light);
+            line-height: 1.7;
+        }
+
+        .flow-diagram {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            margin: 3rem 0;
+        }
+
+        .flow-diagram h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--background);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .flow-step:hover {
+            background: var(--navy);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .flow-step .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .flow-step:hover .step-number {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .flow-step h4 {
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step:hover h4 {
+            color: var(--white);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--blue);
+            flex-shrink: 0;
+        }
+
+        .wisdom-box {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .wisdom-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wisdom-box p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: var(--white);
+            padding: 4rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27,40,56,0.3);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section .quote {
+                font-size: 1.3rem;
+            }
+            .flow-steps {
+                flex-direction: column;
+            }
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section">
+        <h1>⚡ La Realización</h1>
+        <p class="quote">
+            "Podemos controlar algunos botones, pero no todos.<br>
+            La vida responde con precisión perfecta."
+        </p>
+    </section>
+
+    <section class="content-section">
+
+        <div class="main-insight">
+            <h2>La Verdad Más Profunda</h2>
+            <p>
+                Después de años explorando el mapa, cuestionando creencias, 
+                experimentando con diferentes caminos, llegó la comprensión más importante:
+            </p>
+            <p class="emphasis">
+                La vida no es caótica ni arbitraria. Es un sistema que responde 
+                con precisión matemática a las entradas que le damos.
+            </p>
+            <p>
+                Como un videojuego perfectamente programado, la vida tiene reglas. 
+                Presionas ciertos botones, obtienes ciertos resultados. No porque 
+                el universo te "recompense" o te "castigue" — simplemente porque 
+                <strong>así funciona el sistema</strong>.
+            </p>
+            <p>
+                El problema no es que el sistema sea defectuoso. El problema es que 
+                la mayoría de las personas nunca aprende cuáles son los botones reales.
+            </p>
+        </div>
+
+        <div class="buttons-section">
+            <h3>🎮 Los Botones Que Podemos Controlar</h3>
+            <p style="text-align: center; color: var(--primary-light); margin-bottom: 2rem;">
+                Estos son los controles reales del juego. Domínalos y cambiarás tu vida.
+            </p>
+
+            <div class="button-grid">
+                <div class="button-card">
+                    <div class="icon"><i class="fas fa-bullseye"></i></div>
+                    <h4>Intención</h4>
+                    <p>
+                        Tu claridad sobre qué quieres y por qué. 
+                        La intención es el primer botón — todo comienza aquí.
+                    </p>
+                </div>
+
+                <div class="button-card">
+                    <div class="icon"><i class="fas fa-eye"></i></div>
+                    <h4>Atención</h4>
+                    <p>
+                        Dónde diriges tu enfoque determina qué crece en tu vida. 
+                        La atención es energía.
+                    </p>
+                </div>
+
+                <div class="button-card">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Energía</h4>
+                    <p>
+                        Cómo gestionas tu energía física, mental y emocional. 
+                        Sin energía, no hay creación.
+                    </p>
+                </div>
+
+                <div class="button-card">
+                    <div class="icon"><i class="fas fa-comment"></i></div>
+                    <h4>Interpretación</h4>
+                    <p>
+                        El significado que das a los eventos. Dos personas, mismo evento, 
+                        interpretaciones opuestas.
+                    </p>
+                </div>
+
+                <div class="button-card">
+                    <div class="icon"><i class="fas fa-running"></i></div>
+                    <h4>Acción</h4>
+                    <p>
+                        Los comportamientos que eliges ejecutar. La acción es donde 
+                        la intención se convierte en realidad.
+                    </p>
+                </div>
+
+                <div class="button-card">
+                    <div class="icon"><i class="fas fa-redo"></i></div>
+                    <h4>Repetición</h4>
+                    <p>
+                        Lo que haces una vez es un evento. Lo que repites se convierte 
+                        en tu identidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-diagram">
+            <h3>🔄 El Flujo de Transformación</h3>
+            <p style="text-align: center; color: var(--primary-light); margin-bottom: 2rem;">
+                Así es como cambias fundamentalmente quién eres:
+            </p>
+
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h4>Intención</h4>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h4>Comportamiento</h4>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h4>Hábito</h4>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <h4>Práctica</h4>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <h4>Ser</h4>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; text-align: center; color: var(--primary-light);">
+                <strong>Lo que eliges con intención y repites consistentemente 
+                se convierte en quién eres.</strong>
+            </p>
+        </div>
+
+        <div class="main-insight">
+            <h2>🌊 Los Botones Que NO Podemos Controlar</h2>
+            <p>
+                Aquí está la libertad paradójica: aceptar lo que no puedes controlar 
+                te da poder sobre lo que sí puedes.
+            </p>
+            <p>
+                <strong>No podemos controlar:</strong>
+            </p>
+            <p>
+                • Cómo responden los demás<br>
+                • Qué eventos externos ocurren<br>
+                • El timing exacto de los resultados<br>
+                • Las decisiones de otras personas<br>
+                • El pasado o las circunstancias heredadas
+            </p>
+            <p class="emphasis">
+                La maestría no es controlar todo. Es dominar lo que sí puedes 
+                mientras te rindes conscientemente a lo que no.
+            </p>
+        </div>
+
+        <div class="wisdom-box">
+            <h3>💎 La Sabiduría Central</h3>
+            <p>
+                "No podemos controlar todo, pero sí lo suficiente para cambiar nuestra vida."
+            </p>
+            <p>
+                Cuando alineas tu intención con tu atención, diriges tu energía conscientemente, 
+                eliges tus interpretaciones, y tomas acción consistente —
+            </p>
+            <p>
+                <strong>La vida responde. Siempre. Con precisión perfecta.</strong>
+            </p>
+        </div>
+
+        <div class="main-insight">
+            <h2>🎯 Vivir Desde la Realización</h2>
+            <p>
+                Esta no es teoría abstracta. Es práctica diaria:
+            </p>
+            <p>
+                <strong>1. Clarifica tu intención</strong> → ¿Qué quieres crear hoy?<br>
+                <strong>2. Dirige tu atención</strong> → ¿Dónde pones tu enfoque?<br>
+                <strong>3. Gestiona tu energía</strong> → ¿Cómo cuidas tu cuerpo y mente?<br>
+                <strong>4. Elige tu interpretación</strong> → ¿Qué significado das a los eventos?<br>
+                <strong>5. Actúa consistentemente</strong> → ¿Qué comportamiento eliges?<br>
+                <strong>6. Ríndete al proceso</strong> → Confía en que la vida responderá
+            </p>
+            <p>
+                No necesitas ser perfecto. Necesitas ser consciente y consistente.
+            </p>
+        </div>
+
+        <div class="cta-section">
+            <h2>Comienza a Jugar Conscientemente</h2>
+            <p>
+                Ahora conoces las reglas. Sabes cuáles son los botones. 
+                El siguiente paso es aplicarlo.
+            </p>
+            <a href="herramientas.html" class="cta-button">Explora las Herramientas</a>
+        </div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
+    
+    <script>
+    </script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+        
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofía - Desbloquea Tu Mapa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--navy);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--background);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .phase-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--navy);
+            transition: transform 0.3s;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .phase-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 60px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-card h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .phase-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-card p {
+            font-size: 1.15rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #e8e6e3 0%, #e8e6e3 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 80%;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .key-insight {
+            background: var(--background);
+            border-left: 4px solid var(--blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .key-insight strong {
+            color: var(--navy);
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--background);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+            .phase-card {
+                padding: 2rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section">
+        <h1>🌱 La Filosofía</h1>
+        <p>Las tres fases del viaje interior: del sueño a la presencia consciente</p>
+    </section>
+
+    <section class="content-section">
+        
+        <!-- FASE 1: INCONSCIENCIA -->
+        <div class="phase-card">
+            <div class="phase-number">1</div>
+            <h2>Inconsciencia (Inocencia)</h2>
+            
+            <p>
+                Nacemos en un mundo que no elegimos, con mapas que no dibujamos. 
+                Desde la infancia, absorbemos historias, creencias y patrones de quienes nos rodean.
+            </p>
+
+            <p>
+                <span class="highlight">Operamos en piloto automático</span>, ejecutando programas 
+                que heredamos sin cuestionarlos. No somos conscientes del mapa — simplemente 
+                vivimos dentro de él, creyendo que esa interpretación del mundo es "la realidad".
+            </p>
+
+            <div class="key-insight">
+                <strong>Clave:</strong> En esta fase, no sabemos que estamos dormidos. 
+                Los pensamientos, emociones y comportamientos surgen automáticamente, 
+                sin observación consciente.
+            </div>
+
+            <h3>Características de la Inconsciencia</h3>
+            <p>
+                • Vivir desde hábitos y patrones heredados<br>
+                • Reaccionar automáticamente sin reflexión<br>
+                • Creer que "así son las cosas"<br>
+                • Culpar al exterior por nuestras experiencias<br>
+                • Identificarnos completamente con nuestros pensamientos
+            </p>
+
+            <p>
+                La inocencia no es algo malo — es simplemente el punto de partida. 
+                Todos comenzamos aquí, y muchos permanecen aquí toda su vida sin darse cuenta.
+            </p>
+        </div>
+
+        <!-- FASE 2: CONSCIENCIA -->
+        <div class="phase-card">
+            <div class="phase-number">2</div>
+            <h2>Consciencia (Despertar)</h2>
+            
+            <p>
+                Algo cambia. Un evento, una crisis, una pregunta profunda — 
+                y de repente <span class="highlight">empezamos a observarnos</span>.
+            </p>
+
+            <p>
+                Desarrollamos al <strong>observador interno</strong>, esa parte de nosotros 
+                que puede ver los pensamientos sin ser los pensamientos. Que puede sentir 
+                las emociones sin identificarse completamente con ellas.
+            </p>
+
+            <div class="key-insight">
+                <strong>Clave:</strong> En esta fase, comenzamos a ver los botones. 
+                Reconocemos que algunos aspectos de nuestra vida están bajo nuestro control, 
+                y otros no. Aprendemos a distinguir entre ambos.
+            </div>
+
+            <h3>El Despertar Progresivo</h3>
+            <p>
+                La consciencia no llega de golpe. Es un proceso gradual de:<br><br>
+                
+                <strong>1. Observación</strong> → Ver los patrones sin juzgarlos<br>
+                <strong>2. Reconocimiento</strong> → Identificar de dónde vienen<br>
+                <strong>3. Cuestionamiento</strong> → ¿Esto es realmente mío?<br>
+                <strong>4. Elección</strong> → Decidir conscientemente qué mantener
+            </p>
+
+            <h3>Los Espejos</h3>
+            <p>
+                Las relaciones se convierten en espejos que nos muestran lo que no podemos ver solos. 
+                Lo que nos molesta en otros suele reflejar algo no integrado en nosotros mismos.
+            </p>
+
+            <p>
+                <span class="highlight">La vida misma se convierte en un maestro</span>, 
+                mostrándonos repetidamente los mismos patrones hasta que finalmente los vemos.
+            </p>
+        </div>
+
+        <!-- FASE 3: CREACIÓN -->
+        <div class="phase-card">
+            <div class="phase-number">3</div>
+            <h2>Creación (Presencia)</h2>
+            
+            <p>
+                Aquí es donde la verdadera transformación sucede. No solo vemos los patrones — 
+                <span class="highlight">elegimos activamente cómo responder a ellos</span>.
+            </p>
+
+            <p>
+                Integramos mente, cuerpo y espíritu. Actuamos con intención, pero también 
+                con rendición. Entendemos que podemos controlar algunos botones, pero no todos, 
+                y <strong>esa comprensión nos libera</strong>.
+            </p>
+
+            <div class="key-insight">
+                <strong>Clave:</strong> Creación no es solo "hacer cosas". 
+                Es rediseñar tu mapa desde la consciencia plena. Es vivir desde tu poder auténtico, 
+                no desde los programas heredados.
+            </div>
+
+            <h3>Los Pilares de la Creación</h3>
+            
+            <p><strong>Intención Clara</strong><br>
+            Saber qué quieres crear y por qué importa para ti, no para otros.</p>
+
+            <p><strong>Acción Consciente</strong><br>
+            Cada comportamiento se vuelve una elección deliberada, no una reacción automática.</p>
+
+            <p><strong>Presencia</strong><br>
+            Estar completamente aquí, ahora, sin vivir en el pasado o el futuro.</p>
+
+            <p><strong>Integración</strong><br>
+            Honrar todas las partes de ti — la mente, el cuerpo, las emociones, el espíritu.</p>
+
+            <h3>El Flujo de Transformación</h3>
+            <p>
+                <strong>Intención</strong> → Comportamiento → Hábito → Práctica → <strong>Ser</strong>
+            </p>
+
+            <p>
+                Lo que repetimos con intención se convierte en hábito. 
+                Los hábitos sostenidos se convierten en práctica. 
+                La práctica constante cambia quiénes somos a nivel fundamental.
+            </p>
+
+            <p>
+                <span class="highlight">No se trata de "arreglarte" — se trata de recordar quién realmente eres</span> 
+                debajo de todas las capas de condicionamiento.
+            </p>
+        </div>
+
+        <!-- REFLEXIÓN FINAL -->
+        <div class="phase-card" style="border-left-color: var(--blue);">
+            <h2>🎯 La Verdad Central</h2>
+            
+            <p style="font-size: 1.25rem; font-weight: 500;">
+                "No podemos controlar todo, pero sí lo suficiente para cambiar nuestra vida."
+            </p>
+
+            <p>
+                La vida no es el mapa. La vida es el juego. Y una vez que aprendes a ver 
+                el juego por lo que es, todo cambia.
+            </p>
+
+            <p>
+                El objetivo no es alcanzar algún estado perfecto de "iluminación". 
+                Es <strong>vivir con presencia</strong>, responder conscientemente, y 
+                crear desde tu poder auténtico momento a momento.
+            </p>
+
+            <p style="text-align: center; margin-top: 3rem;">
+                <a href="mapas.html" style="display: inline-block; background: var(--navy); color: var(--white); padding: 1rem 2.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;">
+                    Explora Los Cuatro Mapas →
+                </a>
+            </p>
+        </div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
+    
+    <script>
+        // Cargar header (las rutas ya son correctas con ../)
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+        
+        // Cargar footer (las rutas ya son correctas con ../)
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
+

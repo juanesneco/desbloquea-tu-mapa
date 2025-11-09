@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programas | Desbloquea Tu Mapa</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .programs-header {
@@ -227,14 +227,21 @@
             <h2>¿Tienes dudas sobre nuestros programas?</h2>
             <p>Conoce a María Mazoy, la fundadora y guía de estos programas de transformación.</p>
                             <a href="maria-mazoy.html" class="btn btn-primary">Conoce a María Mazoy</a>
-            <a href="index.html" class="btn btn-secondary">Volver al Inicio</a>
+            <a href="../index.html" class="btn btn-secondary">Volver al Inicio</a>
         </div>
 
     </div>
     
     <div id="footer-placeholder"></div>
 
-    <script src="load-header.js"></script>
-    <script src="load-footer.js"></script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+        
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
 </body>
 </html>

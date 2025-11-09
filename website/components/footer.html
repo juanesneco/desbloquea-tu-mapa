@@ -1,0 +1,178 @@
+<!-- FOOTER GLOBAL - Desbloquea Tu Mapa -->
+<!-- Este archivo se incluye en todas las páginas del sitio -->
+<!-- Actualizado: 2025-01-09 -->
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo y Tagline -->
+        <div class="footer-section">
+            <h3 class="footer-logo">Desbloquea Tu Mapa</h3>
+            <p class="footer-tagline">La vida es un juego consciente</p>
+            <p class="footer-quote">"El mapa no es el territorio, pero puedes elegir cómo dibujarlo."</p>
+        </div>
+
+        <!-- Navegación Principal -->
+        <div class="footer-section">
+            <h4>Explora</h4>
+            <ul class="footer-links">
+                <li><a href="../secciones/filosofia.html">Filosofía</a></li>
+                <li><a href="../secciones/mapas.html">Los Cuatro Mapas</a></li>
+                <li><a href="../secciones/historia.html">Historia</a></li>
+                <li><a href="../secciones/realizacion.html">Realización</a></li>
+            </ul>
+        </div>
+
+        <!-- Herramientas -->
+        <div class="footer-section">
+            <h4>Herramientas</h4>
+            <ul class="footer-links">
+                <li><a href="../prompts.html">Prompts Guiados</a></li>
+                <li><a href="../secciones/herramientas.html">Recursos</a></li>
+                <li><a href="../secciones/inicia.html">Taller Gratuito</a></li>
+                <li><a href="../secciones/inicia.html">Newsletter</a></li>
+            </ul>
+        </div>
+
+        <!-- Comunidad -->
+        <div class="footer-section">
+            <h4>Comunidad</h4>
+            <ul class="footer-social">
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+        <p class="footer-small">Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background: var(--primary, #3F4447);
+        color: var(--background, #E8E6E3);
+        padding: 4rem 2rem 2rem;
+        margin-top: 6rem;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .footer-section h3.footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--white, #FFFFFF);
+    }
+
+    .footer-section h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--white, #FFFFFF);
+    }
+
+    .footer-tagline {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+    }
+
+    .footer-quote {
+        font-style: italic;
+        opacity: 0.8;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .footer-links,
+    .footer-social {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li,
+    .footer-social li {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-links a,
+    .footer-social a {
+        color: var(--background, #E8E6E3);
+        text-decoration: none;
+        opacity: 0.85;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-links a:hover,
+    .footer-social a:hover {
+        opacity: 1;
+        color: var(--white, #FFFFFF);
+        transform: translateX(4px);
+    }
+
+    .footer-social i {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(232, 230, 227, 0.2);
+    }
+
+    .footer-bottom p {
+        opacity: 0.8;
+        margin: 0.5rem 0;
+    }
+
+    .footer-small {
+        font-size: 0.85rem;
+        opacity: 0.6;
+    }
+
+        @media (max-width: 768px) {
+        footer {
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer-section:first-child {
+            text-align: center;
+        }
+    }
+</style>
+
+
