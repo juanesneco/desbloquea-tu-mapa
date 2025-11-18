@@ -1,11 +1,15 @@
 // Added by AI Monorepo Setup
 
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
-import Link from 'next/link';
+import NavBar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const space = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
 
 export const metadata: Metadata = {
   title: 'Desbloquea Tu Mapa - App',
@@ -19,44 +23,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
-        <nav className="bg-white border-b border-border sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <Link href="/" className="text-xl font-semibold text-primary hover:text-accent transition-colors">
-                Desbloquea Tu Mapa
-              </Link>
-              <div className="flex gap-6">
-                <Link href="/upload" className="text-primary-light hover:text-accent transition-colors font-medium">
-                  Subir Imagen
-                </Link>
-                <Link href="/gallery" className="text-primary-light hover:text-accent transition-colors font-medium">
-                  Galería
-                </Link>
-                <a 
-                  href="../website/index.html" 
-                  className="text-primary-light hover:text-accent transition-colors font-medium"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Filosofía
-                </a>
-              </div>
-            </div>
+      <body className={`${space.className} bg-gradient-to-br from-white via-background to-[#E6E9EF]`}>
+        <div className="relative min-h-screen overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 opacity-60">
+            <div className="absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#E8F5C8] blur-[160px]" />
+            <div className="absolute top-1/3 right-0 h-64 w-64 rounded-full bg-[#C7D2FE] blur-[140px]" />
+            <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-[#FFD6E8] blur-[170px]" />
           </div>
-        </nav>
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <footer className="bg-white border-t border-border mt-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <p className="text-center text-primary-light text-sm">
-              © 2024 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.
-            </p>
+          <div className="relative flex min-h-screen flex-col">
+            <NavBar />
+            <main className="flex-1">{children}</main>
+            <Footer />
           </div>
-        </footer>
+        </div>
       </body>
     </html>
   );
 }
-

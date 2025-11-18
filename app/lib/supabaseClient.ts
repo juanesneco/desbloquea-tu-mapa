@@ -1,10 +1,14 @@
-// Added by AI Monorepo Setup
+// Updated for new Fases/Sub-etapas/Mapas structure
 
 import { createClient } from '@supabase/supabase-js';
-import { ImageData } from '@/types';
+import { ImageData, Fase, SubEtapa, Mapa, UserRole } from '@/types';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Supabase environment variables are missing. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
@@ -39,13 +43,123 @@ export async function uploadImage(file: File): Promise<string> {
 }
 
 /**
+ * Fetch all fases
+ */
+export async function fetchFases(): Promise<Fase[]> {
+  const { data, error } = await supabase
+    .from('fases')
+    .select('*')
+    .order('numero', { ascending: true });
+
+  if (error) {
+    throw new Error(`Failed to fetch fases: ${error.message}`);
+  }
+
+  return data || [];
+}
+
+/**
+ * Fetch all sub-etapas, optionally filtered by fase
+ */
+export async function fetchSubEtapas(faseId?: string): Promise<SubEtapa[]> {
+  let query = supabase
+    .from('sub_etapas')
+    .select('*')
+    .order('codigo', { ascending: true });
+
+  if (faseId) {
+    query = query.eq('fase_id', faseId);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw new Error(`Failed to fetch sub-etapas: ${error.message}`);
+  }
+
+  return data || [];
+}
+
+/**
+ * Fetch all mapas
+ */
+export async function fetchMapas(): Promise<Mapa[]> {
+  const { data, error } = await supabase
+    .from('mapas')
+    .select('*')
+    .order('nombre', { ascending: true });
+
+  if (error) {
+    throw new Error(`Failed to fetch mapas: ${error.message}`);
+  }
+
+  return data || [];
+}
+
+/**
+ * Get sub-etapa by codigo (e.g., '1.1', '2.3')
+ */
+export async function getSubEtapaByCodigo(codigo: string): Promise<SubEtapa | null> {
+  const { data, error } = await supabase
+    .from('sub_etapas')
+    .select('*')
+    .eq('codigo', codigo)
+    .single();
+
+  if (error) {
+    return null;
+  }
+
+  return data;
+}
+
+/**
+ * Get mapa by nombre
+ */
+export async function getMapaByNombre(nombre: string): Promise<Mapa | null> {
+  const { data, error } = await supabase
+    .from('mapas')
+    .select('*')
+    .eq('nombre', nombre)
+    .single();
+
+  if (error) {
+    return null;
+  }
+
+  return data;
+}
+
+/**
+ * Get user role
+ */
+export async function getUserRole(userId: string): Promise<UserRole | null> {
+  const { data, error } = await supabase
+    .from('user_roles')
+    .select('role')
+    .eq('user_id', userId)
+    .single();
+
+  if (error) {
+    return null;
+  }
+
+  return data?.role || null;
+}
+
+/**
  * Save image metadata to database
  */
-export async function saveImageMetadata(imageData: Omit<ImageData, 'id' | 'created_at'>): Promise<ImageData> {
+export async function saveImageMetadata(imageData: Omit<ImageData, 'id' | 'created_at' | 'fase' | 'sub_etapa' | 'mapa'>): Promise<ImageData> {
   const { data, error } = await supabase
     .from('images')
     .insert([imageData])
-    .select()
+    .select(`
+      *,
+      fase:fases(*),
+      sub_etapa:sub_etapas(*),
+      mapa:mapas(*)
+    `)
     .single();
 
   if (error) {
@@ -56,16 +170,31 @@ export async function saveImageMetadata(imageData: Omit<ImageData, 'id' | 'creat
 }
 
 /**
- * Fetch all images with optional category filter
+ * Fetch all images with optional filters
  */
-export async function fetchImages(category?: string): Promise<ImageData[]> {
+export async function fetchImages(filters?: {
+  faseId?: string;
+  subEtapaId?: string;
+  mapaId?: string;
+}): Promise<ImageData[]> {
   let query = supabase
     .from('images')
-    .select('*')
+    .select(`
+      *,
+      fase:fases(*),
+      sub_etapa:sub_etapas(*),
+      mapa:mapas(*)
+    `)
     .order('created_at', { ascending: false });
 
-  if (category && category !== 'all') {
-    query = query.eq('category', category);
+  if (filters?.faseId) {
+    query = query.eq('fase_id', filters.faseId);
+  }
+  if (filters?.subEtapaId) {
+    query = query.eq('sub_etapa_id', filters.subEtapaId);
+  }
+  if (filters?.mapaId) {
+    query = query.eq('mapa_id', filters.mapaId);
   }
 
   const { data, error } = await query;
@@ -82,13 +211,18 @@ export async function fetchImages(category?: string): Promise<ImageData[]> {
  */
 export async function updateImageMetadata(
   id: string,
-  updates: Partial<Pick<ImageData, 'title' | 'category' | 'description' | 'tags'>>
+  updates: Partial<Pick<ImageData, 'title' | 'description' | 'tags' | 'fase_id' | 'sub_etapa_id' | 'mapa_id'>>
 ): Promise<ImageData> {
   const { data, error } = await supabase
     .from('images')
     .update(updates)
     .eq('id', id)
-    .select()
+    .select(`
+      *,
+      fase:fases(*),
+      sub_etapa:sub_etapas(*),
+      mapa:mapas(*)
+    `)
     .single();
 
   if (error) {
@@ -132,7 +266,12 @@ export async function deleteImage(id: string, fileUrl: string): Promise<void> {
 export async function searchImages(query: string): Promise<ImageData[]> {
   const { data, error } = await supabase
     .from('images')
-    .select('*')
+    .select(`
+      *,
+      fase:fases(*),
+      sub_etapa:sub_etapas(*),
+      mapa:mapas(*)
+    `)
     .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
     .order('created_at', { ascending: false });
 
@@ -142,4 +281,3 @@ export async function searchImages(query: string): Promise<ImageData[]> {
 
   return data || [];
 }
-

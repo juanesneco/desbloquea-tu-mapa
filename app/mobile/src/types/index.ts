@@ -1,4 +1,4 @@
-// Updated for new Fases/Sub-etapas/Mapas structure
+// Types for mobile app (shared with web app)
 
 // Reference data types
 export interface Fase {
@@ -38,7 +38,7 @@ export interface ImageData {
   description: string;
   tags: string[];
   user_id?: string;
-  // New required fields
+  // Required fields
   fase_id: string;
   sub_etapa_id: string;
   mapa_id: string;
@@ -48,17 +48,6 @@ export interface ImageData {
   mapa?: Mapa;
 }
 
-// AI analysis result
-export interface ImageAnalysis {
-  title: string;
-  description: string;
-  tags: string[];
-  // Required classifications
-  fase_id: string;
-  sub_etapa_id: string;
-  mapa_id: string;
-}
-
 // User role type
 export type UserRole = 'viewer' | 'contributor';
 
@@ -66,11 +55,5 @@ export interface UserRoleData {
   user_id: string;
   role: UserRole;
   created_at: string;
-}
-
-export interface UploadResponse {
-  success: boolean;
-  data?: ImageData;
-  error?: string;
 }
 

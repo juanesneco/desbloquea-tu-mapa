@@ -3,7 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Upload, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Upload, Loader2, CheckCircle, AlertCircle, Sparkles, ArrowUpRight } from 'lucide-react';
 import { uploadImage, saveImageMetadata } from '@/lib/supabaseClient';
 import { analyzeImage } from '@/lib/analyzeImage';
 import { ImageData } from '@/types';
@@ -51,9 +51,11 @@ export default function UploadPage() {
       const imageData = await saveImageMetadata({
         file_url: fileUrl,
         title: analysis.title,
-        category: analysis.category,
         description: analysis.description,
         tags: analysis.tags,
+        fase_id: analysis.fase_id,
+        sub_etapa_id: analysis.sub_etapa_id,
+        mapa_id: analysis.mapa_id,
       });
 
       setResult(imageData);
@@ -76,84 +78,100 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">
-          Sube tu Imagen Simbólica
-        </h1>
-        <p className="text-lg text-primary-light max-w-2xl mx-auto">
-          Comparte una imagen que resuene contigo. La IA la interpretará desde la 
-          filosofía de Desbloquea tu Mapa.
+    <div className="mx-auto max-w-5xl px-6 py-16">
+      <div className="mb-12 flex flex-col gap-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary-light">Experimento guiado</p>
+        <h1 className="text-4xl font-semibold text-primary md:text-5xl">Sube un símbolo y recibe un mapa accionable</h1>
+        <p className="text-sm text-primary-light md:text-base">
+          Imágenes personales, arte o fotos del día. El motor visionario de DTM cruza la filosofía con IA para ubicarte en una fase,
+          sub-etapa y mapa específicos. Resultado: claridad radical y siguiente movimiento.
         </p>
       </div>
 
       {status === 'success' && result ? (
         // Success State
-        <div className="card space-y-6">
-          <div className="flex items-center justify-center text-green-600 mb-4">
-            <CheckCircle size={48} />
-          </div>
-          <h2 className="text-2xl font-semibold text-center">
-            ¡Imagen Procesada!
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="glass-panel space-y-8">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <span className="rounded-full border border-border bg-white/70 p-3 text-green-600">
+              <CheckCircle size={28} />
+            </span>
             <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary-light">Registro guardado</p>
+              <h2 className="text-3xl font-semibold">Imagen analizada con éxito</h2>
+            </div>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="overflow-hidden rounded-3xl border border-white/60 bg-white/70">
               <img 
                 src={result.file_url} 
                 alt={result.title}
-                className="w-full h-64 object-cover rounded-lg"
+                className="h-full w-full object-cover"
               />
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div>
-                <label className="label">Título</label>
-                <p className="text-lg font-medium">{result.title}</p>
+                <p className="label">Título</p>
+                <p className="text-xl font-semibold">{result.title}</p>
+              </div>
+              <div className="rounded-2xl border border-border bg-white/70 p-4">
+                <p className="label mb-3">Clasificación</p>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between">
+                    <span className="uppercase tracking-[0.3em] text-primary-light">Fase</span>
+                    <span className="font-semibold">{result.fase?.nombre}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="uppercase tracking-[0.3em] text-primary-light">Sub-etapa</span>
+                    <span className="text-right font-semibold">
+                      {result.sub_etapa?.codigo} · {result.sub_etapa?.nombre}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="uppercase tracking-[0.3em] text-primary-light">Mapa</span>
+                    <span className="font-semibold">{result.mapa?.nombre}</span>
+                  </div>
+                </div>
               </div>
               <div>
-                <label className="label">Categoría</label>
-                <span className="inline-block bg-accent text-white px-3 py-1 rounded-full text-sm">
-                  {result.category}
-                </span>
+                <p className="label">Descripción</p>
+                <p className="text-sm text-primary-light">{result.description}</p>
               </div>
-              <div>
-                <label className="label">Descripción</label>
-                <p className="text-primary-light">{result.description}</p>
-              </div>
-              {result.tags.length > 0 && (
+              {result.tags?.length ? (
                 <div>
-                  <label className="label">Etiquetas</label>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="label">Etiquetas</p>
+                  <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-primary-light">
                     {result.tags.map((tag, index) => (
                       <span 
                         key={index}
-                        className="bg-gray-100 text-primary-light px-2 py-1 rounded text-sm"
+                        className="rounded-full border border-border px-3 py-1"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-              )}
+              ) : null}
             </div>
           </div>
 
-          <div className="flex gap-4 justify-center pt-4">
+          <div className="flex flex-wrap gap-4 justify-center pt-4">
             <button onClick={resetForm} className="btn-secondary">
-              Subir Otra Imagen
+              Subir otra imagen
             </button>
             <a href="/gallery" className="btn-primary">
-              Ver Galería Completa
+              Ver galería
+              <ArrowUpRight size={16} />
             </a>
           </div>
         </div>
       ) : (
         // Upload Form
-        <div className="card space-y-6">
+        <div className="glass-panel space-y-6">
           {/* File Input */}
           <div>
             <label className="label">Selecciona una Imagen</label>
-            <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-accent transition-colors">
+            <div className="rounded-3xl border-2 border-dashed border-border bg-white/70 p-10 text-center transition-colors hover:border-primary">
               {preview ? (
                 <div className="space-y-4">
                   <img 
@@ -166,18 +184,18 @@ export default function UploadPage() {
                       setFile(null);
                       setPreview(null);
                     }}
-                    className="text-sm text-accent hover:text-accent-dark"
+                    className="text-xs font-semibold uppercase tracking-[0.4em] text-primary hover:text-primary-light"
                   >
                     Cambiar imagen
                   </button>
                 </div>
               ) : (
                 <div>
-                  <Upload className="mx-auto text-accent mb-4" size={48} />
-                  <p className="text-primary-light mb-2">
+                  <Upload className="mx-auto mb-4 text-primary" size={40} />
+                  <p className="text-primary mb-2 font-semibold">
                     Haz clic para seleccionar una imagen
                   </p>
-                  <p className="text-sm text-primary-light">
+                  <p className="text-xs uppercase tracking-[0.3em] text-primary-light">
                     JPG, PNG, GIF o WEBP (máx. 10MB)
                   </p>
                 </div>
@@ -191,12 +209,14 @@ export default function UploadPage() {
                 disabled={loading}
               />
               {!preview && (
-                <label
-                  htmlFor="file-upload"
-                  className="btn-primary inline-block mt-4 cursor-pointer"
-                >
-                  Seleccionar Archivo
-                </label>
+                <div className="flex justify-center">
+                  <label
+                    htmlFor="file-upload"
+                    className="btn-primary mt-6 cursor-pointer"
+                  >
+                    Seleccionar Archivo
+                  </label>
+                </div>
               )}
             </div>
           </div>
@@ -217,12 +237,11 @@ export default function UploadPage() {
           )}
 
           {status === 'error' && error && (
-            <div className="flex items-center gap-3 text-red-600 bg-red-50 p-4 rounded-lg">
-              <AlertCircle size={24} />
-              <div>
-                <p className="font-medium">Error al procesar imagen</p>
-                <p className="text-sm">{error}</p>
+            <div className="rounded-2xl border border-red-100 bg-red-50/80 p-4 text-left text-sm text-red-600">
+              <div className="flex items-center gap-2 font-semibold">
+                <AlertCircle size={18} /> Error al procesar imagen
               </div>
+              <p className="mt-2">{error}</p>
             </div>
           )}
 
@@ -231,30 +250,30 @@ export default function UploadPage() {
             <button
               onClick={handleUpload}
               disabled={loading}
-              className="btn-primary w-full flex items-center justify-center gap-2"
+              className="btn-primary w-full justify-center"
             >
               {loading ? (
                 <>
-                  <Loader2 className="animate-spin" size={20} />
-                  Procesando...
+                  <Loader2 className="animate-spin" size={18} />
+                  Procesando
                 </>
               ) : (
                 <>
-                  <Upload size={20} />
-                  Subir y Analizar
+                  <Sparkles size={18} />
+                  Analizar con IA
                 </>
               )}
             </button>
           )}
 
           {/* Info */}
-          <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 text-sm text-primary-light">
-            <p className="font-medium text-primary mb-2">¿Qué sucederá?</p>
-            <ol className="list-decimal list-inside space-y-1">
-              <li>La imagen se almacenará de forma segura en Supabase</li>
-              <li>La IA analizará el contenido simbólico y emocional</li>
-              <li>Recibirás un título, categoría y descripción filosófica</li>
-              <li>Podrás editar cualquier detalle después</li>
+          <div className="rounded-3xl border border-border bg-white/70 p-6 text-sm text-primary-light">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary-light">Cadena de precisión</p>
+            <ol className="mt-3 space-y-2 text-sm">
+              <li>1 · Subimos tu imagen a almacenamiento seguro.</li>
+              <li>2 · La IA visionaria evalúa símbolos, texturas y energía.</li>
+              <li>3 · Clasificamos en fase, sub-etapa y mapa oficiales.</li>
+              <li>4 · Guardamos el insight editable para tu galería.</li>
             </ol>
           </div>
         </div>
@@ -262,4 +281,3 @@ export default function UploadPage() {
     </div>
   );
 }
-

@@ -10,25 +10,28 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#2C3338',
-          light: '#4A5259',
-          dark: '#1A1F23',
+          DEFAULT: '#0F1419',
+          light: '#5B6168',
+          dark: '#050709',
         },
         accent: {
-          DEFAULT: '#9B8578',
-          light: '#B9A199',
-          dark: '#7D6B5F',
+          DEFAULT: '#111827',
+          light: '#374151',
+          dark: '#030712',
+        },
+        highlight: {
+          DEFAULT: '#C5FF40',
         },
         background: {
-          DEFAULT: '#F8F6F4',
+          DEFAULT: '#F5F5F4',
           secondary: '#FFFFFF',
         },
         border: {
-          DEFAULT: '#E5E1DD',
+          DEFAULT: '#E4E4E7',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Space Grotesk', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },
@@ -36,4 +39,3 @@ const config: Config = {
 };
 
 export default config;
-
