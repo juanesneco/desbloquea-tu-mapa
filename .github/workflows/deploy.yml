@@ -36,6 +36,19 @@ jobs:
 
       - name: Build website
         run: npm run build
+        working-directory: .
+
+      - name: Create .nojekyll file
+        run: touch website/.nojekyll
+
+      - name: Verify CNAME file exists
+        run: |
+          if [ -f website/CNAME ]; then
+            echo "CNAME file found:"
+            cat website/CNAME
+          else
+            echo "Warning: CNAME file not found in website folder"
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
