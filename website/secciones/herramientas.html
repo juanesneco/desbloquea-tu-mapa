@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Herramientas - Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -24,53 +27,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
             background: var(--background-alt);
             color: var(--primary);
             line-height: 1.6;
         }
 
-        nav {
-            background: var(--white);
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--navy);
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
         }
 
         .hero-section {
@@ -87,196 +51,137 @@
         }
 
         .hero-section p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             opacity: 0.95;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .content-section {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 4rem auto;
             padding: 0 2rem;
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
         .tool-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 3rem;
+            padding: 2.5rem;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             transition: all 0.3s;
-            border-top: 6px solid var(--navy);
             display: flex;
             flex-direction: column;
         }
 
         .tool-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .tool-icon {
-            font-size: 3.5rem;
-            color: var(--navy);
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            text-align: center;
+            color: var(--blue);
         }
 
         .tool-card h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--navy);
-            margin-bottom: 1rem;
-            text-align: center;
+            margin-bottom: 0.5rem;
         }
 
         .tool-status {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin: 0 auto 1.5rem;
-            text-align: center;
+            margin-bottom: 1rem;
+            width: fit-content;
         }
 
-        .status-disponible {
+        .status-available {
             background: #d4edda;
             color: #155724;
         }
 
-        .status-desarrollo {
+        .status-wip {
             background: #fff3cd;
             color: #856404;
         }
 
-        .status-proximamente {
+        .status-future {
             background: #d1ecf1;
             color: #0c5460;
         }
 
         .tool-card p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--primary-light);
             line-height: 1.8;
-            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
-        .tool-features {
-            background: var(--background);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-
-        .tool-features h4 {
-            color: var(--navy);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .tool-features ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tool-features li {
-            color: var(--primary);
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: start;
-        }
-
-        .tool-features li::before {
-            content: "✓";
-            color: var(--blue);
-            font-weight: bold;
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
-        }
-
-        .tool-button {
+        .tool-link {
             display: inline-block;
             background: var(--navy);
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
-            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
             transition: all 0.3s;
-            margin-top: auto;
-        }
-
-        .tool-button:hover {
-            background: var(--navy-light);
-            transform: translateY(-2px);
-        }
-
-        .tool-button.disabled {
-            background: var(--primary-light);
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-
-        .tool-button.disabled:hover {
-            transform: none;
-        }
-
-        .intro-box {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            margin-bottom: 4rem;
             text-align: center;
         }
 
-        .intro-box h2 {
-            font-size: 2rem;
-            color: var(--navy);
-            margin-bottom: 1rem;
+        .tool-link:hover {
+            background: var(--navy-light);
         }
 
-        .intro-box p {
-            font-size: 1.2rem;
-            color: var(--primary-light);
-            line-height: 1.8;
+        .tool-link.disabled {
+            background: var(--primary-light);
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
+        .tool-link.disabled:hover {
+            background: var(--primary-light);
+        }
+
+        /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            background: var(--navy);
             color: var(--white);
-            padding: 4rem;
+            padding: 3rem;
             border-radius: 12px;
             text-align: center;
             margin-top: 4rem;
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         .cta-section p {
             font-size: 1.2rem;
-            opacity: 0.95;
+            opacity: 0.9;
             margin-bottom: 2rem;
-            line-height: 1.8;
         }
 
         .cta-button {
             display: inline-block;
             background: var(--white);
             color: var(--navy);
-            padding: 1.2rem 3rem;
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
@@ -289,43 +194,25 @@
             box-shadow: 0 6px 20px rgba(255,255,255,0.3);
         }
 
-        footer {
-            background: var(--primary);
-            color: var(--background);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
         @media (max-width: 968px) {
             .hero-section {
                 padding: 4rem 1.5rem 3rem;
             }
-            
+
             .hero-section h1 {
                 font-size: 2.5rem;
             }
-            
+
             .content-section {
                 padding: 0 1.5rem;
             }
-            
-            .intro-box {
-                padding: 2rem 1.5rem;
-            }
-            
+
             .tools-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
-            
+
             .tool-card {
-                padding: 2.5rem 1.5rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
+                padding: 2rem 1.5rem;
             }
         }
 
@@ -333,17 +220,9 @@
             .hero-section h1 {
                 font-size: 2rem;
             }
-            
-            .tool-icon {
-                font-size: 3rem;
-            }
-            
-            .tool-card h2 {
-                font-size: 1.6rem;
-            }
-            
+
             .cta-section {
-                padding: 2.5rem 1.5rem;
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -352,196 +231,92 @@
     <div id="header-placeholder"></div>
 
     <section class="hero-section">
-        <h1>🛠️ Herramientas</h1>
+        <h1>Herramientas</h1>
         <p>Recursos prácticos para desbloquear tu mapa</p>
     </section>
 
     <section class="content-section">
 
-        <div class="intro-box">
-            <h2>Del Conocimiento a la Práctica</h2>
-            <p>
-                La filosofía es el mapa. Las herramientas son el vehículo. 
-                Aquí encontrarás recursos diseñados para llevar la teoría a la práctica diaria.
-            </p>
-        </div>
-
         <div class="tools-grid">
 
-            <!-- PROMPTS -->
+            <!-- 1. Prompts -->
             <div class="tool-card">
                 <div class="tool-icon"><i class="fas fa-comments"></i></div>
-                <h2>Prompts Guiados</h2>
-                <div class="tool-status status-disponible">✓ Disponible</div>
+                <h2>Prompts</h2>
+                <span class="tool-status status-available">Disponible</span>
                 <p>
-                    Conversaciones profundas con IA diseñadas para explorar cada uno de los 
-                    cuatro mapas. Usa estos prompts para reflexionar, cuestionar y descubrir.
+                    Un sistema de 3 prompts conectados para usar con tu herramienta de IA favorita.
+                    Conversaciones guiadas que te ayudan a ver patrones ocultos y diseñar
+                    tu propio sistema operativo mental.
                 </p>
-                
-                <div class="tool-features">
-                    <h4>Incluye:</h4>
-                    <ul>
-                        <li>Prompt para el Mapa Mental</li>
-                        <li>Prompt para el Mapa Físico</li>
-                        <li>Prompt para el Mapa Familiar</li>
-                        <li>Prompt para el Mapa Financiero</li>
-                        <li>Prompts universales de transformación</li>
-                    </ul>
-                </div>
-
-                <a href="../prompts.html" class="tool-button">Explorar Prompts</a>
+                <a href="../prompts.html" class="tool-link">Explorar Prompts</a>
             </div>
 
-            <!-- APP -->
+            <!-- 2. Newsletter -->
             <div class="tool-card">
-                <div class="tool-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h2>App DTM</h2>
-                <div class="tool-status status-desarrollo">⚡ En Desarrollo</div>
+                <div class="tool-icon"><i class="fas fa-envelope"></i></div>
+                <h2>Newsletter</h2>
+                <span class="tool-status status-wip">Pronto</span>
                 <p>
-                    Una aplicación web para registrar reflexiones, analizar imágenes simbólicas 
-                    y llevar un diario consciente de tu viaje de transformación.
+                    Una práctica semanal de consciencia e intención.
+                    Reflexiones, ejercicios y recursos directamente
+                    a tu correo.
                 </p>
-                
-                <div class="tool-features">
-                    <h4>Características:</h4>
-                    <ul>
-                        <li>Diario de reflexiones por mapa</li>
-                        <li>Análisis de imágenes con IA</li>
-                        <li>Seguimiento de patrones</li>
-                        <li>Visualización de progreso</li>
-                        <li>Archivo personal de aprendizajes</li>
-                    </ul>
-                </div>
-
-                <a href="../prompts.html" class="tool-button">Ver Demo</a>
+                <a href="comienza.html" class="tool-link">Suscribirse</a>
             </div>
 
-            <!-- CARTAS -->
+            <!-- 3. Instrumentos Físicos -->
             <div class="tool-card">
-                <div class="tool-icon"><i class="fas fa-layer-group"></i></div>
-                <h2>Cartas DTM</h2>
-                <div class="tool-status status-proximamente">🔮 Próximamente</div>
+                <div class="tool-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h2>Instrumentos Físicos</h2>
+                <span class="tool-status status-future">Futuro</span>
                 <p>
-                    Un juego de cartas físico/digital para exploración introspectiva. 
-                    Úsalo solo o en grupo para conversaciones profundas.
+                    Herramientas tangibles para explorar tu mapa.
+                    Objetos diseñados para facilitar la reflexión
+                    y el trabajo de consciencia.
                 </p>
-                
-                <div class="tool-features">
-                    <h4>Incluirá:</h4>
-                    <ul>
-                        <li>Cartas de preguntas por categoría</li>
-                        <li>Cartas de prácticas y ejercicios</li>
-                        <li>Cartas de arquetipos y símbolos</li>
-                        <li>Guía de uso individual y grupal</li>
-                        <li>Versión digital interactiva</li>
-                    </ul>
-                </div>
-
-                <span class="tool-button disabled">Próximamente</span>
+                <span class="tool-link disabled">Próximamente</span>
             </div>
 
-            <!-- NEWSLETTER -->
+            <!-- 4. App -->
             <div class="tool-card">
-                <div class="tool-icon"><i class="fas fa-envelope-open-text"></i></div>
-                <h2>Newsletter DTM</h2>
-                <div class="tool-status status-desarrollo">⚡ Pronto</div>
+                <div class="tool-icon"><i class="fas fa-mobile-screen"></i></div>
+                <h2>App</h2>
+                <span class="tool-status status-wip">En desarrollo</span>
                 <p>
-                    Reflexiones semanales, prácticas guiadas y recursos exclusivos 
-                    directamente a tu correo. Únete a la comunidad de práctica.
+                    Un espacio para guardar imágenes, reflexiones y construir
+                    tu mapa personal. Tu diario de consciencia y transformación.
                 </p>
-                
-                <div class="tool-features">
-                    <h4>Recibirás:</h4>
-                    <ul>
-                        <li>Reflexiones semanales profundas</li>
-                        <li>Prácticas específicas por mapa</li>
-                        <li>Historias de la comunidad</li>
-                        <li>Recursos y herramientas nuevas</li>
-                        <li>Avisos de talleres y eventos</li>
-                    </ul>
-                </div>
-
-                <a href="inicia.html" class="tool-button">Suscribirme</a>
-            </div>
-
-            <!-- TALLERES -->
-            <div class="tool-card">
-                <div class="tool-icon"><i class="fas fa-users"></i></div>
-                <h2>Talleres y Programas</h2>
-                <div class="tool-status status-proximamente">🔮 Próximamente</div>
-                <p>
-                    Experiencias guiadas en vivo para profundizar en los mapas. 
-                    Virtuales y presenciales, individuales y grupales.
-                </p>
-                
-                <div class="tool-features">
-                    <h4>Incluirá:</h4>
-                    <ul>
-                        <li>Talleres de fin de semana</li>
-                        <li>Programas de 8 semanas</li>
-                        <li>Sesiones 1:1 de guía</li>
-                        <li>Retiros de inmersión</li>
-                        <li>Círculos de práctica grupal</li>
-                    </ul>
-                </div>
-
-                <span class="tool-button disabled">Próximamente</span>
-            </div>
-
-            <!-- RECURSOS GRATUITOS -->
-            <div class="tool-card">
-                <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                <h2>Recursos Gratuitos</h2>
-                <div class="tool-status status-disponible">✓ Disponible</div>
-                <p>
-                    Accede a contenido gratuito para comenzar tu viaje: 
-                    guías PDF, audios de meditación, y plantillas de reflexión.
-                </p>
-                
-                <div class="tool-features">
-                    <h4>Incluye:</h4>
-                    <ul>
-                        <li>Guía "Tu Primer Mapa" (PDF)</li>
-                        <li>Plantillas de reflexión</li>
-                        <li>Ejercicios de observación</li>
-                        <li>Meditaciones guiadas</li>
-                        <li>Artículos y ensayos</li>
-                    </ul>
-                </div>
-
-                <a href="inicia.html" class="tool-button">Acceder Gratis</a>
+                <span class="tool-link disabled">Próximamente</span>
             </div>
 
         </div>
 
-        <!-- CTA FINAL -->
+        <!-- CTA Section -->
         <div class="cta-section">
-            <h2>🚀 Comienza Tu Viaje Ahora</h2>
+            <h2>Comienza Tu Viaje</h2>
             <p>
-                Todas las herramientas están diseñadas para una cosa: 
-                ayudarte a ver tu mapa real y elegir conscientemente cómo vivir.
+                Las herramientas son el vehículo. La intención es el motor.
             </p>
-            <p>
-                <strong>No necesitas esperar. Puedes empezar hoy.</strong>
-            </p>
-            <a href="inicia.html" class="cta-button">Empieza Aquí</a>
+            <a href="comienza.html" class="cta-button">Empieza Ahora</a>
         </div>
 
     </section>
 
     <div id="footer-placeholder"></div>
-    
-    <script>
-    </script>
+
+    <script src="../components/mobile-menu-init.js"></script>
     <script>
         fetch('../components/header.html')
             .then(response => response.text())
-            .then(data => document.getElementById('header-placeholder').innerHTML = data);
-        
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
+
         fetch('../components/footer.html')
             .then(response => response.text())
             .then(data => document.getElementById('footer-placeholder').innerHTML = data);
     </script>
 </body>
 </html>
-

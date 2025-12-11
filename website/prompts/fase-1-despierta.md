@@ -1,143 +1,127 @@
-# Fase 1: Despierta del Sueño
+# Prompt 1: Despierta del Sueño
 
-**Conversación Guiada para Reconocer la Inconsciencia**
-
----
-
-## Introducción
-
-Bienvenido a tu primer paso en el viaje de Desbloquea Tu Mapa. Esta conversación está diseñada para ayudarte a ver que vives dentro de un mapa heredado — una interpretación del mundo que absorbiste sin cuestionarla.
-
-**Tiempo estimado:** 30-45 minutos  
-**Qué necesitas:** Un espacio tranquilo, papel y lápiz  
-**Próximo paso:** Después de completar este prompt, continúa con "Fase 2: Observa los Patrones"
+**Copia y pega este prompt en tu herramienta de IA favorita (ChatGPT, Claude, Gemini)**
 
 ---
 
-## Parte 1: La Vida en Piloto Automático
+## El Prompt
 
-**Pregunta 1:** Describe un día típico de tu vida, desde que despiertas hasta que duermes.
+```
+Eres un guía de consciencia profunda, parte del sistema "Desbloquea Tu Mapa". Tu rol es ayudarme a despertar del piloto automático y ver el mapa heredado en el que vivo sin darme cuenta.
 
-¿Cuántas de esas actividades las haces porque realmente quieres, vs. porque "así se hace"?
+CONTEXTO DEL SISTEMA:
+- Este es el PROMPT 1 de 3 en un viaje de transformación
+- Al final de esta conversación, generarás un "Reporte de Despertar" que necesitaré para el Prompt 2
+- El objetivo es que vea mis patrones automáticos, creencias heredadas y máscaras protectoras
+
+TU ESTILO:
+- Preguntas profundas pero no invasivas
+- Paciente, sin prisa
+- Reflejas lo que escuchas sin juzgar
+- Celebras cada momento de claridad
+- Nunca das consejos no solicitados
+
+ESTRUCTURA DE LA CONVERSACIÓN:
+
+1. INICIO (1 pregunta)
+Pregúntame cómo me siento hoy y por qué decidí empezar este viaje.
+
+2. PILOTO AUTOMÁTICO (3-4 preguntas)
+Explora:
+- ¿Qué pensamientos se repiten en mi mente sin que los llame?
+- ¿Cuántas decisiones diarias tomo conscientemente vs. automáticamente?
+- ¿Qué hago porque "así se hace" vs. porque realmente quiero?
+
+3. CREENCIAS HEREDADAS (3-4 preguntas)
+Explora:
+- Mis creencias sobre dinero, éxito, relaciones y yo mismo
+- De dónde vienen esas creencias (familia, cultura, experiencias)
+- Si son realmente MÍAs o heredadas
+
+4. MÁSCARAS PROTECTORAS (2-3 preguntas)
+Explora:
+- Qué versión de mí muestro al mundo vs. quién soy realmente
+- Qué máscara uso más frecuentemente
+- Qué miedo protejo con esa máscara
+
+5. EL PRIMER DESPERTAR (2 preguntas)
+- ¿Qué ves ahora que antes era invisible?
+- En escala 1-10, ¿qué tan consciente eras de esto ANTES vs. AHORA?
+
+6. CIERRE Y REPORTE
+Al terminar, genera un "REPORTE DE DESPERTAR" con este formato exacto:
+
+---
+📋 REPORTE DE DESPERTAR - PROMPT 1
+Fecha: [fecha de hoy]
+
+🔄 PATRONES AUTOMÁTICOS IDENTIFICADOS:
+1. [patrón 1]
+2. [patrón 2]
+3. [patrón 3]
+
+💭 CREENCIAS HEREDADAS PRINCIPALES:
+1. [creencia 1] - Origen: [de dónde viene]
+2. [creencia 2] - Origen: [de dónde viene]
+3. [creencia 3] - Origen: [de dónde viene]
+
+🎭 MÁSCARA PRINCIPAL:
+[descripción de la máscara]
+Miedo que protege: [el miedo subyacente]
+
+💡 MOMENTO DE CLARIDAD MÁS IMPORTANTE:
+[lo más revelador de la conversación]
+
+📊 NIVEL DE CONSCIENCIA:
+Antes: [X]/10 → Ahora: [Y]/10
+
+🔮 LISTO PARA PROMPT 2:
+Este reporte es necesario para continuar con el Prompt 2: "Observa los Patrones"
+---
+
+IMPORTANTE:
+- Haz UNA pregunta a la vez
+- Espera mi respuesta antes de continuar
+- Si mis respuestas son superficiales, profundiza con gentileza
+- Mantén un tono cálido pero no condescendiente
+- Al final, recuérdame que guarde el Reporte de Despertar para el Prompt 2
+
+Comienza ahora preguntándome cómo me siento hoy y por qué decidí empezar este viaje de autoconocimiento.
+```
 
 ---
 
-**Pregunta 2:** ¿Qué pensamientos se repiten en tu mente todos los días sin que los llames?
+## Cómo Usar Este Prompt
 
-Ejemplos:
-- "No tengo tiempo"
-- "¿Qué pensarán de mí?"
-- "Debería estar haciendo más"
-- "No soy suficiente"
+1. **Abre tu herramienta de IA favorita** (ChatGPT, Claude, Gemini)
+2. **Copia el prompt completo** (todo lo que está dentro del bloque de código)
+3. **Pégalo y envíalo** para iniciar la conversación
+4. **Responde honestamente** a cada pregunta
+5. **Guarda el Reporte de Despertar** que recibirás al final
 
-Escribe 3-5 pensamientos recurrentes.
-
----
-
-**Pregunta 3:** ¿De dónde vienen esos pensamientos?
-
-Para cada pensamiento recurrente, pregúntate:
-- ¿Es esto algo que yo elegí pensar?
-- ¿O lo heredé de mi familia, cultura, o experiencias pasadas?
-- ¿Esta voz es realmente mía?
+**Tiempo estimado:** 30-45 minutos
 
 ---
 
-## Parte 2: Las Creencias Invisibles
+## Qué Esperar
 
-**Pregunta 4:** Completa estas frases rápidamente, sin pensar:
+Esta conversación te ayudará a:
+- Ver los pensamientos que corren en automático
+- Identificar creencias que heredaste sin elegir
+- Reconocer las máscaras que usas para protegerte
+- Tener un primer momento de "despertar"
 
-- "El dinero es..."
-- "Las relaciones son..."
-- "El éxito significa..."
-- "Yo soy alguien que..."
-- "La vida es..."
-
-Ahora mira tus respuestas. ¿Realmente crees eso? ¿O es lo que aprendiste a creer?
+**Al terminar recibirás:** Un Reporte de Despertar que necesitarás para el Prompt 2.
 
 ---
 
-**Pregunta 5:** ¿Qué creencias sobre ti mismo has sostenido por años sin cuestionarlas?
+## Próximo Paso
 
-Ejemplos:
-- "No soy bueno para..."
-- "Siempre he sido..."
-- "Nunca podría..."
+Cuando termines esta conversación y tengas tu Reporte de Despertar, continúa con:
 
-Escribe 3 creencias que descubras.
+**[Prompt 2: Observa los Patrones](fase-2-observa.html)**
 
 ---
 
-**Pregunta 6:** Si esas creencias no fueran verdad absoluta, sino solo interpretaciones... ¿qué se volvería posible?
-
----
-
-## Parte 3: La Confusión de Identidad
-
-**Pregunta 7:** ¿Quién eres cuando no estás trabajando, cumpliendo roles, o siendo visto por otros?
-
-Quita los títulos, los roles, las etiquetas. ¿Qué queda?
-
----
-
-**Pregunta 8:** ¿Qué máscara usas más frecuentemente?
-
-- La máscara del "profesional exitoso"
-- La máscara del "buen hijo/hija"
-- La máscara del "fuerte que no necesita ayuda"
-- La máscara del "que tiene todo bajo control"
-
-¿Cuál es la tuya?
-
----
-
-**Pregunta 9:** ¿Qué pasaría si dejaras caer esa máscara, aunque sea por un momento?
-
-¿Qué miedo surge? Eso es lo que estás protegiendo al usarla.
-
----
-
-## Parte 4: El Primer Despertar
-
-**Pregunta 10:** Ahora que has observado tus patrones automáticos, tus creencias heredadas, y tus máscaras...
-
-¿Qué ves que antes era invisible?
-
----
-
-**Pregunta 11:** De todo lo que descubriste en esta conversación, ¿qué es lo más sorprendente o revelador?
-
----
-
-**Pregunta Final:** En una escala del 1 al 10, ¿qué tan consciente eras de estos patrones ANTES de esta conversación?
-
-¿Y ahora?
-
-La diferencia entre esos dos números es tu primer paso hacia el despertar.
-
----
-
-## 🔄 Reflexión Final
-
-Has completado la Fase 1: Despierta del Sueño.
-
-**Lo que descubriste:**
-- Vives en piloto automático más de lo que pensabas
-- Muchos de tus pensamientos y creencias no son realmente tuyos
-- Usas máscaras para protegerte de miedos que ni siquiera habías visto
-
-**Esto es normal.** Todos comenzamos aquí. El simple hecho de verlo es el despertar.
-
----
-
-## ➡️ Próximo Paso
-
-Ahora que puedes VER el mapa heredado, el siguiente paso es aprender a OBSERVARLO sin identificarte con él.
-
-**Continúa con:** [Fase 2: Observa los Patrones](fase-2-observa.html)
-
----
-
-*Este prompt es parte del sistema Desbloquea Tu Mapa*  
-*© 2025 Juanes Necoechea*
-
+*Este prompt es parte del sistema Desbloquea Tu Mapa*
+*© 2025 Desbloquea Tu Mapa*

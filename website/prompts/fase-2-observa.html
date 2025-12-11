@@ -3,37 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fase 1: Despierta del Sueño | DTM</title>
+    <title>Prompt 2: Observa los Patrones | Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #3F4447;
             --primary-light: #6B7174;
             --navy: #1B2838;
+            --navy-light: #2C3E50;
             --blue: #4A90A4;
             --background: #E8E6E3;
+            --background-alt: #F5F3F0;
             --white: #FFFFFF;
+            --success: #22C55E;
+            --warning: #F59E0B;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--background);
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+            background: var(--background-alt);
             color: var(--primary);
             line-height: 1.7;
         }
 
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
+        }
+
         .prompt-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             color: var(--white);
-            padding: 4rem 2rem 3rem;
+            padding: 5rem 2rem 4rem;
             text-align: center;
         }
 
         .phase-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: var(--blue);
             padding: 0.5rem 1.5rem;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -59,7 +70,7 @@
         .prompt-meta-info {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 2rem;
             flex-wrap: wrap;
         }
@@ -68,89 +79,231 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .meta-item.required {
+            background: rgba(245, 158, 11, 0.3);
         }
 
         .content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
 
-        .section {
-            background: var(--white);
-            padding: 3rem;
+        .requirement-warning {
+            background: linear-gradient(135deg, var(--warning) 0%, #D97706 100%);
+            color: var(--white);
+            padding: 2rem;
             border-radius: 12px;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .section h2 {
-            font-size: 2rem;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-            border-left: 6px solid var(--navy);
-            padding-left: 1.5rem;
+        .requirement-warning i {
+            font-size: 2.5rem;
         }
 
-        .section h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin: 2rem 0 1rem;
-        }
-
-        .section p {
-            font-size: 1.1rem;
-            color: var(--primary-light);
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .question-box {
-            background: var(--background);
-            border-left: 4px solid var(--blue);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-        }
-
-        .question-box strong {
-            display: block;
+        .requirement-warning h3 {
             font-size: 1.2rem;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .examples {
-            background: rgba(74, 144, 164, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-
-        .examples strong {
-            color: var(--navy);
-            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .reflection {
+        .requirement-warning p {
+            opacity: 0.95;
+        }
+
+        .requirement-warning a {
+            color: var(--white);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .instructions-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .instructions-card h2 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .instructions-card h2 i {
+            color: var(--blue);
+        }
+
+        .instruction-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .instruction-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
             background: var(--navy);
             color: var(--white);
-            padding: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            flex: 1;
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+
+        .prompt-container {
+            background: var(--white);
             border-radius: 12px;
-            margin: 3rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            overflow: hidden;
         }
 
-        .reflection h2 {
+        .prompt-header-bar {
+            background: var(--navy);
             color: var(--white);
-            border-left-color: var(--white);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prompt-header-bar h3 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .copy-button {
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .copy-button:hover {
+            background: #3d7a8c;
+            transform: translateY(-1px);
+        }
+
+        .copy-button.copied {
+            background: var(--success);
+        }
+
+        .prompt-content {
+            padding: 2rem;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .results-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .results-card h2 {
+            font-size: 1.5rem;
+            color: var(--navy);
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .reflection p {
+        .results-card h2 i {
+            color: var(--blue);
+        }
+
+        .result-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .result-item {
+            background: var(--background);
+            padding: 1.25rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .result-item i {
+            color: var(--blue);
+            font-size: 1.2rem;
+        }
+
+        .output-card {
+            background: var(--navy);
             color: var(--white);
-            opacity: 0.95;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .output-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .output-card p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .output-badge {
+            display: inline-block;
+            background: var(--blue);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1rem;
         }
 
         .next-step {
@@ -159,28 +312,25 @@
             padding: 3rem;
             border-radius: 12px;
             text-align: center;
-            margin-top: 3rem;
         }
 
         .next-step h2 {
             color: var(--white);
-            border: none;
-            padding: 0;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
         }
 
         .next-step p {
-            color: var(--white);
             opacity: 0.95;
             margin-bottom: 2rem;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
         }
 
         .next-button {
             display: inline-block;
             background: var(--white);
             color: var(--navy);
-            padding: 1.2rem 3rem;
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
@@ -190,24 +340,50 @@
 
         .next-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
+            .prompt-header {
+                padding: 4rem 1.5rem 3rem;
+            }
+
             .prompt-header h1 {
                 font-size: 2.2rem;
             }
-            
+
             .content {
                 padding: 2rem 1.5rem;
             }
-            
-            .section {
-                padding: 2rem 1.5rem;
+
+            .instructions-card,
+            .results-card,
+            .prompt-container {
+                padding: 1.5rem;
             }
-            
-            .prompt-meta-info {
-                gap: 1.5rem;
+
+            .prompt-header-bar {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .prompt-content {
+                font-size: 0.8rem;
+                max-height: 400px;
+            }
+
+            .requirement-warning {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -216,211 +392,262 @@
     <div id="header-placeholder"></div>
 
     <div class="prompt-header">
-        <div class="phase-badge">😴 Fase 1</div>
-        <h1>Despierta del Sueño</h1>
-        <p>Reconoce la Inconsciencia</p>
+        <div class="phase-badge">Prompt 2 de 3</div>
+        <h1>Observa los Patrones</h1>
+        <p>Desarrolla tu observador interno y reconoce los patrones que gobiernan tu vida</p>
         <div class="prompt-meta-info">
             <div class="meta-item">
-                <i class="fas fa-clock"></i> 30-45 minutos
+                <i class="fas fa-clock"></i> 45-60 minutos
+            </div>
+            <div class="meta-item required">
+                <i class="fas fa-lock"></i> Requiere Prompt 1
             </div>
             <div class="meta-item">
-                <i class="fas fa-brain"></i> Introspección
+                <i class="fas fa-file-alt"></i> Genera: Reporte de Observacion
             </div>
         </div>
     </div>
 
     <div class="content">
-        
-        <div class="section">
-            <h2>Introducción</h2>
-            <p>
-                Bienvenido a tu primer paso en el viaje de Desbloquea Tu Mapa. Esta conversación está diseñada para ayudarte a ver que vives dentro de un mapa heredado — una interpretación del mundo que absorbiste sin cuestionarla.
-            </p>
-            <p>
-                <strong>Prepara:</strong> Un espacio tranquilo, papel y lápiz para escribir tus reflexiones.
-            </p>
-        </div>
 
-        <div class="section">
-            <h2>Parte 1: La Vida en Piloto Automático</h2>
-            
-            <div class="question-box">
-                <strong>Pregunta 1:</strong>
-                Describe un día típico de tu vida, desde que despiertas hasta que duermes.
-                <br><br>
-                ¿Cuántas de esas actividades las haces porque realmente quieres, vs. porque "así se hace"?
-            </div>
-
-            <div class="question-box">
-                <strong>Pregunta 2:</strong>
-                ¿Qué pensamientos se repiten en tu mente todos los días sin que los llames?
-            </div>
-
-            <div class="examples">
-                <strong>Ejemplos comunes:</strong>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                    <li>"No tengo tiempo"</li>
-                    <li>"¿Qué pensarán de mí?"</li>
-                    <li>"Debería estar haciendo más"</li>
-                    <li>"No soy suficiente"</li>
-                </ul>
-            </div>
-
-            <p>Escribe 3-5 pensamientos recurrentes que identifiques.</p>
-
-            <div class="question-box">
-                <strong>Pregunta 3:</strong>
-                ¿De dónde vienen esos pensamientos?
-                <br><br>
-                Para cada pensamiento recurrente, pregúntate:<br>
-                • ¿Es esto algo que yo elegí pensar?<br>
-                • ¿O lo heredé de mi familia, cultura, o experiencias pasadas?<br>
-                • ¿Esta voz es realmente mía?
+        <div class="requirement-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <h3>Requisito Previo</h3>
+                <p>Este prompt requiere que tengas tu <strong>Reporte de Despertar</strong> del Prompt 1. Si no lo has completado, <a href="fase-1-despierta.html">comienza por el Prompt 1</a> primero.</p>
             </div>
         </div>
 
-        <div class="section">
-            <h2>Parte 2: Las Creencias Invisibles</h2>
-            
-            <div class="question-box">
-                <strong>Pregunta 4:</strong>
-                Completa estas frases rápidamente, sin pensar:
-                <br><br>
-                • "El dinero es..."<br>
-                • "Las relaciones son..."<br>
-                • "El éxito significa..."<br>
-                • "Yo soy alguien que..."<br>
-                • "La vida es..."
-                <br><br>
-                Ahora mira tus respuestas. ¿Realmente crees eso? ¿O es lo que aprendiste a creer?
-            </div>
-
-            <div class="question-box">
-                <strong>Pregunta 5:</strong>
-                ¿Qué creencias sobre ti mismo has sostenido por años sin cuestionarlas?
-            </div>
-
-            <div class="examples">
-                <strong>Ejemplos:</strong>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                    <li>"No soy bueno para..."</li>
-                    <li>"Siempre he sido..."</li>
-                    <li>"Nunca podría..."</li>
-                </ul>
-            </div>
-
-            <p>Escribe 3 creencias que descubras.</p>
-
-            <div class="question-box">
-                <strong>Pregunta 6:</strong>
-                Si esas creencias no fueran verdad absoluta, sino solo interpretaciones... ¿qué se volvería posible?
+        <div class="instructions-card">
+            <h2><i class="fas fa-info-circle"></i> Como Usar Este Prompt</h2>
+            <div class="instruction-steps">
+                <div class="instruction-step">
+                    <div class="step-num">1</div>
+                    <div class="step-text"><strong>Ten listo tu Reporte de Despertar</strong> del Prompt 1</div>
+                </div>
+                <div class="instruction-step">
+                    <div class="step-num">2</div>
+                    <div class="step-text"><strong>Abre un NUEVO chat</strong> en ChatGPT, Claude, Gemini, o tu IA favorita</div>
+                </div>
+                <div class="instruction-step">
+                    <div class="step-num">3</div>
+                    <div class="step-text"><strong>Copia y pega el prompt</strong> usando el boton de abajo</div>
+                </div>
+                <div class="instruction-step">
+                    <div class="step-num">4</div>
+                    <div class="step-text"><strong>Cuando te lo pida, pega tu Reporte de Despertar</strong></div>
+                </div>
+                <div class="instruction-step">
+                    <div class="step-num">5</div>
+                    <div class="step-text"><strong>Guarda el Reporte de Observacion</strong> que recibiras al final</div>
+                </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2>Parte 3: La Confusión de Identidad</h2>
-            
-            <div class="question-box">
-                <strong>Pregunta 7:</strong>
-                ¿Quién eres cuando no estás trabajando, cumpliendo roles, o siendo visto por otros?
-                <br><br>
-                Quita los títulos, los roles, las etiquetas. ¿Qué queda?
+        <div class="prompt-container">
+            <div class="prompt-header-bar">
+                <h3><i class="fas fa-code"></i> El Prompt</h3>
+                <button class="copy-button" onclick="copyPrompt()">
+                    <i class="fas fa-copy"></i> Copiar Prompt
+                </button>
             </div>
+            <div class="prompt-content" id="prompt-text">Eres un guia de consciencia profunda, parte del sistema "Desbloquea Tu Mapa". Tu rol es ayudarme a desarrollar al observador interno y reconocer los patrones que gobiernan mi vida.
 
-            <div class="question-box">
-                <strong>Pregunta 8:</strong>
-                ¿Qué máscara usas más frecuentemente?
-            </div>
+CONTEXTO DEL SISTEMA:
+- Este es el PROMPT 2 de 3 en un viaje de transformacion
+- REQUIERO que el usuario haya completado el Prompt 1 y tenga su "Reporte de Despertar"
+- Al final de esta conversacion, generaras un "Reporte de Observacion" que necesitara para el Prompt 3
+- El objetivo es desarrollar la capacidad de observar sin identificarse con los patrones
 
-            <div class="examples">
-                <strong>Máscaras comunes:</strong>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                    <li>La máscara del "profesional exitoso"</li>
-                    <li>La máscara del "buen hijo/hija"</li>
-                    <li>La máscara del "fuerte que no necesita ayuda"</li>
-                    <li>La máscara del "que tiene todo bajo control"</li>
-                </ul>
-            </div>
+TU ESTILO:
+- Preguntas que invitan a la observacion, no al juicio
+- Paciente y profundo
+- Reflejas patrones sin criticar
+- Celebras cada momento de claridad
+- Ayudas a ver conexiones entre patrones
 
-            <p>¿Cuál es la tuya?</p>
+INICIO OBLIGATORIO:
+Primero, pideme que pegue mi "Reporte de Despertar" del Prompt 1.
+Si no lo tengo, explica amablemente que necesito completar el Prompt 1 primero y termina la conversacion ahi.
+Si lo tengo, leelo cuidadosamente y usalo como base para profundizar.
 
-            <div class="question-box">
-                <strong>Pregunta 9:</strong>
-                ¿Qué pasaría si dejaras caer esa máscara, aunque sea por un momento?
-                <br><br>
-                ¿Qué miedo surge? Eso es lo que estás protegiendo al usarla.
+ESTRUCTURA DE LA CONVERSACION (despues de recibir el Reporte):
+
+1. CONEXION CON EL PROMPT 1 (2 preguntas)
+- Basandote en el reporte, pregunta como se sintio despues de esa conversacion
+- Que ha notado diferente en los dias desde entonces
+
+2. EL OBSERVADOR INTERNO (3-4 preguntas)
+Explora:
+- Puede observar sus pensamientos sin engancharse?
+- Quien es el que observa los pensamientos?
+- Guia un mini ejercicio de 30 segundos de observacion
+
+3. PATRONES RECURRENTES (4-5 preguntas)
+Explora profundamente:
+- Situaciones que se repiten en su vida
+- Su rol en crear esos patrones
+- Que creencia o miedo alimenta cada patron
+- Que beneficio oculto obtiene de mantenerlos
+
+4. ESPEJOS RELACIONALES (3-4 preguntas)
+Explora:
+- Personas que le irritan y que rasgos reflejan
+- Criticas que recibe repetidamente de diferentes personas
+- Patrones en sus relaciones (atraccion, conflicto, distancia)
+
+5. PATRONES HEREDADOS (2-3 preguntas)
+Conecta con el Prompt 1:
+- Que patrones de su familia esta repitiendo
+- Como manejaban sus padres conflictos, dinero, emociones
+- Que absorbio sin elegirlo
+
+6. EL ESPACIO ENTRE ESTIMULO Y RESPUESTA (2-3 preguntas)
+- Identifica un trigger especifico y su reaccion automatica
+- Puede ver el espacio entre el trigger y la reaccion?
+- Que elegiria si respondiera desde la intencion?
+
+7. INTEGRACION CUERPO-MENTE (2 preguntas)
+- Donde siente las emociones en su cuerpo?
+- Que senales corporales ignora constantemente?
+
+8. CIERRE Y REPORTE
+Al terminar, genera un "REPORTE DE OBSERVACION" con este formato exacto:
+
+---
+REPORTE DE OBSERVACION - PROMPT 2
+Fecha: [fecha de hoy]
+Basado en: Reporte de Despertar de [fecha del Prompt 1]
+
+CAPACIDAD DE OBSERVACION:
+[descripcion de su capacidad actual de observar sin identificarse]
+
+PATRONES RECURRENTES PRINCIPALES:
+1. [patron 1]
+   - Trigger: [que lo activa]
+   - Reaccion automatica: [que hace/piensa]
+   - Creencia que lo alimenta: [la creencia subyacente]
+   - Beneficio oculto: [que gana manteniendolo]
+
+2. [patron 2]
+   - Trigger: [que lo activa]
+   - Reaccion automatica: [que hace/piensa]
+   - Creencia que lo alimenta: [la creencia subyacente]
+   - Beneficio oculto: [que gana manteniendolo]
+
+3. [patron 3]
+   - Trigger: [que lo activa]
+   - Reaccion automatica: [que hace/piensa]
+   - Creencia que lo alimenta: [la creencia subyacente]
+   - Beneficio oculto: [que gana manteniendolo]
+
+ESPEJOS RELACIONALES:
+[principales reflejos identificados en sus relaciones]
+
+PATRONES HEREDADOS:
+[conexion con patrones familiares]
+
+EL PATRON MAS URGENTE A TRABAJAR:
+[el patron que mas impacto negativo tiene ahora]
+- Por que es urgente: [razon]
+- El espacio identificado: [entre trigger y respuesta]
+
+CONEXION CUERPO-MENTE:
+[donde siente emociones, que senales ignora]
+
+PROGRESO DEL OBSERVADOR:
+Capacidad de observar sin identificarse: [X]/10
+
+LISTO PARA PROMPT 3:
+Este reporte es necesario para el Prompt 3: "Crea Tu Nuevo Sistema Operativo"
+El Prompt 3 usara esta informacion para disenar un nuevo sistema operativo mental personalizado.
+---
+
+IMPORTANTE:
+- Haz UNA pregunta a la vez
+- Espera mi respuesta antes de continuar
+- Usa informacion del Reporte de Despertar para hacer conexiones
+- Si las respuestas son superficiales, profundiza con gentileza
+- Al final, recuerdame que guarde el Reporte de Observacion para el Prompt 3
+
+Comienza ahora pidiendome que pegue mi Reporte de Despertar del Prompt 1.</div>
+        </div>
+
+        <div class="results-card">
+            <h2><i class="fas fa-gift"></i> Que Obtendras</h2>
+            <div class="result-items">
+                <div class="result-item">
+                    <i class="fas fa-eye"></i>
+                    <span>Desarrollar tu observador interno</span>
+                </div>
+                <div class="result-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Identificar patrones recurrentes</span>
+                </div>
+                <div class="result-item">
+                    <i class="fas fa-users"></i>
+                    <span>Ver espejos relacionales</span>
+                </div>
+                <div class="result-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Encontrar el espacio entre estimulo y respuesta</span>
+                </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2>Parte 4: El Primer Despertar</h2>
-            
-            <div class="question-box">
-                <strong>Pregunta 10:</strong>
-                Ahora que has observado tus patrones automáticos, tus creencias heredadas, y tus máscaras...
-                <br><br>
-                ¿Qué ves que antes era invisible?
+        <div class="output-card">
+            <h3><i class="fas fa-file-alt"></i> Al Terminar Recibiras</h3>
+            <p>Un documento detallado de todos tus patrones identificados</p>
+            <div class="output-badge">
+                <i class="fas fa-download"></i> Reporte de Observacion
             </div>
-
-            <div class="question-box">
-                <strong>Pregunta 11:</strong>
-                De todo lo que descubriste en esta conversación, ¿qué es lo más sorprendente o revelador?
-            </div>
-
-            <div class="question-box">
-                <strong>Pregunta Final:</strong>
-                En una escala del 1 al 10, ¿qué tan consciente eras de estos patrones ANTES de esta conversación?
-                <br><br>
-                ¿Y ahora?
-                <br><br>
-                La diferencia entre esos dos números es tu primer paso hacia el despertar.
-            </div>
-        </div>
-
-        <div class="reflection">
-            <h2>🔄 Reflexión Final</h2>
-            <p style="margin-bottom: 1rem;">
-                Has completado la <strong>Fase 1: Despierta del Sueño</strong>.
-            </p>
-            <p style="margin-bottom: 1rem;">
-                <strong>Lo que descubriste:</strong>
-            </p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-                <li>Vives en piloto automático más de lo que pensabas</li>
-                <li>Muchos de tus pensamientos y creencias no son realmente tuyos</li>
-                <li>Usas máscaras para protegerte de miedos que ni siquiera habías visto</li>
-            </ul>
-            <p>
-                <strong>Esto es normal.</strong> Todos comenzamos aquí. El simple hecho de verlo es el despertar.
+            <p style="margin-top: 1rem; font-size: 0.95rem;">
+                Guardalo junto con el Reporte de Despertar - los necesitaras para el Prompt 3
             </p>
         </div>
 
         <div class="next-step">
-            <h2>➡️ Próximo Paso</h2>
+            <h2><i class="fas fa-arrow-right"></i> Despues de Completar</h2>
             <p>
-                Ahora que puedes VER el mapa heredado, el siguiente paso es aprender a OBSERVARLO sin identificarte con él.
+                Cuando tengas ambos reportes (Despertar y Observacion), estaras listo para el prompt final que te dara tu Sistema Operativo Mental personalizado.
             </p>
-            <a href="fase-2-observa.html" class="next-button">
-                Continuar a Fase 2: Observa los Patrones →
+            <a href="fase-3-crea.html" class="next-button">
+                Ver Prompt 3: Crea Tu Sistema Operativo <i class="fas fa-arrow-right"></i>
             </a>
-            <p style="margin-top: 2rem; opacity: 0.8; font-size: 1rem;">
-                <a href="../prompts.html" style="color: var(--white); text-decoration: underline;">← Volver a Prompts</a>
-            </p>
+            <a href="../prompts.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Volver a todos los prompts
+            </a>
         </div>
 
     </div>
 
     <div id="footer-placeholder"></div>
 
+    <script src="../components/mobile-menu-init.js"></script>
     <script>
         fetch('../components/header.html')
             .then(response => response.text())
-            .then(data => document.getElementById('header-placeholder').innerHTML = data);
-        
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
+
         fetch('../components/footer.html')
             .then(response => response.text())
             .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+
+        function copyPrompt() {
+            const promptText = document.getElementById('prompt-text').textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const button = document.querySelector('.copy-button');
+                button.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-copy"></i> Copiar Prompt';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html>
-

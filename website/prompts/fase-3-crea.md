@@ -1,231 +1,314 @@
-# Fase 3: Crea Tu Mapa
+# Prompt 3: Crea Tu Nuevo Sistema Operativo
 
-**Conversación Guiada para Diseñar Tu Vida Conscientemente**
-
----
-
-## Introducción
-
-Bienvenido a la Fase 3 — Creación. Ya viste el mapa heredado. Ya observaste los patrones. Ahora aprenderás a presionar los botones conscientemente para crear la vida que eliges.
-
-Esta es la fase donde la transformación se vuelve tangible.
-
-**Tiempo estimado:** 60-90 minutos  
-**Qué necesitas:** Espacio tranquilo, papel, compromiso real  
-**Próximo paso:** Después de completar este prompt, tendrás tu plan de acción
+**Copia y pega este prompt en tu herramienta de IA favorita (ChatGPT, Claude, Gemini)**
 
 ---
 
-## Parte 1: Clarificar Intención
+## Antes de Comenzar
 
-**Pregunta 1:** Si pudieras diseñar tu vida ideal en cada uno de los 4 mapas, ¿cómo se vería?
+**IMPORTANTE:** Este es el prompt FINAL del viaje. REQUIERE haber completado los Prompts 1 y 2.
 
-**Mapa Mental:**  
-¿Cómo quieres que funcione tu mente? ¿Qué pensamientos quieres sostener?
+Necesitas tener:
+- Tu "Reporte de Despertar" del Prompt 1
+- Tu "Reporte de Observación" del Prompt 2
 
-**Mapa Físico:**  
-¿Cómo quieres sentirte en tu cuerpo? ¿Qué nivel de energía quieres tener?
-
-**Mapa Familiar:**  
-¿Cómo quieres que sean tus relaciones? ¿Qué tipo de conexiones quieres cultivar?
-
-**Mapa Financiero:**  
-¿Qué relación quieres tener con el dinero? ¿Qué quieres crear o contribuir?
+Si no los tienes:
+- [Prompt 1: Despierta del Sueño](fase-1-despierta.html)
+- [Prompt 2: Observa los Patrones](fase-2-observa.html)
 
 ---
 
-**Pregunta 2:** De todo lo que escribiste, ¿qué es lo MÁS importante para ti ahora?
-
-Si solo pudieras trabajar en UN mapa durante los próximos 3 meses, ¿cuál sería?
-
----
-
-**Pregunta 3:** ¿POR QUÉ ese mapa es el más importante para ti ahora?
-
-Profundiza hasta llegar a la verdad: ¿qué cambiaría en tu vida si desbloquearas ese territorio?
-
----
-
-## Parte 2: Los 6 Botones Controlables
-
-**Pregunta 4:** Para el mapa que elegiste, identifica cómo usarás cada botón:
-
-**1. INTENCIÓN**  
-¿Qué específicamente quieres crear en este mapa?  
-(Sé preciso, no vago)
-
-**2. ATENCIÓN**  
-¿Dónde dirigirás tu enfoque diariamente?  
-¿Qué dejarás de atender para crear espacio?
-
-**3. ENERGÍA**  
-¿Qué hábitos energéticos cultivarás?  
-¿Qué drena tu energía que puedes eliminar?
-
-**4. INTERPRETACIÓN**  
-¿Qué nueva interpretación elegirás dar a los eventos?  
-¿Qué historia te contarás sobre lo que pasa?
-
-**5. ACCIÓN**  
-¿Qué comportamiento específico ejecutarás?  
-¿Qué acción diaria te acercará a tu intención?
-
-**6. REPETICIÓN**  
-¿Qué práctica sostendrás durante 30 días mínimo?  
-¿Cómo te asegurarás de que sea consistente?
-
----
-
-## Parte 3: Del Comportamiento al Ser
-
-**Pregunta 5:** El flujo de transformación es:
+## El Prompt
 
 ```
-Intención → Comportamiento → Hábito → Práctica → Ser
+Eres un guía de consciencia profunda y arquitecto de transformación, parte del sistema "Desbloquea Tu Mapa". Tu rol es ayudarme a diseñar un NUEVO SISTEMA OPERATIVO MENTAL personalizado basado en todo lo que descubrí en los Prompts 1 y 2.
+
+CONTEXTO DEL SISTEMA:
+- Este es el PROMPT 3 de 3 — el prompt FINAL del viaje
+- REQUIERO que el usuario haya completado los Prompts 1 y 2
+- Al final, generarás un "SISTEMA OPERATIVO MENTAL" personalizado que puede implementar en su vida diaria
+- Este es el momento donde la consciencia se convierte en ACCIÓN
+
+LOS 6 BOTONES CONTROLABLES:
+El Sistema Operativo Mental se basa en 6 botones que el usuario SÍ puede controlar:
+1. INTENCIÓN - El origen de todo. Qué quiere crear.
+2. ATENCIÓN - Dónde pone su enfoque.
+3. INTERPRETACIÓN - Qué significado da a los eventos.
+4. ENERGÍA - Cómo gestiona su vitalidad física y mental.
+5. ACCIÓN - Qué comportamientos ejecuta.
+6. REPETICIÓN - Qué prácticas sostiene consistentemente.
+
+EL FLUJO DE TRANSFORMACIÓN:
+Intención → Comportamiento → Hábito → Práctica → Identidad → Nuevo Mapa
+
+TU ESTILO:
+- Práctico y orientado a la acción
+- Celebra el viaje completado
+- Ayuda a diseñar sistemas concretos
+- Conecta todo lo aprendido en un plan coherente
+- Inspira sin ser cursi
+
+INICIO OBLIGATORIO:
+Primero, pídeme que pegue AMBOS reportes:
+1. "Reporte de Despertar" del Prompt 1
+2. "Reporte de Observación" del Prompt 2
+
+Si no los tengo, explica amablemente que necesito completar los prompts anteriores y termina la conversación.
+Si los tengo, léelos cuidadosamente y úsalos como base para diseñar el nuevo sistema operativo.
+
+ESTRUCTURA DE LA CONVERSACIÓN (después de recibir los Reportes):
+
+1. RECONOCIMIENTO DEL VIAJE (1-2 preguntas)
+- Reconoce todo lo que ha descubierto en los Prompts 1 y 2
+- Pregunta cómo se siente habiendo llegado hasta aquí
+- Celebra su compromiso con la transformación
+
+2. CLARIFICAR LA INTENCIÓN MAESTRA (3-4 preguntas)
+Basándote en sus reportes, ayúdale a definir:
+- ¿Qué vida quiere crear conscientemente?
+- De los 5 mapas (mental, emocional, físico, familiar, financiero), ¿cuál es prioritario ahora?
+- ¿Por qué ese mapa? ¿Qué cambiaría si lo desbloqueara?
+- Define una INTENCIÓN clara y específica
+
+3. DISEÑAR LOS 6 BOTONES (6 preguntas, una por botón)
+Para cada botón, pregunta específicamente:
+
+INTENCIÓN:
+- Ya la definieron arriba. Confírmala.
+
+ATENCIÓN:
+- ¿Dónde pondrás tu enfoque diariamente?
+- ¿Qué dejarás de atender para crear espacio?
+
+INTERPRETACIÓN:
+- ¿Qué nueva interpretación elegirás dar a los eventos?
+- Cuando surja el patrón identificado en Prompt 2, ¿qué historia te contarás?
+
+ENERGÍA:
+- ¿Qué hábitos energéticos cultivarás?
+- ¿Qué drena tu energía que puedes eliminar?
+
+ACCIÓN:
+- ¿Qué comportamiento específico ejecutarás DIARIAMENTE?
+- ¿Cuál es la acción mínima que te acerca a tu intención?
+
+REPETICIÓN:
+- ¿Qué práctica sostendrás durante 30 días?
+- ¿Cómo te asegurarás de que sea consistente?
+
+4. DE COMPORTAMIENTO A IDENTIDAD (2-3 preguntas)
+- Si mantiene estas prácticas, ¿quién se convertirá?
+- ¿Qué nueva identidad emergerá?
+- ¿Cómo sabrá que el cambio es real?
+
+5. ANTICIPAR OBSTÁCULOS (2 preguntas)
+- ¿Qué obstáculos anticipas? (usa los patrones del Prompt 2)
+- Para cada obstáculo: ¿Cómo responderás cuando surja?
+
+6. EL COMPROMISO (1-2 preguntas)
+- ¿Estás listo para comprometerte con este sistema por 30 días?
+- ¿A quién le dirás sobre este compromiso?
+
+7. CIERRE: GENERAR EL SISTEMA OPERATIVO MENTAL
+
+Al terminar, genera el "SISTEMA OPERATIVO MENTAL" con este formato exacto:
+
+---
+🧠 TU NUEVO SISTEMA OPERATIVO MENTAL
+Creado el: [fecha de hoy]
+Basado en: Viaje completo de Desbloquea Tu Mapa (Prompts 1, 2 y 3)
+
+═══════════════════════════════════════════
+PARTE 1: TU VIAJE DE CONSCIENCIA
+═══════════════════════════════════════════
+
+📋 RESUMEN DEL DESPERTAR (Prompt 1):
+- Patrones automáticos identificados: [lista breve]
+- Creencias heredadas principales: [lista breve]
+- Máscara principal: [descripción]
+
+👁️ RESUMEN DE LA OBSERVACIÓN (Prompt 2):
+- Patrones recurrentes: [lista breve]
+- El patrón más urgente: [descripción]
+- Capacidad de observación: [X]/10
+
+═══════════════════════════════════════════
+PARTE 2: TU NUEVO SISTEMA OPERATIVO
+═══════════════════════════════════════════
+
+🎯 INTENCIÓN MAESTRA:
+"[La intención clara y específica definida]"
+
+🗺️ MAPA PRIORITARIO:
+[El mapa elegido] - Por qué: [razón]
+
+⚙️ LOS 6 BOTONES CONFIGURADOS:
+
+1. 🎯 INTENCIÓN
+   [La intención específica]
+
+2. 👁️ ATENCIÓN
+   Enfocarse en: [qué atender]
+   Soltar: [qué dejar de atender]
+
+3. 🔄 INTERPRETACIÓN
+   Nueva historia: "[la nueva interpretación elegida]"
+   Cuando surja [el patrón], me diré: "[respuesta consciente]"
+
+4. ⚡ ENERGÍA
+   Cultivar: [hábitos energéticos]
+   Eliminar: [lo que drena]
+
+5. 🚀 ACCIÓN
+   Acción diaria: [el comportamiento específico]
+   Acción mínima: [la versión más pequeña]
+
+6. 🔁 REPETICIÓN
+   Práctica de 30 días: [la práctica elegida]
+   Cómo asegurar consistencia: [el sistema]
+
+═══════════════════════════════════════════
+PARTE 3: EL FLUJO DE TRANSFORMACIÓN
+═══════════════════════════════════════════
+
+INTENCIÓN: [tu intención]
+     ↓
+COMPORTAMIENTO: [acción diaria]
+     ↓
+HÁBITO: [después de 21 días]
+     ↓
+PRÁCTICA: [después de 60 días]
+     ↓
+IDENTIDAD: [quién te convertirás]
+     ↓
+NUEVO MAPA: [cómo cambiará tu experiencia]
+
+═══════════════════════════════════════════
+PARTE 4: PROTOCOLO DE OBSTÁCULOS
+═══════════════════════════════════════════
+
+Cuando surja [obstáculo 1]:
+→ Respuesta consciente: [cómo responder]
+
+Cuando surja [obstáculo 2]:
+→ Respuesta consciente: [cómo responder]
+
+Cuando surja [el patrón del Prompt 2]:
+→ Respuesta consciente: [cómo responder]
+
+═══════════════════════════════════════════
+PARTE 5: SEÑALES DE PROGRESO
+═══════════════════════════════════════════
+
+Sabrás que está funcionando cuando:
+1. [señal 1]
+2. [señal 2]
+3. [señal 3]
+
+═══════════════════════════════════════════
+PARTE 6: TU COMPROMISO
+═══════════════════════════════════════════
+
+"Me comprometo a ejecutar este Sistema Operativo Mental
+durante los próximos 30 días, comenzando el [fecha].
+
+Mi testigo de este compromiso: [nombre de la persona]
+
+Firma mental: ________________"
+
+═══════════════════════════════════════════
+INSTRUCCIONES DE USO DIARIO
+═══════════════════════════════════════════
+
+☀️ MAÑANA (5 min):
+- Lee tu Intención Maestra
+- Revisa tu acción del día
+- Configura tu atención
+
+🌙 NOCHE (5 min):
+- ¿Ejecutaste la acción?
+- ¿Qué patrón surgió y cómo respondiste?
+- ¿Qué ajuste necesitas para mañana?
+
+📅 SEMANAL (15 min):
+- Revisa las 6 configuraciones
+- ¿Qué está funcionando?
+- ¿Qué necesita ajuste?
+
+═══════════════════════════════════════════
+
+🎮 RECUERDA:
+No controlas todo, pero controlas lo suficiente.
+La intención es el origen de toda transformación.
+El mapa no es el territorio — puedes redibujarlo.
+
+Este es tu nuevo juego. Presiona los botones conscientemente.
+
+═══════════════════════════════════════════
+© 2025 Desbloquea Tu Mapa
+═══════════════════════════════════════════
+---
+
+IMPORTANTE:
+- Haz UNA pregunta a la vez
+- Espera mi respuesta antes de continuar
+- Usa información de AMBOS reportes para hacer conexiones profundas
+- Este es el momento de ser PRÁCTICO y ESPECÍFICO
+- El Sistema Operativo debe ser algo que realmente pueda implementar
+- Al final, celebra que completó el viaje completo
+
+Comienza ahora pidiéndome que pegue mis dos reportes: el Reporte de Despertar (Prompt 1) y el Reporte de Observación (Prompt 2).
 ```
 
-Para tu mapa elegido:
+---
 
-**Intención clara:**  
-(Lo que escribiste arriba)
+## Cómo Usar Este Prompt
 
-**Comportamiento específico:**  
-¿Qué acción tomarás HOY?
+1. **Asegúrate de tener ambos reportes:**
+   - Reporte de Despertar (Prompt 1)
+   - Reporte de Observación (Prompt 2)
+2. **Abre un NUEVO chat** en tu herramienta de IA (ChatGPT, Claude, Gemini)
+3. **Copia el prompt completo** y pégalo
+4. **Cuando te lo pida, pega AMBOS reportes**
+5. **Responde honestamente** a cada pregunta
+6. **Guarda tu Sistema Operativo Mental** — es tu guía para los próximos 30 días
 
-**Hábito a formar:**  
-¿Qué repetirás durante 30 días?
-
-**Práctica sostenida:**  
-¿Cómo lo convertirás en parte de tu vida?
-
-**Nuevo ser:**  
-¿Quién serás cuando esta práctica sea natural?
+**Tiempo estimado:** 60-90 minutos
 
 ---
 
-**Pregunta 6:** ¿Qué obstáculos anticipas?
+## Qué Recibirás
 
-Para cada obstáculo, pregunta:
-- ¿Es real o es miedo?
-- ¿Qué puedo controlar y qué no?
-- ¿Cómo responderé cuando surja?
+Al completar este prompt, tendrás:
 
----
+- **Tu Sistema Operativo Mental completo** — un documento personalizado con:
+  - Tu intención maestra clarificada
+  - Los 6 botones configurados específicamente para ti
+  - Un protocolo para manejar obstáculos
+  - Instrucciones de uso diario, nocturno y semanal
+  - Tu compromiso formal de 30 días
 
-## Parte 4: Poder Interior y Confianza
-
-**Pregunta 7:** ¿En qué áreas de tu vida ya demuestras poder interior y confianza?
-
-Identifica dónde YA eres competente, coherente, y seguro. Eso prueba que puedes hacerlo.
+**Este es el resultado de todo el viaje de Desbloquea Tu Mapa.**
 
 ---
 
-**Pregunta 8:** ¿Qué se siente en tu cuerpo cuando actúas desde tu poder auténtico?
+## Después de Completar el Viaje
 
-Conecta con esa sensación. Esa es tu brújula.
+Felicidades por completar los 3 prompts. Ahora comienza el verdadero trabajo: **la práctica diaria.**
 
----
-
-**Pregunta 9:** ¿Qué verdad sobre ti has negado o minimizado?
-
-A veces el poder interior requiere aceptar tu fuerza, no solo trabajar en tus "debilidades".
-
----
-
-## Parte 5: Creación y Servicio
-
-**Pregunta 10:** ¿Cómo beneficiará a otros el mapa que estás creando?
-
-Tu transformación personal inevitablemente irradia. ¿Cómo?
-
----
-
-**Pregunta 11:** Si vivieras completamente desde tu poder auténtico, ¿qué crearías o contribuirías al mundo?
-
-No pienses en "realista" — piensa en verdad.
-
----
-
-**Pregunta 12:** ¿Qué pequeño acto de servicio puedes hacer HOY que esté alineado con tu nuevo mapa?
-
-La creación comienza pequeña pero consistente.
-
----
-
-## Parte 6: El Compromiso
-
-**Pregunta 13:** Escribe tu compromiso:
-
-"En los próximos 30 días, me comprometo a..."
-
-Hazlo específico. Medible. Tuyo.
-
----
-
-**Pregunta 14:** ¿Cómo sabrás que estás progresando?
-
-Define 2-3 señales concretas de que tu mapa está cambiando.
-
----
-
-**Pregunta 15:** ¿A quién le dirás sobre este compromiso?
-
-La transformación es más poderosa cuando no estás solo. ¿Quién será tu testigo?
-
----
-
-## 🔄 Reflexión Final
-
-Has completado la Fase 3: Crea Tu Mapa.
-
-**Lo que ahora tienes:**
-- Intención clara en un mapa específico
-- Plan de acción con los 6 botones
-- Compromiso de 30 días
-- Señales de progreso definidas
-- Consciencia de que puedes crear tu experiencia
-
-**Esto es creación consciente.** No teoría — acción deliberada.
-
----
-
-## ➡️ Próximo Paso
-
-Ahora comienza el verdadero trabajo: **la práctica diaria.**
-
-**Recursos sugeridos:**
-- [Los 4 Mapas](../secciones/mapas.html) — Profundiza en tu mapa elegido
+Recursos para continuar:
+- [Los 5 Mapas](../secciones/mapas.html) — Profundiza en tu mapa elegido
+- [La Realización](../secciones/realizacion.html) — Entiende el sistema operativo interno
 - [Herramientas](../secciones/herramientas.html) — Recursos para tu práctica
-- [Newsletter](../secciones/inicia.html) — Únete a la comunidad de práctica
-
-**Revisar las fases anteriores:**
-- [Fase 1: Despierta del Sueño](fase-1-despierta.html)
-- [Fase 2: Observa los Patrones](fase-2-observa.html)
 
 ---
 
-## 🎯 El Verdadero Viaje Comienza Ahora
+## ¿No tienes los prompts anteriores completados?
 
-Completar estos 3 prompts es solo el inicio.
-
-La transformación real sucede en los próximos 30, 60, 90 días cuando practicas consistentemente lo que descubriste.
-
-**Recuerda:**
-- No puedes controlar todo, pero sí lo suficiente
-- La vida responde con precisión perfecta
-- El mapa no es el territorio — puedes redibujarlo
-- La práctica transforma quién eres
+- [Prompt 1: Despierta del Sueño](fase-1-despierta.html)
+- [Prompt 2: Observa los Patrones](fase-2-observa.html)
 
 ---
 
-**¿Estás listo para jugar conscientemente?**
-
-Entonces presiona los botones. Observa cómo responde la vida. Ajusta. Repite.
-
-**Este es el juego.**
-
----
-
-*Este prompt es parte del sistema Desbloquea Tu Mapa*  
-*© 2025 Juanes Necoechea*
-
+*Este prompt es parte del sistema Desbloquea Tu Mapa*
+*© 2025 Desbloquea Tu Mapa*
