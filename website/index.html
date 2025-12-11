@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -26,63 +29,25 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
             background: var(--background-alt);
             color: var(--primary);
             line-height: 1.6;
         }
 
-        /* Navigation */
-        nav {
-            background: var(--white);
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--navy);
+        /* Ensure all elements inherit the font */
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: var(--background);
             position: relative;
@@ -107,15 +72,42 @@
         .hero h1 {
             font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             line-height: 1.1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            opacity: 0.9;
+        .hero h1.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-main-text {
+            font-size: 1.6rem;
+            opacity: 0;
             margin-bottom: 3rem;
             font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .hero-subtext {
+            font-size: 1.3rem;
+            opacity: 0;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-emphasis {
+            font-size: 1.15rem;
+            opacity: 0;
+            font-style: italic;
+            margin-bottom: 3rem;
+            line-height: 1.8;
         }
 
         .cta-button {
@@ -129,6 +121,14 @@
             border-radius: 8px;
             transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(27, 40, 56, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cta-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s, box-shadow 0.3s;
         }
 
         .cta-button:hover {
@@ -137,155 +137,29 @@
             box-shadow: 0 6px 20px rgba(27, 40, 56, 0.4);
         }
 
-        /* Introduction Section */
-        .intro-section {
-            max-width: 900px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+        /* Typewriter cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: var(--background);
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            vertical-align: text-bottom;
         }
 
-        .intro-content {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
-        .intro-content h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            text-align: center;
+        /* Text sections that will be typed */
+        .typed-text {
+            min-height: 1.6em;
         }
 
-        .intro-content p {
-            font-size: 1.15rem;
-            color: var(--primary-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .intro-content .highlight {
-            color: var(--navy);
-            font-weight: 600;
-        }
-
-        /* Philosophy Cards */
-        .philosophy-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border-left: 4px solid var(--navy);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: var(--primary-light);
-            line-height: 1.7;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: var(--background);
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--navy);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: var(--navy-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--navy);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            border: 2px solid var(--navy);
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--background);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            opacity: 0.9;
+        .typed-line {
+            display: block;
         }
 
         @media (max-width: 968px) {
@@ -294,64 +168,17 @@
                 line-height: 1.2;
             }
 
-            .hero p {
-                font-size: 1.2rem;
+            .hero-main-text {
+                font-size: 1.3rem;
+            }
+
+            .hero-subtext {
+                font-size: 1.1rem;
             }
 
             .hero {
-                min-height: 70vh;
-                padding: 3rem 1.5rem;
-            }
-
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .card {
-                padding: 2rem 1.5rem;
-            }
-
-            .intro-section,
-            .philosophy-section,
-            .cta-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .intro-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .intro-content h2 {
-                font-size: 2rem;
-            }
-
-            .intro-content p {
-                font-size: 1.05rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
+                min-height: 90vh;
+                padding: 4rem 1.5rem;
             }
 
             .cta-button {
@@ -365,17 +192,18 @@
                 font-size: 2rem;
             }
 
-            .hero p {
+            .hero-main-text {
                 font-size: 1.1rem;
             }
 
-            .card-icon {
-                font-size: 2rem;
+            .hero-subtext {
+                font-size: 1rem;
             }
+        }
 
-            .card h3 {
-                font-size: 1.3rem;
-            }
+        /* Remove footer margin for homepage */
+        footer {
+            margin-top: 0 !important;
         }
     </style>
 </head>
@@ -386,235 +214,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Desbloquea Tu Mapa</h1>
-            <p>La vida es un juego consciente. Aprende a ver el mapa, entender las reglas, y jugar desde tu poder auténtico.</p>
-            <a href="secciones/inicia.html" class="cta-button">Comenzar el Viaje</a>
-        </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="intro-section">
-        <div class="intro-content">
-            <h2>¿Qué es Desbloquea Tu Mapa?</h2>
-            <p>
-                <strong>DTM es una filosofía de vida práctica</strong> que te enseña a observar, cuestionar y rediseñar 
-                conscientemente tu interpretación del mundo.
-            </p>
-            <p>
-                Cada persona vive dentro de un <span class="highlight">"mapa"</span> — una interpretación heredada 
-                de la realidad construida desde creencias familiares, culturales y experiencias pasadas. 
-                Este mapa no es la realidad. Es solo una versión. <strong>Y puedes elegir otra.</strong>
-            </p>
-            <p style="font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-top: 2rem;">
-                No podemos controlar todo, pero sí lo suficiente para cambiar nuestra vida.
-            </p>
-        </div>
-    </section>
-
-    <!-- The Journey -->
-    <section class="philosophy-section">
-        <h2 class="section-title">El Viaje de 3 Fases</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">😴</div>
-                <h3>1. Inconsciencia</h3>
-                <p>
-                    Vivir en piloto automático. Ejecutar programas heredados sin cuestionarlos. 
-                    Creer que tu interpretación es "la realidad".
-                </p>
-                <p style="margin-top: 1rem; font-style: italic; opacity: 0.8;">
-                    No sabes que estás dormido.
-                </p>
-            </div>
-            <div class="card">
-                <div class="card-icon">👁️</div>
-                <h3>2. Consciencia</h3>
-                <p>
-                    Desarrollar al observador interno. Ver los patrones. Reconocer los pensamientos 
-                    como pensamientos, no como verdad absoluta.
-                </p>
-                <p style="margin-top: 1rem; font-style: italic; opacity: 0.8;">
-                    Empiezas a ver los botones que puedes controlar.
-                </p>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>3. Creación</h3>
-                <p>
-                    Actuar desde intención consciente. Manifestar tu propósito. Integrar mente, 
-                    cuerpo y espíritu para crear desde presencia.
-                </p>
-                <p style="margin-top: 1rem; font-style: italic; opacity: 0.8;">
-                    Rediseñas el mapa desde tu poder auténtico.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- The 4 Maps -->
-    <section class="intro-section">
-        <div class="intro-content">
-            <h2>🗺️ Los 4 Mapas de Tu Vida</h2>
-            <p>
-                Tu vida se expresa en cuatro territorios fundamentales. 
-                Cada uno tiene sus propias reglas, patrones y posibilidades:
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 2rem 0;">
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠</div>
-                    <strong>Mapa Mental</strong>
-                    <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 0.5rem;">Pensamientos y creencias</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💪</div>
-                    <strong>Mapa Físico</strong>
-                    <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 0.5rem;">Cuerpo y energía</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👥</div>
-                    <strong>Mapa Familiar</strong>
-                    <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 0.5rem;">Relaciones y raíces</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💰</div>
-                    <strong>Mapa Financiero</strong>
-                    <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 0.5rem;">Valor y abundancia</p>
-                </div>
-            </div>
-            <style>
-                @media (max-width: 968px) {
-                    .intro-content > div[style*="grid-template-columns: repeat(4"] {
-                        grid-template-columns: repeat(2, 1fr) !important;
-                    }
-                }
-                @media (max-width: 480px) {
-                    .intro-content > div[style*="grid-template-columns: repeat(4"] {
-                        grid-template-columns: 1fr !important;
-                    }
-                    .intro-content > div[style*="grid-template-columns: repeat(4"] > div {
-                        padding: 1rem 0;
-                    }
-                }
-            </style>
-            <p style="text-align: center; margin-top: 2rem;">
-                <a href="secciones/mapas.html" style="display: inline-block; background: var(--navy); color: var(--white); padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    Explora Los 4 Mapas →
-                </a>
-            </p>
-        </div>
-    </section>
-
-    <!-- The Game -->
-    <section class="philosophy-section" style="background: var(--navy); color: var(--white); padding: 4rem 2rem; margin: 0;">
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <h2 style="color: var(--white); font-size: 2.5rem; margin-bottom: 2rem;">🎮 Los Botones Que Puedes Controlar</h2>
-            <p style="font-size: 1.3rem; opacity: 0.95; margin-bottom: 3rem; line-height: 1.7;">
-                La vida tiene reglas. La mayoría nunca las aprende. Nosotros sí.
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; text-align: center;">
-                <div>
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
-                    <strong style="display: block; margin-bottom: 0.5rem;">Intención</strong>
-                    <small style="opacity: 0.8;">Qué eliges crear</small>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👁️</div>
-                    <strong style="display: block; margin-bottom: 0.5rem;">Atención</strong>
-                    <small style="opacity: 0.8;">Dónde enfocas</small>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
-                    <strong style="display: block; margin-bottom: 0.5rem;">Energía</strong>
-                    <small style="opacity: 0.8;">Cómo gestionas</small>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
-                    <strong style="display: block; margin-bottom: 0.5rem;">Interpretación</strong>
-                    <small style="opacity: 0.8;">Qué significado das</small>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
-                    <strong style="display: block; margin-bottom: 0.5rem;">Acción</strong>
-                    <small style="opacity: 0.8;">Qué comportamiento ejecutas</small>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔁</div>
-                    <strong style="display: block; margin-bottom: 0.5rem;">Repetición</strong>
-                    <small style="opacity: 0.8;">Lo que practicas</small>
-                </div>
-            </div>
-            <p style="font-size: 1.2rem; margin-top: 3rem; opacity: 0.95;">
-                Domina estos 6 botones y cambiarás tu vida.
-            </p>
-        </div>
-    </section>
-
-    <!-- The Truth -->
-    <section class="intro-section">
-        <div class="intro-content">
-            <h2>💡 La Verdad Que Nadie Te Dijo</h2>
-            <p style="font-size: 1.15rem; line-height: 1.9;">
-                <strong>1. El mapa no es el territorio</strong><br>
-                Tu interpretación del mundo no es el mundo mismo. Es solo una versión — y puedes elegir otra.
-            </p>
-            <p style="font-size: 1.15rem; line-height: 1.9;">
-                <strong>2. No estás roto</strong><br>
-                No necesitas ser "arreglado". Necesitas recordar quién eres debajo del condicionamiento.
-            </p>
-            <p style="font-size: 1.15rem; line-height: 1.9;">
-                <strong>3. La vida tiene reglas reales</strong><br>
-                Pero no son las que te enseñaron. Algunos botones están bajo tu control — no todos, pero sí los suficientes.
-            </p>
-            <p style="font-size: 1.15rem; line-height: 1.9;">
-                <strong>4. La vida responde con precisión perfecta</strong><br>
-                Presiona los botones correctos con intención clara, y la vida responde. Siempre. Es un sistema, no caos.
-            </p>
-        </div>
-    </section>
-
-    <!-- What You'll Learn -->
-    <section class="philosophy-section">
-        <h2 class="section-title">Qué Aprenderás</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-eye"></i></div>
-                <h3>Ver el Mapa</h3>
-                <p>
-                    Reconocer que vives dentro de una interpretación heredada del mundo. 
-                    Desarrollar al observador interno que puede ver los patrones sin ser los patrones.
-                </p>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
-                <h3>Entender el Juego</h3>
-                <p>
-                    Identificar los botones que puedes controlar y los que no. 
-                    Aprender las reglas reales de cómo funciona la vida, no las que te enseñaron.
-                </p>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-magic"></i></div>
-                <h3>Jugar Conscientemente</h3>
-                <p>
-                    Crear tu vida desde intención, no desde reacción. 
-                    Transformar comportamientos en hábitos, hábitos en prácticas, prácticas en ser.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Listo para Comenzar</h2>
-        <div class="cta-buttons">
-            <a href="secciones/filosofia.html" class="btn-primary">Explorar la Filosofía</a>
-            <a href="secciones/inicia.html" class="btn-secondary">Inicia Tu Viaje</a>
+            <h1 id="title">Desbloquea Tu Mapa</h1>
+            <p class="hero-main-text" id="main-text"></p>
+            <p class="hero-subtext" id="sub-text"></p>
+            <p class="hero-emphasis" id="emphasis-text"></p>
+            <a href="secciones/comienza.html" class="cta-button" id="cta-button">Comienza tu recorrido</a>
         </div>
     </section>
 
     <!-- FOOTER GLOBAL -->
     <div id="footer-placeholder"></div>
-    
+
     <script src="components/mobile-menu-init.js"></script>
     <script>
         // Cargar header y ajustar rutas para index
@@ -625,7 +235,7 @@
                 document.getElementById('header-placeholder').innerHTML = data;
                 setTimeout(initMobileMenu, 100);
             });
-        
+
         // Cargar footer y ajustar rutas para index
         fetch('components/footer.html')
             .then(response => response.text())
@@ -633,6 +243,183 @@
                 data = data.replace(/\.\.\//g, '');
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
+
+        // Typewriter Effect
+        const textSequence = [
+            {
+                element: 'title',
+                type: 'fade',
+                delay: 300
+            },
+            {
+                element: 'main-text',
+                type: 'typewriter',
+                lines: [
+                    'La vida es un juego consciente.',
+                    'Tu mapa no está fijo. Tu identidad no está terminada.',
+                    'Puedes redibujar tu mundo desde la intención.'
+                ],
+                speed: 35,
+                lineDelay: 400,
+                delay: 800
+            },
+            {
+                element: 'sub-text',
+                type: 'typewriter',
+                lines: [
+                    'Cada pensamiento, emoción, acción y relación nace de una sola fuente:',
+                    '<strong>tu intención.</strong>'
+                ],
+                speed: 30,
+                lineDelay: 300,
+                delay: 600
+            },
+            {
+                element: 'emphasis-text',
+                type: 'typewriter',
+                lines: [
+                    'Sin intención no hay dirección.',
+                    'Sin dirección no hay ambición.',
+                    'Sin ambición no hay creación.'
+                ],
+                speed: 40,
+                lineDelay: 350,
+                delay: 500
+            },
+            {
+                element: 'cta-button',
+                type: 'fade',
+                delay: 400
+            }
+        ];
+
+        // Create cursor element
+        function createCursor() {
+            const cursor = document.createElement('span');
+            cursor.className = 'typewriter-cursor';
+            return cursor;
+        }
+
+        // Type a single line
+        function typeLine(element, text, speed, isHTML = false) {
+            return new Promise((resolve) => {
+                let i = 0;
+                const cursor = createCursor();
+                element.appendChild(cursor);
+
+                // Handle HTML tags
+                if (isHTML && text.includes('<')) {
+                    element.insertBefore(document.createTextNode(''), cursor);
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = text;
+                    const textContent = tempDiv.textContent;
+
+                    function typeChar() {
+                        if (i < textContent.length) {
+                            // Find position in original HTML
+                            const typed = textContent.substring(0, i + 1);
+                            const remaining = textContent.substring(i + 1);
+
+                            // Rebuild HTML with typed content
+                            let result = '';
+                            let textIndex = 0;
+                            let inTag = false;
+
+                            for (let j = 0; j < text.length; j++) {
+                                if (text[j] === '<') inTag = true;
+                                if (inTag) {
+                                    result += text[j];
+                                } else {
+                                    if (textIndex < typed.length) {
+                                        result += text[j];
+                                        textIndex++;
+                                    }
+                                }
+                                if (text[j] === '>') inTag = false;
+                            }
+
+                            element.innerHTML = result;
+                            element.appendChild(cursor);
+                            i++;
+                            setTimeout(typeChar, speed);
+                        } else {
+                            element.innerHTML = text;
+                            element.appendChild(cursor);
+                            resolve();
+                        }
+                    }
+                    typeChar();
+                } else {
+                    // Simple text typing
+                    const textNode = document.createTextNode('');
+                    element.insertBefore(textNode, cursor);
+
+                    function typeChar() {
+                        if (i < text.length) {
+                            textNode.textContent += text[i];
+                            i++;
+                            setTimeout(typeChar, speed);
+                        } else {
+                            resolve();
+                        }
+                    }
+                    typeChar();
+                }
+            });
+        }
+
+        // Type multiple lines
+        async function typeLines(elementId, lines, speed, lineDelay) {
+            const element = document.getElementById(elementId);
+            element.style.opacity = '1';
+            element.innerHTML = '';
+
+            for (let i = 0; i < lines.length; i++) {
+                const lineSpan = document.createElement('span');
+                lineSpan.className = 'typed-line';
+                element.appendChild(lineSpan);
+
+                const isHTML = lines[i].includes('<');
+                await typeLine(lineSpan, lines[i], speed, isHTML);
+
+                // Remove cursor from current line
+                const cursor = lineSpan.querySelector('.typewriter-cursor');
+                if (cursor) cursor.remove();
+
+                // Add line break if not last line
+                if (i < lines.length - 1) {
+                    element.appendChild(document.createElement('br'));
+                    await new Promise(r => setTimeout(r, lineDelay));
+                }
+            }
+        }
+
+        // Fade in element
+        function fadeIn(elementId) {
+            return new Promise((resolve) => {
+                const element = document.getElementById(elementId);
+                element.classList.add('visible');
+                setTimeout(resolve, 600);
+            });
+        }
+
+        // Run the sequence
+        async function runTypewriterSequence() {
+            for (const item of textSequence) {
+                await new Promise(r => setTimeout(r, item.delay));
+
+                if (item.type === 'fade') {
+                    await fadeIn(item.element);
+                } else if (item.type === 'typewriter') {
+                    await typeLines(item.element, item.lines, item.speed, item.lineDelay);
+                }
+            }
+        }
+
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(runTypewriterSequence, 500);
+        });
     </script>
 </body>
 </html>

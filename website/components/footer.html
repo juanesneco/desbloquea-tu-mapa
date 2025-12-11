@@ -1,6 +1,4 @@
 <!-- FOOTER GLOBAL - Desbloquea Tu Mapa -->
-<!-- Este archivo se incluye en todas las páginas del sitio -->
-<!-- Actualizado: 2025-01-09 -->
 
 <footer>
     <div class="footer-container">
@@ -8,7 +6,7 @@
         <div class="footer-section">
             <h3 class="footer-logo">Desbloquea Tu Mapa</h3>
             <p class="footer-tagline">La vida es un juego consciente</p>
-            <p class="footer-quote">"El mapa no es el territorio, pero puedes elegir cómo dibujarlo."</p>
+            <p class="footer-quote">"La intención es el origen de toda transformación."</p>
         </div>
 
         <!-- Navegación Principal -->
@@ -16,9 +14,9 @@
             <h4>Explora</h4>
             <ul class="footer-links">
                 <li><a href="../secciones/filosofia.html">Filosofía</a></li>
-                <li><a href="../secciones/mapas.html">Los Cuatro Mapas</a></li>
-                <li><a href="../secciones/historia.html">Historia</a></li>
-                <li><a href="../secciones/realizacion.html">Realización</a></li>
+                <li><a href="../secciones/fases.html">Las Fases</a></li>
+                <li><a href="../secciones/mapas.html">Los Mapas</a></li>
+                <li><a href="../secciones/realizacion.html">La Realización</a></li>
             </ul>
         </div>
 
@@ -26,10 +24,9 @@
         <div class="footer-section">
             <h4>Herramientas</h4>
             <ul class="footer-links">
-                <li><a href="../prompts.html">Prompts Guiados</a></li>
-                <li><a href="../secciones/herramientas.html">Recursos</a></li>
-                <li><a href="../secciones/inicia.html">Taller Gratuito</a></li>
-                <li><a href="../secciones/inicia.html">Newsletter</a></li>
+                <li><a href="../prompts.html">Prompts</a></li>
+                <li><a href="../secciones/herramientas.html">App</a></li>
+                <li><a href="../secciones/comienza.html">Newsletter</a></li>
             </ul>
         </div>
 
@@ -38,19 +35,19 @@
             <h4>Comunidad</h4>
             <ul class="footer-social">
                 <li>
-                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                    <span class="social-item disabled">
                         <i class="fab fa-instagram"></i> Instagram
-                    </a>
+                    </span>
                 </li>
                 <li>
-                    <a href="#" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="social-item disabled">
                         <i class="fab fa-twitter"></i> Twitter
-                    </a>
+                    </span>
                 </li>
                 <li>
-                    <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+                    <span class="social-item disabled">
                         <i class="fab fa-youtube"></i> YouTube
-                    </a>
+                    </span>
                 </li>
             </ul>
         </div>
@@ -58,7 +55,7 @@
 
     <!-- Copyright -->
     <div class="footer-bottom">
-        <p>&copy; 2025 Desbloquea Tu Mapa. Creado con presencia por Juanes Necoechea.</p>
+        <p>&copy; 2025 Desbloquea Tu Mapa</p>
         <p class="footer-small">Todos los derechos reservados.</p>
     </div>
 </footer>
@@ -75,7 +72,7 @@
         max-width: 1200px;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 3rem;
         margin-bottom: 3rem;
     }
@@ -141,6 +138,15 @@
         font-size: 1.2rem;
     }
 
+    .social-item.disabled {
+        color: var(--background, #E8E6E3);
+        opacity: 0.5;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: default;
+    }
+
     .footer-bottom {
         max-width: 1200px;
         margin: 0 auto;
@@ -159,7 +165,7 @@
         opacity: 0.6;
     }
 
-        @media (max-width: 768px) {
+    @media (max-width: 768px) {
         footer {
             padding: 3rem 1.5rem 1.5rem;
         }
@@ -174,5 +180,3 @@
         }
     }
 </style>
-
-

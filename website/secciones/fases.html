@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Fases - Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--background);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Timeline Diagram */
+        .timeline-diagram {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .timeline-diagram h2 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+        }
+
+        .timeline-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .timeline-node {
+            text-align: center;
+        }
+
+        .timeline-node .phase-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-node .phase-essence {
+            font-size: 0.95rem;
+            color: var(--primary-light);
+            font-style: italic;
+        }
+
+        .timeline-arrow {
+            font-size: 1.5rem;
+            color: var(--blue);
+        }
+
+        /* Phase Cards */
+        .phase-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--navy);
+            transition: transform 0.3s;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .phase-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 60px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-card h2 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .phase-card .description {
+            font-size: 1.25rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .phase-card .essence {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .phase-card .essence strong {
+            color: var(--navy);
+            font-size: 1.1rem;
+        }
+
+        .phase-card .essence p {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 968px) {
+            .hero-section {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                padding: 0 1.5rem;
+            }
+
+            .phase-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .phase-card h2 {
+                font-size: 1.8rem;
+            }
+
+            .timeline-diagram {
+                padding: 2rem 1.5rem;
+            }
+
+            .timeline-visual {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .timeline-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .phase-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                line-height: 50px;
+            }
+
+            .phase-card h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section">
+        <h1>Las Fases</h1>
+        <p>El viaje de tres etapas hacia la consciencia plena</p>
+    </section>
+
+    <section class="content-section">
+
+        <!-- Timeline Diagram -->
+        <div class="timeline-diagram">
+            <h2>El Viaje de Tres Fases</h2>
+            <div class="timeline-visual">
+                <div class="timeline-node">
+                    <div class="phase-name">INCONSCIENCIA</div>
+                    <div class="phase-essence">No ves</div>
+                </div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-node">
+                    <div class="phase-name">CONSCIENCIA</div>
+                    <div class="phase-essence">Ves</div>
+                </div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-node">
+                    <div class="phase-name">CREACIÓN</div>
+                    <div class="phase-essence">Redibujas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 1: Inconsciencia -->
+        <div class="phase-card">
+            <div class="phase-number">1</div>
+            <h2>Inconsciencia</h2>
+            <p class="description">
+                Vives dentro de un mapa que no diseñaste.
+                Respondes desde hábitos, historias y patrones heredados.
+            </p>
+            <div class="essence">
+                <strong>Esencia:</strong>
+                <p>No ves el mapa.</p>
+            </div>
+        </div>
+
+        <!-- Phase 2: Consciencia -->
+        <div class="phase-card">
+            <div class="phase-number">2</div>
+            <h2>Consciencia</h2>
+            <p class="description">
+                El observador despierta.
+                Empiezas a ver pensamientos, emociones y patrones con claridad.
+            </p>
+            <div class="essence">
+                <strong>Esencia:</strong>
+                <p>Ves el mapa.</p>
+            </div>
+        </div>
+
+        <!-- Phase 3: Creación -->
+        <div class="phase-card">
+            <div class="phase-number">3</div>
+            <h2>Creación</h2>
+            <p class="description">
+                Tomas el control de tus botones internos: intención, atención, interpretación, energía, acción.
+                Empiezas a redibujar tu mapa desde presencia y coherencia.
+            </p>
+            <div class="essence">
+                <strong>Esencia:</strong>
+                <p>Redibujas el mapa.</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Descubre El Sistema Operativo Interno</h2>
+            <p>Aprende cómo la intención activa la transformación en cada fase.</p>
+            <a href="realizacion.html" class="cta-button">Ver La Realización →</a>
+        </div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../components/mobile-menu-init.js"></script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
+
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Historia - Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Story Cards */
+        .story-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--navy);
+            transition: transform 0.3s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .chapter-label {
+            font-size: 0.9rem;
+            color: var(--blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-card h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-card p {
+            font-size: 1.15rem;
+            color: var(--primary-light);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .story-card .place {
+            font-style: italic;
+            color: var(--blue);
+            font-weight: 500;
+        }
+
+        /* Final Chapter */
+        .final-chapter {
+            background: var(--navy);
+            color: var(--white);
+            padding: 4rem 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .final-chapter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-chapter p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 968px) {
+            .hero-section {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 0 1.5rem;
+            }
+
+            .story-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .story-card h2 {
+                font-size: 1.75rem;
+            }
+
+            .final-chapter {
+                padding: 3rem 2rem;
+            }
+
+            .final-chapter h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .story-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section">
+        <h1>Mi Historia</h1>
+        <p>El viaje de un mapa heredado a uno elegido conscientemente</p>
+    </section>
+
+    <section class="content-section">
+
+        <!-- Chapter 1: Mi Primer Mapa -->
+        <div class="story-card">
+            <div class="chapter-label">Capítulo Uno</div>
+            <h2>Mi Primer Mapa</h2>
+            <p>
+                <span class="place">Arcos del Sol.</span> Un mundo pequeño, inocente, completo y limitado.
+            </p>
+            <p>
+                Eras feliz sin saber lo que no sabías. Ese era tu mapa.
+                El universo entero cabía en unas cuantas calles, unas cuantas caras,
+                unas cuantas historias que se repetían cada día.
+            </p>
+            <p>
+                No había preguntas porque no había nada fuera del mapa que pudiera generar preguntas.
+            </p>
+        </div>
+
+        <!-- Chapter 2: La Expansión -->
+        <div class="story-card">
+            <div class="chapter-label">Capítulo Dos</div>
+            <h2>La Expansión</h2>
+            <p>
+                Descubrir <span class="place">Amalfi.</span> Descubrir otros mundos.
+            </p>
+            <p>
+                La primera vez que viste que tu mapa no era el mundo entero.
+                Había otras formas de vivir, otras reglas, otras historias posibles.
+            </p>
+            <p>
+                El mapa se agrietó. Y en esas grietas entró la luz de la curiosidad.
+            </p>
+        </div>
+
+        <!-- Chapter 3: El Juego -->
+        <div class="story-card">
+            <div class="chapter-label">Capítulo Tres</div>
+            <h2>El Juego</h2>
+            <p>
+                <span class="place">GTA, botones, controles, sistemas.</span>
+            </p>
+            <p>
+                La vida como un videojuego sin manual.
+                Empezaste a ver que los demás tenían mapas distintos.
+                Algunos parecían saber algo que tú no sabías.
+            </p>
+            <p>
+                ¿Cuáles eran las reglas reales? ¿Qué botones podías presionar?
+                ¿Qué controlabas y qué no?
+            </p>
+        </div>
+
+        <!-- Chapter 4: La Realización -->
+        <div class="story-card">
+            <div class="chapter-label">Capítulo Cuatro</div>
+            <h2>La Realización</h2>
+            <p>
+                La comprensión profunda llegó:
+            </p>
+            <p>
+                Puedes mover algunos botones — <strong>intención, atención, interpretación</strong> —
+                y eso es suficiente para cambiar todo.
+            </p>
+            <p>
+                No necesitas controlar el universo. Solo necesitas dominar los botones correctos.
+                La vida responde con precisión perfecta cuando alineas intención y acción.
+            </p>
+        </div>
+
+        <!-- Chapter 5: Nacimiento de DTM -->
+        <div class="story-card">
+            <div class="chapter-label">Capítulo Cinco</div>
+            <h2>Nacimiento de DTM</h2>
+            <p>
+                Un sistema para ver el mapa, expandirlo y redibujarlo con intención.
+            </p>
+            <p>
+                <strong>Desbloquea Tu Mapa</strong> nació de la certeza de que cada persona puede:
+            </p>
+            <p>
+                Ver su propio mapa.<br>
+                Entender las reglas del juego.<br>
+                Elegir conscientemente cómo vivir.
+            </p>
+        </div>
+
+        <!-- Final Chapter -->
+        <div class="final-chapter">
+            <h2>Tu Historia Comienza Ahora</h2>
+            <p>
+                Mi viaje me llevó aquí. El tuyo será diferente, porque tu mapa es único.
+                Pero los principios son los mismos.
+            </p>
+            <p>
+                <strong>Primero ves el mapa. Luego entiendes el juego. Finalmente eliges cómo jugar.</strong>
+            </p>
+            <a href="comienza.html" class="cta-button">Comienza Tu Viaje</a>
+        </div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../components/mobile-menu-init.js"></script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
+
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>

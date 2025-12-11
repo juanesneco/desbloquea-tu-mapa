@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Físico | Desbloquea Tu Mapa</title>
+    <title>Mapa Físico - Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -12,349 +15,250 @@
             --navy: #1B2838;
             --navy-light: #2C3E50;
             --blue: #4A90A4;
-            --blue-light: #5FA8BB;
             --background: #E8E6E3;
             --background-alt: #F5F3F0;
             --white: #FFFFFF;
-            --border: #D1CFCC;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
             background: var(--background-alt);
             color: var(--primary);
             line-height: 1.6;
         }
 
-        nav {
-            background: var(--white);
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--navy); }
-
-        .header {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--background);
-            padding: 4rem 2rem;
+        .hero-section {
+            background: linear-gradient(135deg, #6B7174 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
             text-align: center;
         }
 
-        .header-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
+        .hero-icon { font-size: 4rem; margin-bottom: 1rem; }
 
-        .header h1 {
+        .hero-section h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
-        .header p {
-            font-size: 1.3rem;
+        .hero-section .subtitle {
+            font-size: 1.4rem;
             opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
         }
 
-        .container {
+        .content-section {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
-        .intro {
+        .map-card {
             background: var(--white);
-            padding: 3rem;
             border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
 
-        .intro h2 {
-            font-size: 2rem;
+        .map-card h2 {
+            font-size: 1.6rem;
             color: var(--navy);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .intro p {
+        .map-card h2 i { color: var(--blue); }
+
+        .map-card p {
             font-size: 1.1rem;
             color: var(--primary-light);
-            margin-bottom: 1.5rem;
             line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
-        .section {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            margin-bottom: 2rem;
+        .map-card ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .section h2 {
-            font-size: 1.8rem;
+        .map-card li {
+            font-size: 1.05rem;
             color: var(--primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--navy);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
         }
 
-        .section h3 {
-            font-size: 1.4rem;
-            color: var(--navy);
-            margin: 1.5rem 0 1rem;
+        .map-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
         }
 
-        .section p, .section li {
+        .questions-card {
+            background: var(--background);
+            border-left: 4px solid #6B7174;
+        }
+
+        .questions-card h2 { color: var(--navy); }
+
+        .questions-card li {
+            font-style: italic;
             color: var(--primary-light);
-            line-height: 1.8;
         }
 
-        .section ul {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .section li {
-            margin-bottom: 0.75rem;
-        }
-
-        .highlight {
-            color: var(--navy);
-            font-weight: 600;
-        }
-
-        .alert {
-            background: rgba(27, 40, 56, 0.1);
-            border-left: 4px solid var(--navy);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .alert strong {
-            color: var(--navy);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-section {
-            display: flex;
-            justify-content: space-between;
+        .cta-section {
+            text-align: center;
             margin-top: 3rem;
-            gap: 1rem;
         }
 
-        .btn {
+        .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s;
+            margin: 0.5rem;
         }
 
-        .btn-primary {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
+        .cta-button:hover {
             background: var(--navy-light);
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
+        .cta-button.secondary {
             background: transparent;
             color: var(--navy);
             border: 2px solid var(--navy);
         }
 
-        .btn-secondary:hover {
+        .cta-button.secondary:hover {
             background: var(--navy);
             color: var(--white);
         }
 
-        footer {
-            background: var(--primary);
-            color: var(--background);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+        @media (max-width: 968px) {
+            .hero-section { padding: 4rem 1.5rem 3rem; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .content-section { padding: 0 1.5rem; }
+            .map-card { padding: 2rem 1.5rem; }
         }
 
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2rem; }
-            .nav-section { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
+        @media (max-width: 480px) {
+            .hero-section h1 { font-size: 2rem; }
+            .hero-icon { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <div class="header">
-        <div class="header-icon"><i class="fas fa-heartbeat"></i></div>
+    <section class="hero-section">
+        <div class="hero-icon">🩶</div>
         <h1>Mapa Físico</h1>
-        <p>El territorio primario del despertar</p>
-    </div>
+        <p class="subtitle">Cuerpo</p>
+    </section>
 
-    <div class="container">
-        <div class="intro">
-            <h2>Tu Cuerpo es el Primer Mapa</h2>
+    <section class="content-section">
+
+        <!-- Qué es -->
+        <div class="map-card">
+            <h2><i class="fas fa-compass"></i> Qué es</h2>
             <p>
-                Antes de cualquier transformación mental, emocional o espiritual, está el cuerpo. 
-                Es el territorio primario — la base sobre la cual todo lo demás se construye.
+                El territorio del cuerpo y la vitalidad. Tu cuerpo es el vehículo que sostiene
+                todo lo demás — sin energía física, no hay claridad mental ni potencia emocional.
             </p>
             <p>
-                Sin energía física, no hay claridad mental. Sin presencia somática, no hay poder real. 
-                Sin salud, todo colapsa.
-            </p>
-            <p>
-                Este mapa te enseña a leer tu cuerpo, entender sus señales, y optimizar tu base física 
-                para sostener el resto del viaje.
+                Tu cuerpo no miente. Acumula tensión, guarda memorias, refleja tu estado interno.
+                Es el mapa más honesto porque no puede fingir. Aprender a escucharlo es ganar
+                un aliado poderoso en tu transformación.
             </p>
         </div>
 
-        <div class="section">
-            <h2>Los Pilares del Mapa Físico</h2>
-            
-            <h3>1. Energía y Vitalidad</h3>
-            <p>
-                Tu nivel de energía determina todo: qué puedes lograr, qué puedes pensar, qué puedes sentir. 
-                Aprender a gestionar y optimizar tu energía es la habilidad más fundamental.
-            </p>
+        <!-- Qué controla -->
+        <div class="map-card">
+            <h2><i class="fas fa-check-circle"></i> Qué controla</h2>
             <ul>
-                <li>Patrones de sueño y recuperación</li>
-                <li>Alimentación como combustible, no como consuelo</li>
-                <li>Ritmos circadianos y ciclos naturales</li>
-                <li>Gestión del estrés físico</li>
-            </ul>
-
-            <h3>2. Presencia Somática</h3>
-            <p>
-                La mayoría vive desconectada de su cuerpo — una cabeza flotante con un cuerpo olvidado. 
-                La presencia somática es habitar tu cuerpo completamente.
-            </p>
-            <ul>
-                <li>Conexión mente-cuerpo</li>
-                <li>Respiración consciente</li>
-                <li>Sensaciones físicas como información</li>
-                <li>El cuerpo como ancla al presente</li>
-            </ul>
-
-            <h3>3. Movimiento y Fuerza</h3>
-            <p>
-                Un cuerpo estancado es una mente estancada. El movimiento no es opcional — 
-                es esencial para la claridad mental y el poder personal.
-            </p>
-            <ul>
-                <li>Fuerza como metáfora de capacidad</li>
-                <li>Movilidad y flexibilidad</li>
-                <li>Entrenamiento como práctica de disciplina</li>
-                <li>El cuerpo como herramienta, no como ornamento</li>
-            </ul>
-
-            <h3>4. Señales y Síntomas</h3>
-            <p>
-                Tu cuerpo habla constantemente. La mayoría no escucha hasta que grita. 
-                Aprender a leer las señales sutiles es sabiduría somática.
-            </p>
-            <ul>
-                <li>Fatiga como mensaje, no como debilidad</li>
-                <li>Dolor como información</li>
-                <li>Enfermedad como desequilibrio sistémico</li>
-                <li>Intuición física</li>
+                <li>Los hábitos de sueño, alimentación y movimiento</li>
+                <li>La atención que prestas a las señales de tu cuerpo</li>
+                <li>Las prácticas que cultivan energía y vitalidad</li>
+                <li>El descanso y la recuperación que te das</li>
+                <li>La relación consciente con tu cuerpo</li>
             </ul>
         </div>
 
-        <div class="alert">
-            <strong>⚡ Insight Clave:</strong>
-            Tu cuerpo no es un vehículo que conduces. ES el territorio donde vives. 
-            Optimizarlo no es vanidad — es el fundamento de todo poder auténtico.
+        <!-- Qué no controla -->
+        <div class="map-card">
+            <h2><i class="fas fa-times-circle"></i> Qué no controla</h2>
+            <ul>
+                <li>La genética y predisposiciones heredadas</li>
+                <li>El envejecimiento natural del cuerpo</li>
+                <li>Condiciones médicas que surgen inesperadamente</li>
+                <li>El ambiente físico externo</li>
+                <li>Las limitaciones físicas estructurales</li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Las Preguntas del Mapa Físico</h2>
-            <p>Estas preguntas te ayudan a cartografiar tu territorio físico actual:</p>
+        <!-- Preguntas -->
+        <div class="map-card questions-card">
+            <h2><i class="fas fa-question-circle"></i> Preguntas que despiertan el alma</h2>
             <ul>
-                <li>¿Cuál es mi nivel real de energía día a día? (No lo que "debería ser")</li>
-                <li>¿Estoy habitando mi cuerpo o solo lo uso como transporte?</li>
-                <li>¿Qué señales me está dando mi cuerpo que estoy ignorando?</li>
-                <li>¿Mi cuerpo me sostiene o me limita en mis objetivos?</li>
+                <li>¿Qué me está diciendo mi cuerpo que estoy ignorando?</li>
                 <li>¿Cuándo fue la última vez que me sentí verdaderamente vital?</li>
-                <li>¿Qué hábitos físicos ejecuto en automático sin cuestionar?</li>
+                <li>¿Trato a mi cuerpo como aliado o como enemigo?</li>
+                <li>¿Qué hábitos físicos estoy ejecutando en automático sin cuestionar?</li>
+                <li>¿Mi cuerpo me sostiene o me limita en mis objetivos?</li>
             </ul>
         </div>
 
-        <div class="section">
-            <h2>El Protocolo de Optimización Física</h2>
-            <p><span class="highlight">Paso 1:</span> Mide tu estado actual (energía, fuerza, movilidad, salud)</p>
-            <p><span class="highlight">Paso 2:</span> Identifica los patrones que drenan vs. los que recargan</p>
-            <p><span class="highlight">Paso 3:</span> Diseña un sistema, no una motivación temporal</p>
-            <p><span class="highlight">Paso 4:</span> Implementa cambios graduales, sostenibles</p>
-            <p><span class="highlight">Paso 5:</span> Re-evalúa cada 30 días y ajusta</p>
+        <!-- Cómo desbloquearlo -->
+        <div class="map-card">
+            <h2><i class="fas fa-key"></i> Cómo desbloquearlo</h2>
+            <ul>
+                <li>Escuchar las señales sutiles antes de que se vuelvan gritos</li>
+                <li>Moverse con intención — el cuerpo estancado estanca la mente</li>
+                <li>Dormir como práctica sagrada, no como último recurso</li>
+                <li>Alimentar el cuerpo como si fuera el templo que es</li>
+                <li>Cultivar presencia somática — habitar el cuerpo, no solo usarlo</li>
+            </ul>
         </div>
 
-        <div class="nav-section">
-            <a href="../trajectory.html" class="btn btn-secondary">
-                <i class="fas fa-arrow-left"></i> Volver a Trayectoria
-            </a>
-            <a href="mapa-mental.html" class="btn btn-primary">
-                Siguiente: Mapa Mental <i class="fas fa-arrow-right"></i>
-            </a>
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="mapa-emocional.html" class="cta-button secondary">← Anterior: Mapa Emocional</a>
+            <a href="mapa-familiar.html" class="cta-button">Siguiente: Mapa Familiar →</a>
         </div>
-    </div>
+
+    </section>
 
     <div id="footer-placeholder"></div>
-    
+
+    <script src="../components/mobile-menu-init.js"></script>
     <script>
         fetch('../components/header.html')
             .then(response => response.text())
-            .then(data => document.getElementById('header-placeholder').innerHTML = data);
-        
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
+
         fetch('../components/footer.html')
             .then(response => response.text())
             .then(data => document.getElementById('footer-placeholder').innerHTML = data);
     </script>
 </body>
 </html>
-

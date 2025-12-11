@@ -13,7 +13,7 @@ Incluye:
 - Logo con link al inicio
 - Menú de navegación principal
 - Menú móvil responsivo
-- CTA "Inicia" destacado
+- CTA "Comienza" destacado
 - Estilos y scripts necesarios
 
 **Uso:**
@@ -126,7 +126,7 @@ Los componentes usan rutas absolutas desde la raíz `/`:
 ✅ /secciones/historia.html
 ✅ /secciones/realizacion.html
 ✅ /secciones/herramientas.html
-✅ /secciones/inicia.html
+✅ /secciones/comienza.html
 ✅ /mapas/mapa-*.html
 ✅ trajectory.html
 ✅ prompts.html

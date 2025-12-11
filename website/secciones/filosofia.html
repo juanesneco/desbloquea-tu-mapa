@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filosofía - Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../styles.css">
     <style>
         :root {
             --primary: #3F4447;
@@ -18,56 +20,22 @@
             --white: #FFFFFF;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
             background: var(--background-alt);
             color: var(--primary);
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
         }
 
-        nav {
-            background: var(--white);
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--navy);
+        /* Ensure all elements inherit the font */
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
         }
 
         .hero-section {
@@ -84,128 +52,326 @@
         }
 
         .hero-section p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             opacity: 0.9;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .content-section {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 4rem auto;
             padding: 0 2rem;
         }
 
-        .phase-card {
+        .philosophy-card {
             background: var(--white);
             border-radius: 12px;
             padding: 3rem;
             margin-bottom: 3rem;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            border-left: 6px solid var(--navy);
-            transition: transform 0.3s;
         }
 
-        .phase-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .phase-number {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background: var(--navy);
-            color: var(--white);
-            border-radius: 50%;
+        .philosophy-card h2 {
             font-size: 2rem;
-            font-weight: 700;
-            line-height: 60px;
-            text-align: center;
+            color: var(--navy);
             margin-bottom: 1.5rem;
         }
 
-        .phase-card h2 {
-            font-size: 2.5rem;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .phase-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .phase-card p {
-            font-size: 1.15rem;
+        .philosophy-card p {
+            font-size: 1.2rem;
             color: var(--primary-light);
             margin-bottom: 1.5rem;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
-        .highlight {
-            background: linear-gradient(120deg, #e8e6e3 0%, #e8e6e3 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 40%;
-            background-position: 0 80%;
+        .philosophy-card .emphasis {
+            font-size: 1.3rem;
+            color: var(--navy);
             font-weight: 600;
-            color: var(--navy);
-        }
-
-        .key-insight {
-            background: var(--background);
-            border-left: 4px solid var(--blue);
-            padding: 1.5rem;
             margin: 2rem 0;
-            border-radius: 8px;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--blue);
         }
 
-        .key-insight strong {
+        .purpose-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .purpose-list li {
+            font-size: 1.15rem;
+            color: var(--primary);
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .purpose-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        .maps-intro {
+            margin-top: 2rem;
+        }
+
+        .maps-intro h3 {
+            font-size: 1.5rem;
             color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .maps-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+
+        .map-tag {
+            background: var(--background);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .map-tag i {
             font-size: 1.1rem;
         }
 
-        footer {
-            background: var(--primary);
-            color: var(--background);
+        .map-tag.mental i { color: #4A90A4; }
+        .map-tag.emocional i { color: #E6B800; }
+        .map-tag.fisico i { color: #6B7174; }
+        .map-tag.familiar i { color: #8B4513; }
+        .map-tag.financiero i { color: #228B22; }
+
+        .diagram-section {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+        }
+
+        .diagram-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .diagram-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .diagram-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .diagram-map {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .diagram-map i {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .diagram-map .map-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .diagram-map .map-essence {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .diagram-map.mental i { color: #4A90A4; }
+        .diagram-map.emocional i { color: #E6B800; }
+        .diagram-map.fisico i { color: #9CA3AF; }
+        .diagram-map.familiar i { color: #CD853F; }
+        .diagram-map.financiero i { color: #4ADE80; }
+
+        .diagram-arrow {
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .diagram-arrow.vertical {
+            transform: rotate(90deg);
+        }
+
+        .diagram-connector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        .diagram-note {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        .system-note {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        /* System Overview Cards */
+        .system-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .system-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--background);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .system-card:hover {
+            border-color: var(--blue);
+            transform: translateX(8px);
+        }
+
+        .system-card-number {
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .system-card-content {
+            flex: 1;
+        }
+
+        .system-card-content i {
+            display: none;
+        }
+
+        .system-card-content h3 {
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .system-card-content p {
+            font-size: 1rem;
+            color: var(--primary-light);
+            margin: 0;
+            line-height: 1.5;
         }
 
         @media (max-width: 968px) {
             .hero-section {
                 padding: 4rem 1.5rem 3rem;
             }
-            
+
             .hero-section h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-section p {
                 font-size: 1.2rem;
             }
-            
+
             .content-section {
                 padding: 0 1.5rem;
             }
-            
-            .phase-card {
+
+            .philosophy-card {
                 padding: 2rem 1.5rem;
             }
-            
-            .phase-card h2 {
-                font-size: 2rem;
+
+            .philosophy-card h2 {
+                font-size: 1.75rem;
             }
-            
-            .phase-card h3 {
-                font-size: 1.3rem;
+
+            .philosophy-card p {
+                font-size: 1.1rem;
             }
-            
-            .nav-links {
+
+            .diagram-section {
+                padding: 2rem 1rem;
+            }
+
+            .diagram-row {
                 gap: 1rem;
-                font-size: 0.9rem;
+            }
+
+            .diagram-map {
+                min-width: 120px;
+                padding: 1rem;
             }
         }
 
@@ -213,24 +379,566 @@
             .hero-section h1 {
                 font-size: 2rem;
             }
-            
-            .hero-section p {
-                font-size: 1.1rem;
+
+            .maps-list {
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .phase-number {
-                width: 50px;
-                height: 50px;
+
+            .diagram-row {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .diagram-arrow {
+                transform: rotate(90deg);
+            }
+
+            .diagram-map {
+                min-width: 160px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fases Section Styles */
+        .fases-container {
+            margin: 2rem 0;
+        }
+
+        .fase-item {
+            background: var(--background);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .fase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .fase-number {
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .fase-header h3 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        .fase-quote {
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .fase-essence {
+            font-size: 1rem;
+            color: var(--primary-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .fase-item > p:last-child {
+            font-size: 1rem;
+            color: var(--primary);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .fase-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            padding: 0.5rem 0;
+        }
+
+        .fases-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        .fase-arrow-inline {
+            opacity: 0.7;
+        }
+
+        .fases-diagram-sub {
+            text-align: center;
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            color: var(--primary-light);
+            font-style: italic;
+        }
+
+        /* Realizacion Section Styles */
+        .realizacion-intro {
+            font-size: 1.3rem;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .os-diagram {
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .os-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .os-icon {
+            font-size: 1.5rem;
+        }
+
+        .os-name {
+            font-weight: 700;
+            font-size: 1rem;
+            min-width: 120px;
+        }
+
+        .os-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .os-arrow {
+            font-size: 1.25rem;
+            opacity: 0.6;
+        }
+
+        .os-transformation {
+            background: var(--background);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .os-transformation h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .transformation-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .flow-arrow {
+            color: var(--blue);
+        }
+
+        .realizacion-note {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--primary);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 480px) {
+            .fases-diagram {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .fase-arrow-inline {
+                transform: rotate(90deg);
+            }
+
+            .transformation-flow {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .os-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .os-name {
+                min-width: auto;
+            }
+        }
+
+        /* Circular Diagram Styles */
+        .circle-diagram-container {
+            margin: 2rem 0;
+        }
+
+        .circle-diagram {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .connection-lines line {
+            stroke: var(--primary-light);
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+
+        .circle-map {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 2;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .circle-map:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Position each map in a circle */
+        .circle-map.mental {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .circle-map.emocional {
+            top: 90px;
+            right: 0;
+        }
+
+        .circle-map.financiero {
+            bottom: 40px;
+            right: 30px;
+        }
+
+        .circle-map.familiar {
+            bottom: 40px;
+            left: 30px;
+        }
+
+        .circle-map.fisico {
+            top: 90px;
+            left: 0;
+        }
+
+        .circle-map i {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .circle-map.mental i { color: #4A90A4; }
+        .circle-map.emocional i { color: #E6B800; }
+        .circle-map.fisico i { color: #6B7174; }
+        .circle-map.familiar i { color: #8B4513; }
+        .circle-map.financiero i { color: #228B22; }
+
+        .circle-map-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .circle-map-essence {
+            font-size: 0.7rem;
+            color: var(--primary-light);
+        }
+
+        .circle-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            box-shadow: 0 4px 16px rgba(27, 40, 56, 0.3);
+        }
+
+        .center-label {
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .center-sublabel {
+            color: var(--background);
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .circle-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: var(--primary-light);
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .circle-diagram {
+                width: 320px;
+                height: 320px;
+            }
+
+            .circle-map {
+                width: 80px;
+                height: 80px;
+            }
+
+            .circle-map i {
+                font-size: 1.2rem;
+            }
+
+            .circle-map-name {
+                font-size: 0.75rem;
+            }
+
+            .circle-map-essence {
+                font-size: 0.6rem;
+            }
+
+            .circle-map.emocional {
+                top: 70px;
+            }
+
+            .circle-map.fisico {
+                top: 70px;
+            }
+
+            .circle-map.financiero {
+                bottom: 30px;
+                right: 20px;
+            }
+
+            .circle-map.familiar {
+                bottom: 30px;
+                left: 20px;
+            }
+
+            .circle-center {
+                width: 100px;
+                height: 100px;
+            }
+
+            .center-label {
+                font-size: 0.8rem;
+            }
+
+            .center-sublabel {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Simple Fases Diagram */
+        .fases-simple-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .fase-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .fase-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .fase-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .fase-circle i {
+            font-size: 1.75rem;
+            color: var(--primary-light);
+        }
+
+        .fase-circle.active {
+            background: var(--navy);
+        }
+
+        .fase-circle.active i {
+            color: var(--white);
+        }
+
+        .fase-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .fase-sublabel {
+            font-size: 0.85rem;
+            color: var(--primary-light);
+        }
+
+        .fase-connector {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            margin: 0 0.5rem;
+        }
+
+        /* Simple Realizacion Diagram */
+        .realizacion-simple-diagram {
+            margin: 2rem 0;
+        }
+
+        .boton-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .boton-item {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .boton-item i {
+            color: var(--blue);
+            font-size: 1rem;
+        }
+
+        .boton-arrow {
+            color: rgba(255,255,255,0.5);
+            font-size: 1rem;
+        }
+
+        .realizacion-tagline {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: var(--primary-light);
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .fases-simple-diagram {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .fase-connector {
+                transform: rotate(90deg);
+                margin: 0.25rem 0;
+            }
+
+            .fase-circle {
+                width: 70px;
+                height: 70px;
+            }
+
+            .fase-circle i {
                 font-size: 1.5rem;
-                line-height: 50px;
             }
-            
-            .phase-card h2 {
-                font-size: 1.8rem;
-            }
-            
-            .key-insight {
-                padding: 1rem;
+
+            .boton-item {
+                min-width: 160px;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -239,176 +947,223 @@
     <div id="header-placeholder"></div>
 
     <section class="hero-section">
-        <h1>🌱 La Filosofía</h1>
-        <p>Las tres fases del viaje interior: del sueño a la presencia consciente</p>
+        <h1>Filosofía</h1>
+        <p>El fundamento de todo lo que hacemos</p>
     </section>
 
     <section class="content-section">
-        
-        <!-- FASE 1: INCONSCIENCIA -->
-        <div class="phase-card">
-            <div class="phase-number">1</div>
-            <h2>Inconsciencia (Inocencia)</h2>
-            
+
+        <!-- Section 1: The Core Idea -->
+        <div class="philosophy-card">
+            <h2>La Idea Central</h2>
+            <p>La vida es un mapa.</p>
             <p>
-                Nacemos en un mundo que no elegimos, con mapas que no dibujamos. 
-                Desde la infancia, absorbemos historias, creencias y patrones de quienes nos rodean.
+                No vemos la realidad tal como es, sino a través de una interpretación:
+                nuestro mapa interno.
             </p>
-
             <p>
-                <span class="highlight">Operamos en piloto automático</span>, ejecutando programas 
-                que heredamos sin cuestionarlos. No somos conscientes del mapa — simplemente 
-                vivimos dentro de él, creyendo que esa interpretación del mundo es "la realidad".
+                Pero este mapa no es fijo.<br>
+                Cambia cuando cambia nuestra intención.
             </p>
-
-            <div class="key-insight">
-                <strong>Clave:</strong> En esta fase, no sabemos que estamos dormidos. 
-                Los pensamientos, emociones y comportamientos surgen automáticamente, 
-                sin observación consciente.
-            </div>
-
-            <h3>Características de la Inconsciencia</h3>
-            <p>
-                • Vivir desde hábitos y patrones heredados<br>
-                • Reaccionar automáticamente sin reflexión<br>
-                • Creer que "así son las cosas"<br>
-                • Culpar al exterior por nuestras experiencias<br>
-                • Identificarnos completamente con nuestros pensamientos
+            <p class="emphasis">
+                La intención es el origen de toda transformación.<br>
+                Es el botón que activa todos los demás botones.
             </p>
-
             <p>
-                La inocencia no es algo malo — es simplemente el punto de partida. 
-                Todos comenzamos aquí, y muchos permanecen aquí toda su vida sin darse cuenta.
+                Todas las áreas de tu vida — mente, emociones, cuerpo, familia y finanzas —
+                responden a la intención que sostienes en tu interior.
             </p>
         </div>
 
-        <!-- FASE 2: CONSCIENCIA -->
-        <div class="phase-card">
-            <div class="phase-number">2</div>
-            <h2>Consciencia (Despertar)</h2>
-            
-            <p>
-                Algo cambia. Un evento, una crisis, una pregunta profunda — 
-                y de repente <span class="highlight">empezamos a observarnos</span>.
-            </p>
-
-            <p>
-                Desarrollamos al <strong>observador interno</strong>, esa parte de nosotros 
-                que puede ver los pensamientos sin ser los pensamientos. Que puede sentir 
-                las emociones sin identificarse completamente con ellas.
-            </p>
-
-            <div class="key-insight">
-                <strong>Clave:</strong> En esta fase, comenzamos a ver los botones. 
-                Reconocemos que algunos aspectos de nuestra vida están bajo nuestro control, 
-                y otros no. Aprendemos a distinguir entre ambos.
-            </div>
-
-            <h3>El Despertar Progresivo</h3>
-            <p>
-                La consciencia no llega de golpe. Es un proceso gradual de:<br><br>
-                
-                <strong>1. Observación</strong> → Ver los patrones sin juzgarlos<br>
-                <strong>2. Reconocimiento</strong> → Identificar de dónde vienen<br>
-                <strong>3. Cuestionamiento</strong> → ¿Esto es realmente mío?<br>
-                <strong>4. Elección</strong> → Decidir conscientemente qué mantener
-            </p>
-
-            <h3>Los Espejos</h3>
-            <p>
-                Las relaciones se convierten en espejos que nos muestran lo que no podemos ver solos. 
-                Lo que nos molesta en otros suele reflejar algo no integrado en nosotros mismos.
-            </p>
-
-            <p>
-                <span class="highlight">La vida misma se convierte en un maestro</span>, 
-                mostrándonos repetidamente los mismos patrones hasta que finalmente los vemos.
+        <!-- Section 2: Why DTM Exists -->
+        <div class="philosophy-card">
+            <h2>Por Qué Existe Desbloquea Tu Mapa</h2>
+            <p>Para ayudarte a:</p>
+            <ul class="purpose-list">
+                <li>Ver el mapa en el que vives</li>
+                <li>Comprender cómo fue construido</li>
+                <li>Identificar dónde estás estancado</li>
+                <li>Elegir una nueva dirección</li>
+                <li>Redibujar tu mundo con claridad y propósito</li>
+            </ul>
+            <p class="system-note">
+                No es teoría.<br>
+                Es un sistema práctico de consciencia.
             </p>
         </div>
 
-        <!-- FASE 3: CREACIÓN -->
-        <div class="phase-card">
-            <div class="phase-number">3</div>
-            <h2>Creación (Presencia)</h2>
-            
-            <p>
-                Aquí es donde la verdadera transformación sucede. No solo vemos los patrones — 
-                <span class="highlight">elegimos activamente cómo responder a ellos</span>.
-            </p>
+        <!-- Section 3: The System Overview -->
+        <div class="philosophy-card system-overview">
+            <h2>El Sistema</h2>
+            <p>Desbloquea Tu Mapa se estructura en tres componentes:</p>
 
-            <p>
-                Integramos mente, cuerpo y espíritu. Actuamos con intención, pero también 
-                con rendición. Entendemos que podemos controlar algunos botones, pero no todos, 
-                y <strong>esa comprensión nos libera</strong>.
-            </p>
-
-            <div class="key-insight">
-                <strong>Clave:</strong> Creación no es solo "hacer cosas". 
-                Es rediseñar tu mapa desde la consciencia plena. Es vivir desde tu poder auténtico, 
-                no desde los programas heredados.
-            </div>
-
-            <h3>Los Pilares de la Creación</h3>
-            
-            <p><strong>Intención Clara</strong><br>
-            Saber qué quieres crear y por qué importa para ti, no para otros.</p>
-
-            <p><strong>Acción Consciente</strong><br>
-            Cada comportamiento se vuelve una elección deliberada, no una reacción automática.</p>
-
-            <p><strong>Presencia</strong><br>
-            Estar completamente aquí, ahora, sin vivir en el pasado o el futuro.</p>
-
-            <p><strong>Integración</strong><br>
-            Honrar todas las partes de ti — la mente, el cuerpo, las emociones, el espíritu.</p>
-
-            <h3>El Flujo de Transformación</h3>
-            <p>
-                <strong>Intención</strong> → Comportamiento → Hábito → Práctica → <strong>Ser</strong>
-            </p>
-
-            <p>
-                Lo que repetimos con intención se convierte en hábito. 
-                Los hábitos sostenidos se convierten en práctica. 
-                La práctica constante cambia quiénes somos a nivel fundamental.
-            </p>
-
-            <p>
-                <span class="highlight">No se trata de "arreglarte" — se trata de recordar quién realmente eres</span> 
-                debajo de todas las capas de condicionamiento.
-            </p>
-        </div>
-
-        <!-- REFLEXIÓN FINAL -->
-        <div class="phase-card" style="border-left-color: var(--blue);">
-            <h2>🎯 La Verdad Central</h2>
-            
-            <p style="font-size: 1.25rem; font-weight: 500;">
-                "No podemos controlar todo, pero sí lo suficiente para cambiar nuestra vida."
-            </p>
-
-            <p>
-                La vida no es el mapa. La vida es el juego. Y una vez que aprendes a ver 
-                el juego por lo que es, todo cambia.
-            </p>
-
-            <p>
-                El objetivo no es alcanzar algún estado perfecto de "iluminación". 
-                Es <strong>vivir con presencia</strong>, responder conscientemente, y 
-                crear desde tu poder auténtico momento a momento.
-            </p>
-
-            <p style="text-align: center; margin-top: 3rem;">
-                <a href="mapas.html" style="display: inline-block; background: var(--navy); color: var(--white); padding: 1rem 2.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;">
-                    Explora Los Cuatro Mapas →
+            <div class="system-cards">
+                <a href="#fases" class="system-card">
+                    <div class="system-card-number">1</div>
+                    <div class="system-card-content">
+                        <i class="fas fa-route"></i>
+                        <h3>Las 3 Fases</h3>
+                        <p>El viaje de transformación: de la inconsciencia a la creación consciente.</p>
+                    </div>
                 </a>
+
+                <a href="#mapas" class="system-card">
+                    <div class="system-card-number">2</div>
+                    <div class="system-card-content">
+                        <i class="fas fa-map"></i>
+                        <h3>Los 5 Mapas</h3>
+                        <p>Los territorios de tu experiencia: mental, emocional, físico, familiar, financiero.</p>
+                    </div>
+                </a>
+
+                <a href="#realizacion" class="system-card">
+                    <div class="system-card-number">3</div>
+                    <div class="system-card-content">
+                        <i class="fas fa-cogs"></i>
+                        <h3>La Realización</h3>
+                        <p>El sistema operativo interno: los botones que puedes controlar.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Section: Las 3 Fases -->
+        <div class="philosophy-card" id="fases">
+            <h2>Las 3 Fases</h2>
+            <p>El viaje de transformación tiene tres etapas:</p>
+
+            <!-- Simple Linear Diagram -->
+            <div class="fases-simple-diagram">
+                <div class="fase-node">
+                    <div class="fase-circle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <span class="fase-label">Inconsciencia</span>
+                    <span class="fase-sublabel">No ves el mapa</span>
+                </div>
+                <div class="fase-connector">→</div>
+                <div class="fase-node">
+                    <div class="fase-circle active">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <span class="fase-label">Consciencia</span>
+                    <span class="fase-sublabel">Ves el mapa</span>
+                </div>
+                <div class="fase-connector">→</div>
+                <div class="fase-node">
+                    <div class="fase-circle">
+                        <i class="fas fa-pencil"></i>
+                    </div>
+                    <span class="fase-label">Creación</span>
+                    <span class="fase-sublabel">Redibujas el mapa</span>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="fases.html" class="cta-button">Explorar Las 3 Fases →</a>
+            </div>
+        </div>
+
+        <!-- Section 4: The Five Maps -->
+        <div class="philosophy-card" id="mapas">
+            <h2>Los 5 Mapas</h2>
+            <p>
+                Cinco territorios que juntos forman tu experiencia. Todos están conectados entre sí.
             </p>
+
+            <!-- Circular Diagram -->
+            <div class="circle-diagram-container">
+                <div class="circle-diagram">
+                    <!-- SVG lines connecting all maps -->
+                    <svg class="connection-lines" viewBox="0 0 400 400">
+                        <!-- Lines connecting all nodes -->
+                        <line x1="200" y1="50" x2="350" y2="140" />
+                        <line x1="200" y1="50" x2="320" y2="310" />
+                        <line x1="200" y1="50" x2="80" y2="310" />
+                        <line x1="200" y1="50" x2="50" y2="140" />
+                        <line x1="350" y1="140" x2="320" y2="310" />
+                        <line x1="350" y1="140" x2="80" y2="310" />
+                        <line x1="350" y1="140" x2="50" y2="140" />
+                        <line x1="320" y1="310" x2="80" y2="310" />
+                        <line x1="320" y1="310" x2="50" y2="140" />
+                        <line x1="80" y1="310" x2="50" y2="140" />
+                    </svg>
+
+                    <!-- Map nodes positioned in a circle -->
+                    <div class="circle-map mental" style="--angle: -90deg;">
+                        <i class="fas fa-brain"></i>
+                        <span class="circle-map-name">Mental</span>
+                        <span class="circle-map-essence">Interpretación</span>
+                    </div>
+                    <div class="circle-map emocional" style="--angle: -18deg;">
+                        <i class="fas fa-heart"></i>
+                        <span class="circle-map-name">Emocional</span>
+                        <span class="circle-map-essence">Energía</span>
+                    </div>
+                    <div class="circle-map financiero" style="--angle: 54deg;">
+                        <i class="fas fa-coins"></i>
+                        <span class="circle-map-name">Financiero</span>
+                        <span class="circle-map-essence">Valor</span>
+                    </div>
+                    <div class="circle-map familiar" style="--angle: 126deg;">
+                        <i class="fas fa-house-chimney"></i>
+                        <span class="circle-map-name">Familiar</span>
+                        <span class="circle-map-essence">Patrones</span>
+                    </div>
+                    <div class="circle-map fisico" style="--angle: 198deg;">
+                        <i class="fas fa-person-running"></i>
+                        <span class="circle-map-name">Físico</span>
+                        <span class="circle-map-essence">Cuerpo</span>
+                    </div>
+
+                    <!-- Center: Intención -->
+                    <div class="circle-center">
+                        <span class="center-label">INTENCIÓN</span>
+                        <span class="center-sublabel">El origen</span>
+                    </div>
+                </div>
+                <p class="circle-note">
+                    Todos los mapas se reorganizan cuando cambia tu intención.
+                </p>
+            </div>
+
+            <div class="cta-section">
+                <a href="mapas.html" class="cta-button">Explorar Los 5 Mapas →</a>
+            </div>
+        </div>
+
+        <!-- Section 5: La Realización -->
+        <div class="philosophy-card" id="realizacion">
+            <h2>La Realización</h2>
+            <p>El sistema operativo interno: los botones que SÍ puedes controlar.</p>
+
+            <!-- Simple Vertical Flow Diagram -->
+            <div class="realizacion-simple-diagram">
+                <div class="boton-flow">
+                    <div class="boton-item"><i class="fas fa-crosshairs"></i> Intención</div>
+                    <div class="boton-arrow">↓</div>
+                    <div class="boton-item"><i class="fas fa-eye"></i> Atención</div>
+                    <div class="boton-arrow">↓</div>
+                    <div class="boton-item"><i class="fas fa-lightbulb"></i> Interpretación</div>
+                    <div class="boton-arrow">↓</div>
+                    <div class="boton-item"><i class="fas fa-bolt"></i> Energía</div>
+                    <div class="boton-arrow">↓</div>
+                    <div class="boton-item"><i class="fas fa-play"></i> Acción</div>
+                    <div class="boton-arrow">↓</div>
+                    <div class="boton-item"><i class="fas fa-rotate"></i> Repetición</div>
+                </div>
+                <p class="realizacion-tagline">No controlas todo, pero controlas lo suficiente.</p>
+            </div>
+
+            <div class="cta-section">
+                <a href="realizacion.html" class="cta-button">Explorar La Realización →</a>
+            </div>
         </div>
 
     </section>
 
     <div id="footer-placeholder"></div>
-    
+
     <script src="../components/mobile-menu-init.js"></script>
     <script>
         fetch('../components/header.html')
@@ -417,11 +1172,10 @@
                 document.getElementById('header-placeholder').innerHTML = data;
                 setTimeout(initMobileMenu, 100);
             });
-        
+
         fetch('../components/footer.html')
             .then(response => response.text())
             .then(data => document.getElementById('footer-placeholder').innerHTML = data);
     </script>
 </body>
 </html>
-

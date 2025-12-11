@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comienza - Desbloquea Tu Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3F4447;
+            --primary-light: #6B7174;
+            --navy: #1B2838;
+            --navy-light: #2C3E50;
+            --blue: #4A90A4;
+            --background: #E8E6E3;
+            --background-alt: #F5F3F0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+            background: var(--background-alt);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, span, a, li, div {
+            font-family: inherit;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section .emphasis {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            margin-top: 2rem;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .action-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .action-card h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .action-card p {
+            font-size: 1.15rem;
+            color: var(--primary-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27, 40, 56, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: var(--background);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .newsletter-section h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-section p {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            border: 2px solid var(--border, #D1CFCC);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        .email-form button {
+            padding: 1rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .email-form button:hover {
+            background: var(--navy-light);
+        }
+
+        @media (max-width: 968px) {
+            .hero-section {
+                padding: 6rem 1.5rem 4rem;
+                min-height: auto;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                padding: 0 1.5rem;
+            }
+
+            .action-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .email-form input {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .email-form button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Comienza</h1>
+            <p>
+                Cada camino se ve diferente.
+            </p>
+            <p>
+                Ofrecemos herramientas que te permiten hacer este descubrimiento,
+                este desbloqueo de tu propio mapa.
+            </p>
+            <p class="emphasis">
+                El viaje de mil kilómetros comienza con un solo paso consciente.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+
+        <!-- Main Action -->
+        <div class="action-card">
+            <h2>Tu Primer Paso</h2>
+            <p>
+                Explora los prompts guiados diseñados para activar tu consciencia
+                y comenzar a ver el mapa que has estado viviendo.
+            </p>
+            <a href="../prompts.html" class="cta-button">Explorar Prompts Guiados</a>
+        </div>
+
+        <!-- Secondary Action -->
+        <div class="action-card">
+            <h2>Explora la Filosofía</h2>
+            <p>
+                Entiende los principios fundamentales antes de comenzar la práctica.
+                La intención clara multiplica los resultados.
+            </p>
+            <a href="filosofia.html" class="cta-button secondary">Leer la Filosofía</a>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="newsletter-section">
+            <h3>Únete a la Comunidad</h3>
+            <p>
+                Recibe reflexiones semanales, ejercicios y recursos
+                directamente en tu correo.
+            </p>
+            <form class="email-form" action="#" method="post">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Únete</button>
+            </form>
+        </div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../components/mobile-menu-init.js"></script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initMobileMenu, 100);
+            });
+
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
