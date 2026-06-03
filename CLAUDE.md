@@ -6,6 +6,32 @@
 
 The core philosophy: **La intención es el origen de toda transformación** (Intention is the origin of all transformation).
 
+## Backend Status & Migration Plan (Deferred)
+
+> **Parked as of 2026-06-03.** Both Supabase **Cloud** projects this repo was wired to are **unreachable** — their subdomains no longer resolve DNS, so they have been paused or deleted:
+> - `app/` → project `ehgsfiuvaunfqugkhdrt.supabase.co` (referenced via `app/.env.local`, vars `NEXT_PUBLIC_SUPABASE_*` + `OPENAI_API_KEY`)
+> - root + `website/` → project `wjhmycxkvmtxtyrcqgfm.supabase.co` (referenced via root `.env`, vars `SUPABASE_URL`/`SUPABASE_ANON_KEY`, and **hardcoded** in `website/supabase-keys.js`)
+>
+> Until re-provisioned, the `app/` will not connect to a database and the `website/` Supabase-backed features (newsletter, image contributions) will not work.
+
+### Plan — migrate onto the shared self-hosted JENG Supabase
+
+This project lives under `~/web/apps/` on the JENG VPS only so it can be worked on there; it does **not** yet use the shared self-hosted Supabase (`api.juanesngtz.com`). When ready to revive it:
+
+1. **Pick a schema + view prefix** following the JENG multi-app pattern — e.g. schema `dtm`, public views prefixed `dtm_*` with `security_invoker = true`. (See `~/web/apps/CLAUDE.md` and `~/know_how/01_server_setup/03_supabase_schema.md`.)
+2. **Stand up the schema** from the migrations already in this repo, in order:
+   - `app/supabase/migrations/001_initial_schema.sql`
+   - `app/supabase/migrations/002_add_fases_subetapas_auth.sql`
+   - `app/supabase/migrations/003_add_mapa_emocional.sql`
+3. **Recreate the storage bucket + RLS** — the app expects a `symbolic-images` storage bucket and `user_roles`-based policies (`contributor` role for uploads). Full checklist in `app/SUPABASE_SETUP.md` and `app/STORAGE_POLICIES_SETUP.md`.
+4. **Repoint credentials** to the shared instance:
+   - `app/.env.local` → `NEXT_PUBLIC_SUPABASE_URL=https://api.juanesngtz.com` + the shared anon key (keep a working `OPENAI_API_KEY`).
+   - root `.env` → shared `SUPABASE_URL`/`SUPABASE_ANON_KEY`.
+   - `website/supabase-keys.js` → **must be updated by hand** (anon URL+key are hardcoded and committed here; the anon key is public-by-design so this is safe, but it currently points at the dead `wjhmy` project).
+5. **Decide on the static-site coupling** — the GitHub Pages `website/` reaches Supabase directly from the browser via `supabase-keys.js`; confirm RLS covers anonymous reads/writes for whatever it needs (newsletter signup, etc.) before going live.
+
+`.env` and `app/.env.local` are gitignored (never committed); only the hardcoded `website/supabase-keys.js` and these notes live in the repo. After re-provisioning, update this section.
+
 ## Project Structure
 
 ```
