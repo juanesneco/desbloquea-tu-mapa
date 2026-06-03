@@ -38,10 +38,10 @@ export interface ImageData {
   description: string;
   tags: string[];
   user_id?: string;
-  // Required fields
-  fase_id: string;
-  sub_etapa_id: string;
-  mapa_id: string;
+  // Required fields (can be null until AI classification runs)
+  fase_id?: string | null;
+  sub_etapa_id?: string | null;
+  mapa_id?: string | null;
   // Joined data (optional, populated when fetching with joins)
   fase?: Fase;
   sub_etapa?: SubEtapa;
@@ -56,4 +56,3 @@ export interface UserRoleData {
   role: UserRole;
   created_at: string;
 }
-

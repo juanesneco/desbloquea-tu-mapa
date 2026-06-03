@@ -1,5 +1,3 @@
-// Authentication screen
-
 import React, { useState } from 'react';
 import {
   View,
@@ -7,141 +5,166 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Alert,
   ActivityIndicator,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
-import { useAuth } from '../hooks/useAuth';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function AuthScreen() {
+  const { signIn, signUp } = useAuthContext();
+  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSignUp, setIsSignUp] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { signIn, signUp } = useAuth();
 
-  const handleSubmit = async () => {
+  const handleAuth = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Por favor completa todos los campos');
+      Alert.alert('Campos requeridos', 'Ingresa tu correo y contraseña.');
       return;
     }
 
-    setLoading(true);
     try {
-      if (isSignUp) {
-        await signUp(email, password);
-        Alert.alert('Éxito', 'Cuenta creada. Por defecto eres un "viewer". Contacta a un administrador para obtener permisos de "contributor".');
+      setLoading(true);
+      if (mode === 'signin') {
+        await signIn(email.trim(), password);
       } else {
-        await signIn(email, password);
+        await signUp(email.trim(), password);
+        Alert.alert(
+          'Cuenta creada',
+          'Revisa tu correo para confirmar la cuenta si es necesario.'
+        );
       }
+      setEmail('');
+      setPassword('');
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Error al autenticar');
+      Alert.alert('Error', error.message || 'No se pudo completar la acción.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Desbloquea Tu Mapa</Text>
-      <Text style={styles.subtitle}>
-        {isSignUp ? 'Crear cuenta' : 'Iniciar sesión'}
-      </Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-        autoComplete="email"
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        autoCapitalize="none"
-      />
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSubmit}
-        disabled={loading}
-      >
-        {loading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.buttonText}>
-            {isSignUp ? 'Crear cuenta' : 'Iniciar sesión'}
-          </Text>
-        )}
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.switchButton}
-        onPress={() => setIsSignUp(!isSignUp)}
-      >
-        <Text style={styles.switchText}>
-          {isSignUp
-            ? '¿Ya tienes cuenta? Inicia sesión'
-            : '¿No tienes cuenta? Crear cuenta'}
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <View style={styles.card}>
+        <Text style={styles.title}>
+          {mode === 'signin' ? 'Inicia sesión' : 'Crea tu cuenta'}
         </Text>
-      </TouchableOpacity>
-    </View>
+        <Text style={styles.subtitle}>
+          Accede para subir y gestionar tus imágenes simbólicas.
+        </Text>
+
+        <TextInput
+          placeholder="Correo electrónico"
+          placeholderTextColor="#9ca3af"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+        />
+        <TextInput
+          placeholder="Contraseña"
+          placeholderTextColor="#9ca3af"
+          secureTextEntry
+          autoCapitalize="none"
+          value={password}
+          onChangeText={setPassword}
+          style={styles.input}
+        />
+
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={handleAuth}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.primaryButtonText}>
+              {mode === 'signin' ? 'Entrar' : 'Registrarme'}
+            </Text>
+          )}
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
+          disabled={loading}
+        >
+          <Text style={styles.secondaryButtonText}>
+            {mode === 'signin'
+              ? '¿No tienes cuenta? Regístrate'
+              : '¿Ya tienes cuenta? Inicia sesión'}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
     backgroundColor: '#E8E6E3',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+  },
+  card: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    elevation: 4,
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '700',
     color: '#1B2838',
-    textAlign: 'center',
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 14,
     color: '#6B7174',
-    textAlign: 'center',
-    marginBottom: 32,
+    marginBottom: 24,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: '#F5F5F4',
     borderRadius: 8,
-    padding: 16,
-    marginBottom: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
     fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#D1CFCC',
+    color: '#1B2838',
+    marginBottom: 16,
   },
-  button: {
+  primaryButton: {
     backgroundColor: '#1B2838',
+    paddingVertical: 14,
     borderRadius: 8,
-    padding: 16,
     alignItems: 'center',
     marginTop: 8,
   },
-  buttonText: {
+  primaryButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
   },
-  switchButton: {
-    marginTop: 24,
+  secondaryButton: {
+    marginTop: 16,
     alignItems: 'center',
   },
-  switchText: {
-    color: '#4A90A4',
+  secondaryButtonText: {
+    color: '#1B2838',
     fontSize: 14,
+    fontWeight: '600',
   },
 });
-

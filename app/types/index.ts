@@ -38,10 +38,10 @@ export interface ImageData {
   description: string;
   tags: string[];
   user_id?: string;
-  // New required fields
-  fase_id: string;
-  sub_etapa_id: string;
-  mapa_id: string;
+  // New required fields (null until classified)
+  fase_id?: string | null;
+  sub_etapa_id?: string | null;
+  mapa_id?: string | null;
   // Joined data (optional, populated when fetching with joins)
   fase?: Fase;
   sub_etapa?: SubEtapa;
@@ -73,4 +73,3 @@ export interface UploadResponse {
   data?: ImageData;
   error?: string;
 }
-

@@ -2,10 +2,17 @@
 
 import { createClient } from '@supabase/supabase-js';
 import Constants from 'expo-constants';
+import { File } from 'expo-file-system';
 import { ImageData, Fase, SubEtapa, Mapa, UserRole } from '../types';
 
-const supabaseUrl = Constants.expoConfig?.extra?.supabaseUrl || process.env.EXPO_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = Constants.expoConfig?.extra?.supabaseAnonKey || process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl =
+  Constants.expoConfig?.extra?.supabaseUrl ||
+  process.env.EXPO_PUBLIC_SUPABASE_URL ||
+  '';
+const supabaseAnonKey =
+  Constants.expoConfig?.extra?.supabaseAnonKey ||
+  process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ||
+  '';
 
 // Validate keys are set and not placeholders
 const hasValidKeys = Boolean(
@@ -41,34 +48,225 @@ export const supabase = supabaseClient;
 // Storage bucket name
 export const IMAGES_BUCKET = 'symbolic-images';
 
-/**
- * Upload an image file to Supabase storage
- */
-export async function uploadImage(uri: string, fileName: string): Promise<string> {
-  // Convert URI to blob
-  const response = await fetch(uri);
-  const blob = await response.blob();
-  
-  const fileExt = fileName.split('.').pop() || 'jpg';
-  const filePath = `uploads/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+function getStoragePathFromPublicUrl(publicUrl: string): string {
+  try {
+    const url = new URL(publicUrl);
+    const marker = `/storage/v1/object/public/${IMAGES_BUCKET}/`;
+    const index = url.pathname.indexOf(marker);
+    if (index === -1) {
+      throw new Error('Invalid storage URL');
+    }
+    return decodeURIComponent(url.pathname.slice(index + marker.length));
+  } catch (error) {
+    // Fallback for already relative paths
+    if (publicUrl.includes(`${IMAGES_BUCKET}/`)) {
+      return publicUrl.split(`${IMAGES_BUCKET}/`)[1];
+    }
+    throw new Error('Unable to determine storage path from URL');
+  }
+}
 
-  const { error: uploadError } = await supabase.storage
+/**
+ * List all images from Supabase storage
+ */
+export async function listUploadedImages(): Promise<string[]> {
+  const { data, error } = await supabase.storage
     .from(IMAGES_BUCKET)
-    .upload(filePath, blob, {
-      cacheControl: '3600',
-      upsert: false,
+    .list('uploads', {
+      limit: 100,
+      offset: 0,
     });
 
-  if (uploadError) {
-    throw new Error(`Failed to upload image: ${uploadError.message}`);
+  if (error) {
+    throw new Error(`Failed to list images: ${error.message}`);
   }
 
-  // Get public URL
-  const { data: urlData } = supabase.storage
-    .from(IMAGES_BUCKET)
-    .getPublicUrl(filePath);
+  // Filter for image files and get public URLs
+  // Sort by name (which includes timestamp) in descending order
+  const imageFiles = (data || [])
+    .filter((file) => {
+      const ext = file.name.split('.').pop()?.toLowerCase();
+      return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext || '');
+    })
+    .sort((a, b) => b.name.localeCompare(a.name)) // Sort descending (newest first)
+    .map((file) => {
+      const { data: urlData } = supabase.storage
+        .from(IMAGES_BUCKET)
+        .getPublicUrl(`uploads/${file.name}`);
+      return urlData.publicUrl;
+    });
 
-  return urlData.publicUrl;
+  return imageFiles;
+}
+
+/**
+ * Upload an image file to Supabase storage (React Native compatible)
+ */
+export async function uploadImage(uri: string, mimeType?: string): Promise<string> {
+  // Validate inputs
+  if (!uri || typeof uri !== 'string') {
+    throw new Error('Invalid image URI provided');
+  }
+
+  // Validate Supabase client
+  if (!hasValidKeys) {
+    throw new Error('Supabase configuration is missing. Please check your environment variables.');
+  }
+
+  try {
+    // Read file info first to get size
+    const file = new File(uri);
+    const fileInfo = file.info();
+    if (!fileInfo.exists) {
+      throw new Error('Image file does not exist');
+    }
+
+    // Check file size (limit to 10MB to prevent memory issues)
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+    const fileSize = fileInfo.size ?? file.size ?? 0;
+    if (fileSize > MAX_FILE_SIZE) {
+      throw new Error(`Image file is too large (${Math.round(fileSize / 1024 / 1024)}MB). Maximum size is 10MB.`);
+    }
+
+    // Read file bytes using the new File API to avoid deprecated legacy methods
+    const fileBytes = await file.bytes();
+    if (!fileBytes || fileBytes.length === 0) {
+      throw new Error('Failed to read image file. File may be corrupted or empty.');
+    }
+
+    // Determine file extension and MIME type from URI or provided mimeType
+    let fileExt = 'jpg';
+    let contentType = 'image/jpeg';
+    
+    if (mimeType) {
+      // Use provided mimeType
+      contentType = mimeType;
+      const mimeToExt: { [key: string]: string } = {
+        'image/jpeg': 'jpg',
+        'image/jpg': 'jpg',
+        'image/png': 'png',
+        'image/gif': 'gif',
+        'image/webp': 'webp',
+      };
+      fileExt = mimeToExt[mimeType] || 'jpg';
+    } else {
+      // Try to extract from URI
+      const uriLower = uri.toLowerCase();
+      if (uriLower.includes('.png')) {
+        fileExt = 'png';
+        contentType = 'image/png';
+      } else if (uriLower.includes('.gif')) {
+        fileExt = 'gif';
+        contentType = 'image/gif';
+      } else if (uriLower.includes('.webp')) {
+        fileExt = 'webp';
+        contentType = 'image/webp';
+      } else {
+        // Default to jpg/jpeg
+        fileExt = 'jpg';
+        contentType = 'image/jpeg';
+      }
+    }
+    
+    const filePath = `uploads/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+    // Upload using Uint8Array (works in React Native)
+    const { error: uploadError } = await supabase.storage
+      .from(IMAGES_BUCKET)
+      .upload(filePath, fileBytes, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: contentType,
+      });
+
+    if (uploadError) {
+      // Provide more specific error messages
+      if (uploadError.message.includes('Bucket not found')) {
+        throw new Error('Storage bucket not found. Please check your Supabase configuration.');
+      } else if (uploadError.message.includes('new row violates row-level security')) {
+        throw new Error('Permission denied. Please check your storage policies.');
+      } else {
+        throw new Error(`Failed to upload image: ${uploadError.message}`);
+      }
+    }
+
+    // Get public URL
+    const { data: urlData } = supabase.storage
+      .from(IMAGES_BUCKET)
+      .getPublicUrl(filePath);
+
+    if (!urlData?.publicUrl) {
+      throw new Error('Upload succeeded but failed to get public URL');
+    }
+
+    return urlData.publicUrl;
+  } catch (error: any) {
+    // Re-throw with context if it's not already an Error
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(`Upload failed: ${error?.message || 'Unknown error'}`);
+  }
+}
+
+/**
+ * Delete an image file and its metadata entry
+ */
+export async function deleteImageRecord(imageId: string, fileUrl: string): Promise<void> {
+  if (!imageId) {
+    throw new Error('Image ID is required for deletion');
+  }
+  if (!fileUrl) {
+    throw new Error('File URL is required for deletion');
+  }
+
+  const filePath = getStoragePathFromPublicUrl(fileUrl);
+
+  const { error: storageError } = await supabase.storage
+    .from(IMAGES_BUCKET)
+    .remove([filePath]);
+
+  if (storageError && !storageError.message.includes('Object not found')) {
+    throw new Error(`Failed to delete storage file: ${storageError.message}`);
+  }
+
+  const { error: deleteError } = await supabase
+    .from('images')
+    .delete()
+    .eq('id', imageId);
+
+  if (deleteError) {
+    throw new Error(`Failed to delete image metadata: ${deleteError.message}`);
+  }
+}
+
+/**
+ * Delete by URL (used in gallery when we only have the public path)
+ * Attempts to remove storage object and matching metadata row (best-effort for metadata).
+ */
+export async function deleteImageByUrl(fileUrl: string): Promise<void> {
+  if (!fileUrl) {
+    throw new Error('File URL is required for deletion');
+  }
+
+  const filePath = getStoragePathFromPublicUrl(fileUrl);
+
+  const { error: storageError } = await supabase.storage
+    .from(IMAGES_BUCKET)
+    .remove([filePath]);
+
+  if (storageError) {
+    throw new Error(`Failed to delete storage file: ${storageError.message}`);
+  }
+
+  const { error: metadataError } = await supabase
+    .from('images')
+    .delete()
+    .eq('file_url', fileUrl);
+
+  if (metadataError) {
+    console.warn('Failed to delete metadata entry for image:', metadataError.message);
+  }
 }
 
 /**
@@ -255,4 +453,3 @@ export async function analyzeImage(imageUrl: string): Promise<{
   const result = await response.json();
   return result.data;
 }
-

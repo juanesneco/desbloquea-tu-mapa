@@ -1,0 +1,238 @@
+desbloquea_tu_mapa/
+│
+├── app/                          # Next.js web application
+│   ├── app/                      # Next.js app directory
+│   │   ├── api/
+│   │   │   └── analyze/
+│   │   │       └── route.ts      # API route for image analysis
+│   │   ├── gallery/
+│   │   │   └── page.tsx          # Gallery page
+│   │   ├── upload/
+│   │   │   └── page.tsx          # Upload page
+│   │   ├── globals.css           # Global styles
+│   │   ├── layout.tsx            # Root layout
+│   │   └── page.tsx              # Home page
+│   │
+│   ├── components/               # React components
+│   │   ├── FilterPills.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ImageCard.tsx
+│   │   └── NavBar.tsx
+│   │
+│   ├── lib/                      # Utility libraries
+│   │   ├── analyzeImage.ts
+│   │   ├── generateDescription.ts
+│   │   ├── generateTitle.ts
+│   │   └── supabaseClient.ts
+│   │
+│   ├── mobile/                   # React Native/Expo mobile app
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   │   └── LoadingScreen.tsx
+│   │   │   ├── context/
+│   │   │   │   └── AuthContext.tsx
+│   │   │   ├── hooks/
+│   │   │   │   └── useAuth.ts
+│   │   │   ├── lib/
+│   │   │   │   └── supabase.ts
+│   │   │   ├── navigation/
+│   │   │   │   └── AppNavigator.tsx
+│   │   │   ├── screens/
+│   │   │   │   ├── AuthScreen.tsx
+│   │   │   │   ├── FasesScreen.tsx
+│   │   │   │   ├── GalleryScreen.tsx
+│   │   │   │   ├── HomeScreen.tsx
+│   │   │   │   ├── MapasScreen.tsx
+│   │   │   │   └── UploadScreen.tsx
+│   │   │   └── types/
+│   │   │       └── index.ts
+│   │   ├── assets/               # Mobile app assets
+│   │   ├── App.tsx
+│   │   ├── app.json
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   │
+│   ├── scripts/                  # Database scripts
+│   │   ├── 2025-01-09_init_db.sql
+│   │   └── README.md
+│   │
+│   ├── supabase/                 # Supabase migrations
+│   │   ├── migrations/
+│   │   │   ├── 001_initial_schema.sql
+│   │   │   ├── 002_add_fases_subetapas_auth.sql
+│   │   │   └── 003_add_mapa_emocional.sql
+│   │   └── README.md
+│   │
+│   ├── types/                    # TypeScript type definitions
+│   │   └── index.ts
+│   │
+│   ├── context/                  # React context (empty)
+│   ├── hooks/                    # Custom hooks (empty)
+│   ├── models/                   # Data models (empty)
+│   ├── styles/                   # Additional styles (empty)
+│   ├── ui/                       # UI components/designs
+│   │   ├── componentes/
+│   │   ├── diagramas_flujo/
+│   │   └── maquetas/
+│   │
+│   ├── ENV_SETUP.md
+│   ├── README.md
+│   ├── STORAGE_POLICIES_SETUP.md
+│   ├── SUPABASE_SETUP.md
+│   ├── TODO.md
+│   ├── next.config.js
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
+│
+├── website/                      # Static website
+│   ├── assets/
+│   │   └── images/               # Website images
+│   │       ├── 01_inocencia/
+│   │       ├── 02_consciencia/
+│   │       ├── 03_creacion/
+│   │       ├── simbolos/
+│   │       └── README.md
+│   │
+│   ├── components/               # Website components
+│   │   ├── footer.html
+│   │   ├── header.html
+│   │   ├── mobile-menu-init.js
+│   │   └── README.md
+│   │
+│   ├── mapas/                    # Map pages
+│   │   ├── mapa-emocional.html
+│   │   ├── mapa-familiar.html
+│   │   ├── mapa-financiero.html
+│   │   ├── mapa-fisico.html
+│   │   └── mapa-mental.html
+│   │
+│   ├── prompts/                  # Prompt pages
+│   │   ├── analisis-causa-raiz.html
+│   │   ├── analisis-causa-raiz.md
+│   │   ├── aprende-las-reglas-reales.html
+│   │   ├── aprende-las-reglas-reales.md
+│   │   ├── descubre-tu-ikigai.html
+│   │   ├── descubre-tu-ikigai.md
+│   │   ├── destruye-las-mascaras.html
+│   │   ├── destruye-las-mascaras.md
+│   │   ├── fase-1-despierta.html
+│   │   ├── fase-1-despierta.md
+│   │   ├── fase-2-observa.html
+│   │   ├── fase-2-observa.md
+│   │   ├── fase-3-crea.html
+│   │   ├── fase-3-crea.md
+│   │   ├── mapea-tu-ubicacion-actual.html
+│   │   ├── mapea-tu-ubicacion-actual.md
+│   │   ├── ve-el-codigo-mental.html
+│   │   ├── ve-el-codigo-mental.md
+│   │   └── README.md
+│   │
+│   ├── secciones/                # Section pages
+│   │   ├── comienza.html
+│   │   ├── fases.html
+│   │   ├── filosofia.html
+│   │   ├── herramientas.html
+│   │   ├── mapas.html
+│   │   └── realizacion.html
+│   │
+│   ├── maria-mazoy/              # Maria Mazoy section
+│   │   ├── programas/
+│   │   │   └── el-camino-de-transformacion.html
+│   │   ├── ikigai-diagram.svg
+│   │   ├── ikigai.md
+│   │   └── programas.html
+│   │
+│   ├── archivados/               # Archived pages
+│   │   ├── el-juego.html
+│   │   ├── historia.html
+│   │   ├── la-matrix.html
+│   │   ├── trajectory.html
+│   │   ├── tu-ikigai.html
+│   │   └── tu-primer-mapa.html
+│   │
+│   ├── blog/
+│   │   └── first-post.md
+│   │
+│   ├── content/
+│   │   └── blog/
+│   │
+│   ├── utils/                    # Website utilities
+│   │
+│   ├── index.html                # Home page
+│   ├── prompts.html
+│   ├── prompts.js
+│   ├── styles.css
+│   ├── load-footer.js
+│   ├── load-header.js
+│   ├── supabase-keys.js
+│   ├── CNAME
+│   └── LESSONS_LEARNED.md
+│
+├── contenido/                    # Content files
+│   ├── filosofia/
+│   │   └── resumen_filosofia.md
+│   ├── manifestos/
+│   │   └── manifiesto_del_mapa.md
+│   ├── mapas/
+│   │   └── index.md
+│   ├── historia/                 # History content (empty)
+│   ├── prompts/                  # Prompt content (empty)
+│   └── reflexiones/
+│       ├── cartas/
+│       └── ensayos/
+│
+├── docs/                         # Documentation
+│   ├── INDEX.md
+│   └── reports/
+│       ├── CONSOLIDACION_FINAL.md
+│       ├── LIMPIEZA_PROMPTS.md
+│       ├── MAPAS_REORGANIZACION.md
+│       ├── MIGRATION_REPORT.md
+│       ├── REPORTE_IMPLEMENTACION_DTM.md
+│       └── RESUMEN_CAMBIOS_UNIFICACION.md
+│
+├── medios/                       # Media files
+│   ├── audio/
+│   ├── imagenes/
+│   │   ├── filosofia/
+│   │   ├── historia/
+│   │   ├── mapas/
+│   │   └── realizacion/
+│   └── videos/
+│
+├── cartas/                       # Cards/templates
+│   ├── archivos_diseno/
+│   ├── contenido/
+│   └── plantillas/
+│
+├── newsletter/                   # Newsletter files
+│   ├── borradores/
+│   ├── plantillas/
+│   └── publicados/
+│
+├── shared/                       # Shared resources
+│   ├── assets/
+│   ├── data/
+│   └── README.md
+│
+├── meta/                         # Meta information
+│   ├── glosario.md
+│   └── hoja_ruta.md
+│
+├── prompts_json/                 # JSON prompt files
+│
+├── .github/                      # GitHub configuration
+│   └── workflows/
+│       └── deploy.yml
+│
+├── CLAUDE.md                     # Claude AI instructions
+├── DESIGN.md                     # Design documentation
+├── README.md                     # Main README
+├── START_APP.sh                  # Startup script
+├── build.js                      # Build script
+├── server.js                     # Server script
+├── color-palette.html            # Color palette reference
+├── package.json                  # Root package.json
+└── package-lock.json             # Package lock file

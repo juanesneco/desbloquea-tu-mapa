@@ -1,110 +1,49 @@
-# Supabase Setup Checklist ✅
+# Supabase Policies Checklist
 
-## What's Already Done ✅
+With tables, auth, and the `symbolic-images` bucket already created, run the SQL below in the Supabase SQL editor to restore the production RLS policies.
 
-Based on the database check:
-- ✅ **Tables created:** `fases`, `sub_etapas`, `mapas`, `user_roles`, `images`
-- ✅ **Fases:** 3 rows (Inconsciencia, Consciencia, Creación)
-- ✅ **Sub-etapas:** 11 rows (all sub-stages)
-- ✅ **Mapas:** 5 rows (Mental, Físico, Familiar, Financiero, **Emocional**)
-- ✅ **RLS enabled** on all tables
-- ✅ **Foreign keys** set up correctly
-
-## What You Need to Set Up
-
-### 1. Storage Bucket (Required for Image Uploads)
-
-**In Supabase Dashboard:**
-1. Go to **Storage** in left sidebar
-2. Click **"New bucket"**
-3. Name: `symbolic-images`
-4. **Make it Public** (check the "Public bucket" checkbox)
-5. Click **"Create bucket"**
-
-**Or run this SQL:**
+## 1. Storage uploads (contributors only)
 ```sql
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('symbolic-images', 'symbolic-images', true)
-ON CONFLICT (id) DO UPDATE SET public = true;
-```
+DROP POLICY IF EXISTS "Contributors can upload images" ON storage.objects;
 
-**Then set storage policies:**
-```sql
--- Allow authenticated users to upload
-CREATE POLICY "Authenticated users can upload images"
-  ON storage.objects FOR INSERT
+CREATE POLICY "Contributors can upload images"
+  ON storage.objects FOR INSERT TO authenticated
   WITH CHECK (
-    bucket_id = 'symbolic-images' AND
-    auth.role() = 'authenticated'
+    bucket_id = 'symbolic-images'
+    AND name LIKE 'uploads/%'
+    AND get_user_role(auth.uid()) = 'contributor'
   );
+```
 
--- Allow authenticated users to view
+## 2. Storage reads (all authenticated users)
+```sql
+DROP POLICY IF EXISTS "Authenticated users can view images" ON storage.objects;
+
 CREATE POLICY "Authenticated users can view images"
-  ON storage.objects FOR SELECT
-  USING (
-    bucket_id = 'symbolic-images' AND
-    auth.role() = 'authenticated'
-  );
-
--- Allow users to delete their own uploads
-CREATE POLICY "Users can delete own images"
-  ON storage.objects FOR DELETE
-  USING (
-    bucket_id = 'symbolic-images' AND
-    auth.role() = 'authenticated'
-  );
+  ON storage.objects FOR SELECT TO authenticated
+  USING (bucket_id = 'symbolic-images');
 ```
 
-### 2. Enable Email Auth (If Not Already Enabled)
-
-**In Supabase Dashboard:**
-1. Go to **Authentication** → **Providers**
-2. Make sure **Email** is enabled
-3. Configure email templates if needed (optional)
-
-### 3. Test User Creation
-
-After setting up, you can test by:
-1. Creating a user in the app (sign up)
-2. The user will default to "viewer" role
-3. To upgrade to "contributor", run this SQL:
-
+## 3. Storage deletes (contributors)
 ```sql
-INSERT INTO user_roles (user_id, role)
-SELECT id, 'contributor'
-FROM auth.users
-WHERE email = 'your-email@example.com'
-ON CONFLICT (user_id) DO UPDATE SET role = 'contributor';
+DROP POLICY IF EXISTS "Contributors can delete own images" ON storage.objects;
+
+CREATE POLICY "Contributors can delete own images"
+  ON storage.objects FOR DELETE TO authenticated
+  USING (
+    bucket_id = 'symbolic-images'
+    AND auth.uid() = owner
+    AND get_user_role(auth.uid()) = 'contributor'
+  );
 ```
 
-## Quick Verification
-
-Run this to verify everything is set up:
-
+## 4. Allow authenticated users to read `user_roles`
 ```sql
--- Check tables
-SELECT 'fases' as table_name, COUNT(*) as count FROM fases
-UNION ALL
-SELECT 'sub_etapas', COUNT(*) FROM sub_etapas
-UNION ALL
-SELECT 'mapas', COUNT(*) FROM mapas
-UNION ALL
-SELECT 'user_roles', COUNT(*) FROM user_roles;
+DROP POLICY IF EXISTS "Authenticated users can view user roles" ON user_roles;
 
--- Check storage bucket exists
-SELECT name, public FROM storage.buckets WHERE name = 'symbolic-images';
+CREATE POLICY "Authenticated users can view user roles"
+  ON user_roles FOR SELECT TO authenticated
+  USING (true);
 ```
 
-## Summary
-
-**Must Do:**
-- ✅ Tables are already set up
-- ⚠️ **Create storage bucket `symbolic-images`** (public)
-- ⚠️ **Set storage policies** (see SQL above)
-
-**Optional:**
-- Configure email templates
-- Set up custom domain (for production)
-
-Once the storage bucket is created, the app should be able to upload images!
-
+▶️ **Next action:** run each block, then insert/update `user_roles` rows so every uploader has `role = 'contributor'`. Sign out and back in on the app after making these changes so the new policies and roles take effect.
