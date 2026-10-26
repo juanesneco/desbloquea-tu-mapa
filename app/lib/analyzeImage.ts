@@ -1,11 +1,11 @@
 // Updated for new Fases/Sub-etapas/Mapas structure
 
-import OpenAI from 'openai';
+import Anthropic from '@anthropic-ai/sdk';
 import { ImageAnalysis } from '@/types';
 import { fetchFases, fetchSubEtapas, fetchMapas, getSubEtapaByCodigo, getMapaByNombre } from './supabaseClient';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 const PHILOSOPHY_CONTEXT = `
@@ -57,7 +57,7 @@ Tu tarea es interpretar la imagen desde esta filosofía y clasificarla en:
 `;
 
 /**
- * Analyze an image using OpenAI Vision API
+ * Analyze an image using Claude vision
  * Returns title, description, tags, and classifications (fase_id, sub_etapa_id, mapa_id)
  */
 export async function analyzeImage(imageUrl: string): Promise<ImageAnalysis> {
@@ -82,16 +82,21 @@ export async function analyzeImage(imageUrl: string): Promise<ImageAnalysis> {
       `${m.nombre}: ${m.territorio || ''} - ${m.proposito || ''}`
     ).join('\n');
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
+    const response = await anthropic.messages.create({
+      model: 'claude-sonnet-5-5',
+      max_tokens: 1024,
+      system: PHILOSOPHY_CONTEXT,
       messages: [
-        {
-          role: 'system',
-          content: PHILOSOPHY_CONTEXT,
-        },
         {
           role: 'user',
           content: [
+            {
+              type: 'image',
+              source: {
+                type: 'url',
+                url: imageUrl,
+              },
+            },
             {
               type: 'text',
               text: `Analiza esta imagen desde la filosofía de Desbloquea tu Mapa.
@@ -119,22 +124,18 @@ IMPORTANTE:
 - El mapa_nombre DEBE ser exactamente: Mental, Físico, Familiar, Financiero, o Emocional
 - Analiza profundamente la imagen para elegir la clasificación más precisa`,
             },
-            {
-              type: 'image_url',
-              image_url: {
-                url: imageUrl,
-              },
-            },
           ],
         },
       ],
-      max_tokens: 600,
-      temperature: 0.7,
     });
 
-    const content = response.choices[0]?.message?.content;
+    if (response.stop_reason === 'refusal') {
+      throw new Error('Claude declined to analyze this image');
+    }
+    const textBlock = response.content.find((b) => b.type === 'text');
+    const content = textBlock?.type === 'text' ? textBlock.text : '';
     if (!content) {
-      throw new Error('No response from OpenAI');
+      throw new Error('No response from Claude');
     }
 
     // Parse JSON response
@@ -151,7 +152,7 @@ IMPORTANTE:
       const cleanContent = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
       rawAnalysis = JSON.parse(cleanContent);
     } catch (parseError) {
-      console.error('Failed to parse OpenAI response:', content);
+      console.error('Failed to parse Claude response:', content);
       throw new Error('Invalid JSON response from AI');
     }
 

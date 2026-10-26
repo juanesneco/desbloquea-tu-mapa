@@ -1,4 +1,4 @@
-// API route for image analysis (secure server-side OpenAI calls)
+// API route for image analysis (secure server-side Claude calls)
 // Used by both web app and mobile app
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -16,10 +16,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate OpenAI API key is configured
-    if (!process.env.OPENAI_API_KEY) {
+    // Validate Anthropic API key is configured
+    if (!process.env.ANTHROPIC_API_KEY) {
       return NextResponse.json(
-        { error: 'OpenAI API key not configured' },
+        { error: 'Anthropic API key not configured' },
         { status: 500 }
       );
     }

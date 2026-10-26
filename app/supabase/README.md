@@ -25,7 +25,7 @@ Make sure you have these environment variables set in your `.env.local` file:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-OPENAI_API_KEY=your-openai-api-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
 ```
 
 ## Testing the Connection

@@ -15,7 +15,7 @@ AI-powered image analysis application for symbolic self-exploration.
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-   OPENAI_API_KEY=your-openai-api-key
+   ANTHROPIC_API_KEY=your-anthropic-api-key
    ```
 
 3. **Set up Supabase**
@@ -38,7 +38,7 @@ AI-powered image analysis application for symbolic self-exploration.
 - **Styling:** Tailwind CSS
 - **Database:** Supabase (PostgreSQL)
 - **Storage:** Supabase Storage
-- **AI:** OpenAI GPT-4o Vision API
+- **AI:** Claude vision (Anthropic API)
 - **Icons:** Lucide React
 
 ## 🎯 Features
@@ -86,7 +86,7 @@ Required variables:
 |----------|-------------|---------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | `https://xxx.supabase.co` |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon key | `eyJhbGci...` |
-| `OPENAI_API_KEY` | Your OpenAI API key | `sk-...` |
+| `ANTHROPIC_API_KEY` | Your Anthropic API key | `sk-ant-...` |
 
 Optional:
 
@@ -182,7 +182,7 @@ The app can be deployed to any platform supporting Next.js:
 - Check browser console for errors
 
 **AI analysis failing?**
-- Verify OpenAI API key is valid
+- Verify Anthropic API key is valid
 - Check you have credits remaining
 - Review API usage limits
 

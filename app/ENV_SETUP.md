@@ -6,7 +6,7 @@ This guide will help you set up all the required environment variables for the a
 
 Before starting, make sure you have:
 - A Supabase account ([sign up](https://supabase.com))
-- An OpenAI account ([sign up](https://platform.openai.com))
+- An Anthropic account ([sign up](https://console.anthropic.com))
 
 ## 🔑 Step 1: Get Supabase Credentials
 
@@ -17,13 +17,13 @@ Before starting, make sure you have:
    - **Project URL** (e.g., `https://xxxxx.supabase.co`)
    - **anon public** key (starts with `eyJhbGci...`)
 
-## 🤖 Step 2: Get OpenAI API Key
+## 🤖 Step 2: Get Anthropic API Key
 
-1. Go to [OpenAI Platform](https://platform.openai.com)
+1. Go to [Anthropic Console](https://console.anthropic.com)
 2. Sign in to your account
 3. Navigate to **API Keys** section
 4. Click **Create new secret key**
-5. Copy the key (starts with `sk-...`)
+5. Copy the key (starts with `sk-ant-...`)
 6. **Important:** Save this key somewhere safe - you won't see it again!
 
 ## 📝 Step 3: Create .env.local File
@@ -37,8 +37,8 @@ Before starting, make sure you have:
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...your-anon-key
 
-# OpenAI Configuration
-OPENAI_API_KEY=sk-...your-openai-key
+# Anthropic Configuration
+ANTHROPIC_API_KEY=sk-ant-...your-anthropic-key
 
 # Optional: For admin operations (not required for basic usage)
 # SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
@@ -94,10 +94,10 @@ npm run dev
 - Ensure you copied the **anon** key, not the service role key
 - Check for extra spaces in your `.env.local` file
 
-### "OpenAI API error"
-- Verify your API key starts with `sk-`
-- Check you have credits in your OpenAI account
-- Review [OpenAI usage limits](https://platform.openai.com/account/limits)
+### "Anthropic API error"
+- Verify your API key starts with `sk-ant-`
+- Check you have credits in your Anthropic account
+- Review your limits in the [Anthropic Console](https://console.anthropic.com)
 
 ### "Bucket not found"
 - Make sure the bucket is named exactly `symbolic-images`
@@ -106,9 +106,9 @@ npm run dev
 
 ## 💰 Cost Considerations
 
-### OpenAI API
-- GPT-4o Vision costs ~$0.01 per image analysis
-- Monitor usage in [OpenAI Dashboard](https://platform.openai.com/usage)
+### Anthropic API
+- Claude vision costs about a cent per image analysis
+- Monitor usage in the [Anthropic Console](https://console.anthropic.com)
 - Set up usage limits to control costs
 
 ### Supabase
@@ -133,7 +133,7 @@ If you encounter issues:
 1. Check this guide again carefully
 2. Review error messages in browser console
 3. Check Supabase logs in the dashboard
-4. Review OpenAI API status page
+4. Review the Anthropic status page (status.anthropic.com)
 
 ---
 

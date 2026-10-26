@@ -9,7 +9,7 @@ The core philosophy: **La intención es el origen de toda transformación** (Int
 ## Backend Status & Migration Plan (Deferred)
 
 > **Parked as of 2026-06-03.** Both Supabase **Cloud** projects this repo was wired to are **unreachable** — their subdomains no longer resolve DNS, so they have been paused or deleted:
-> - `app/` → project `ehgsfiuvaunfqugkhdrt.supabase.co` (referenced via `app/.env.local`, vars `NEXT_PUBLIC_SUPABASE_*` + `OPENAI_API_KEY`)
+> - `app/` → project `ehgsfiuvaunfqugkhdrt.supabase.co` (referenced via `app/.env.local`, vars `NEXT_PUBLIC_SUPABASE_*` + `ANTHROPIC_API_KEY` (was `OPENAI_API_KEY` on a Duplica account until 2026-10-26))
 > - root + `website/` → project `wjhmycxkvmtxtyrcqgfm.supabase.co` (referenced via root `.env`, vars `SUPABASE_URL`/`SUPABASE_ANON_KEY`, and **hardcoded** in `website/supabase-keys.js`)
 >
 > Until re-provisioned, the `app/` will not connect to a database and the `website/` Supabase-backed features (newsletter, image contributions) will not work.
@@ -25,7 +25,7 @@ This project lives under `~/web/apps/` on the JENG VPS only so it can be worked 
    - `app/supabase/migrations/003_add_mapa_emocional.sql`
 3. **Recreate the storage bucket + RLS** — the app expects a `symbolic-images` storage bucket and `user_roles`-based policies (`contributor` role for uploads). Full checklist in `app/SUPABASE_SETUP.md` and `app/STORAGE_POLICIES_SETUP.md`.
 4. **Repoint credentials** to the shared instance:
-   - `app/.env.local` → `NEXT_PUBLIC_SUPABASE_URL=https://api.juanesngtz.com` + the shared anon key (keep a working `OPENAI_API_KEY`).
+   - `app/.env.local` → `NEXT_PUBLIC_SUPABASE_URL=https://api.juanesngtz.com` + the shared anon key (plus an `ANTHROPIC_API_KEY`; none exists yet, create a "desbloquea" key in the Anthropic console).
    - root `.env` → shared `SUPABASE_URL`/`SUPABASE_ANON_KEY`.
    - `website/supabase-keys.js` → **must be updated by hand** (anon URL+key are hardcoded and committed here; the anon key is public-by-design so this is safe, but it currently points at the dead `wjhmy` project).
 5. **Decide on the static-site coupling** — the GitHub Pages `website/` reaches Supabase directly from the browser via `supabase-keys.js`; confirm RLS covers anonymous reads/writes for whatever it needs (newsletter signup, etc.) before going live.
